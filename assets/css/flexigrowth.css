@@ -163,6 +163,14 @@ main{flex:1}
   .nav-toggle{display:block}
 }
 
+/* ---------- Hero banner ----------
+   Full-bleed designed banner carried over from the previous site. The artwork
+   is self-contained (its own headline and call to action are part of the
+   image), so it sits above the hero band rather than behind its text. */
+.hero-banner{display:block;background:var(--ink);line-height:0}
+.hero-banner img{width:100%;height:auto}
+.hero-banner:hover{text-decoration:none}
+
 /* ---------- Hero ---------- */
 .hero{
   background:var(--ink);
