@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent portal | FlexiGrowth Capital</title>
+<meta name="description" content="Community Business Development Agent portal: capture leads and applications, run readiness assessments, host clinics and track commissions.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/flexigrowth.css">
+<style>
+  .agent-head{background:var(--indigo);color:#fff;padding:22px 0 0}
+  .agent-head .bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .agent-head .brand{color:#fff}
+  .agent-head .bar .spacer{margin-left:auto}
+  .agent-head .who{font-size:.88rem;color:rgba(255,255,255,.78)}
+  .offline{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;background:rgba(255,255,255,.14);padding:6px 13px;border-radius:99px}
+  .offline .led{width:8px;height:8px;border-radius:50%;background:var(--green)}
+
+  .tabs{display:flex;gap:2px;margin-top:30px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tabs button{
+    font-family:var(--display);font-size:.88rem;font-weight:600;white-space:nowrap;
+    padding:14px 18px;color:rgba(255,255,255,.7);border-bottom:3px solid transparent;
+  }
+  .tabs button[aria-selected="true"]{color:#fff;border-bottom-color:var(--green)}
+
+  .stat-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:860px){.stat-tiles{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.stat-tiles{grid-template-columns:1fr}}
+  .stat-tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px}
+  .stat-tile .v{font-family:var(--display);font-size:2rem;font-weight:700;line-height:1;letter-spacing:-.03em}
+  .stat-tile .l{font-size:.82rem;color:var(--text-muted);margin-top:10px}
+
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin-top:24px;box-shadow:var(--shadow-sm)}
+  .panel h2{font-size:1.25rem}
+  .panel .sub{color:var(--text-muted);font-size:.92rem;margin-top:6px;margin-bottom:22px}
+  .tabpanel[hidden]{display:none}
+  .list-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:16px 0;border-bottom:1px solid var(--line)}
+  .list-row:last-child{border-bottom:0}
+  .list-row .spacer{margin-left:auto}
+  .list-row .who{font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="agent-head">
+  <div class="shell">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 690 715" aria-hidden="true"><g fill="#22D669"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
+        <span>flexigrowth<span class="dot">.</span></span>
+      </a>
+      <span class="who">Agent portal</span>
+      <span class="spacer"></span>
+      <span class="offline"><span class="led"></span> Synced · works offline</span>
+    </div>
+
+    <div style="margin-top:30px">
+      <span class="kicker" style="color:var(--green)">Community Business Development Agent</span>
+      <h1 style="color:#fff;font-size:clamp(1.6rem,3.4vw,2.2rem)">Lerato M. &middot; Soshanguve</h1>
+      <p style="color:rgba(255,255,255,.75);margin-top:8px">July 2026 &middot; 14 businesses in your book</p>
+    </div>
+
+    <div class="tabs" role="tablist" id="tabs">
+      <button role="tab" aria-selected="true" data-tab="dashboard">Dashboard</button>
+      <button role="tab" aria-selected="false" data-tab="leads">Leads</button>
+      <button role="tab" aria-selected="false" data-tab="applications">Applications</button>
+      <button role="tab" aria-selected="false" data-tab="readiness">Readiness</button>
+      <button role="tab" aria-selected="false" data-tab="clinics">Clinics</button>
+      <button role="tab" aria-selected="false" data-tab="commissions">Commissions</button>
+      <button role="tab" aria-selected="false" data-tab="training">Training</button>
+    </div>
+  </div>
+</header>
+
+<main style="background:var(--paper)">
+  <section class="section" style="padding-top:40px">
+    <div class="shell">
+
+      <!-- ================= DASHBOARD ================= -->
+      <div class="tabpanel" id="panel-dashboard" role="tabpanel">
+        <div class="stat-tiles">
+          <div class="stat-tile"><div class="v">24</div><div class="l">Active leads</div></div>
+          <div class="stat-tile"><div class="v">9</div><div class="l">Applications in review</div></div>
+          <div class="stat-tile"><div class="v" style="color:var(--green-700)">R12 400</div><div class="l">Commission month to date</div></div>
+          <div class="stat-tile"><div class="v">3</div><div class="l">Clinics booked</div></div>
+        </div>
+
+        <div class="panel">
+          <h2>Application pipeline</h2>
+          <p class="sub">Everything you have captured, with live FlexiScore&trade; and status.</p>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Business</th><th>Product</th><th>Amount</th><th>FlexiScore</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Mokoena Trading</strong></td><td>Working Capital</td><td>R150 000</td><td>71</td><td><span class="chip chip-green">Approved</span></td></tr>
+                <tr><td><strong>Zanele&rsquo;s Kitchen</strong></td><td>Micro Enterprise</td><td>R35 000</td><td>64</td><td><span class="chip">In review</span></td></tr>
+                <tr><td><strong>TK Civils</strong></td><td>Purchase Order</td><td>R280 000</td><td>58</td><td><span class="chip chip-amber">Docs needed</span></td></tr>
+                <tr><td><strong>Bokamoso Farms</strong></td><td>Asset Finance</td><td>R220 000</td><td>76</td><td><span class="chip chip-green">Approved</span></td></tr>
+                <tr><td><strong>Sipho Auto Spares</strong></td><td>Inventory Finance</td><td>R95 000</td><td>52</td><td><span class="chip chip-amber">Routed to advisory</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap:24px;margin-top:24px">
+          <div class="panel" style="margin-top:0">
+            <h2>Capture something new</h2>
+            <p class="sub">All four work offline and sync when you get signal.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary btn-sm" href="#leads" data-goto="leads">New lead</a>
+              <a class="btn btn-outline btn-sm" href="assessment.html">Run a readiness assessment</a>
+              <a class="btn btn-outline btn-sm" href="apply.html">Capture an application</a>
+              <a class="btn btn-outline btn-sm" href="#clinics" data-goto="clinics">Book a clinic seat</a>
+            </div>
+          </div>
+          <div class="panel" style="margin-top:0">
+            <h2>This month</h2>
+            <p class="sub">Against your own targets — not a quota.</p>
+            <div class="grid" style="gap:18px">
+              <div><div class="wrap-between small"><strong>Applications captured</strong><span class="spacer"></span><span class="muted">9 of 12</span></div><div class="meter amber mt-8"><span style="width:75%"></span></div></div>
+              <div><div class="wrap-between small"><strong>Readiness assessments run</strong><span class="spacer"></span><span class="muted">17 of 15</span></div><div class="meter mt-8"><span style="width:100%"></span></div></div>
+              <div><div class="wrap-between small"><strong>Clinic seats sold</strong><span class="spacer"></span><span class="muted">11 of 20</span></div><div class="meter red mt-8"><span style="width:55%"></span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= LEADS ================= -->
+      <div class="tabpanel" id="panel-leads" role="tabpanel" hidden>
+        <div class="panel" style="margin-top:0">
+          <h2>Leads</h2>
+          <p class="sub">Businesses you have met but not yet assessed or captured.</p>
+          <div class="list-row"><span class="who">Thabo&rsquo;s Panelbeaters</span><span class="muted small">Soshanguve Block H &middot; met 3 days ago</span><span class="spacer"></span><span class="chip chip-amber">Needs assessment</span><a class="btn btn-outline btn-sm" href="assessment.html">Assess</a></div>
+          <div class="list-row"><span class="who">Naledi Catering</span><span class="muted small">Ga-Rankuwa &middot; met last week</span><span class="spacer"></span><span class="chip">Assessment done &middot; 61</span><a class="btn btn-outline btn-sm" href="apply.html">Capture application</a></div>
+          <div class="list-row"><span class="who">Mabena Transport</span><span class="muted small">Hammanskraal &middot; referral</span><span class="spacer"></span><span class="chip chip-amber">Needs assessment</span><a class="btn btn-outline btn-sm" href="assessment.html">Assess</a></div>
+          <div class="list-row"><span class="who">Kgomotso Salon</span><span class="muted small">Soshanguve Block L</span><span class="spacer"></span><span class="chip chip-green">Ready to apply</span><a class="btn btn-primary btn-sm" href="apply.html">Capture application</a></div>
+        </div>
+
+        <div class="panel">
+          <h2>Add a lead</h2>
+          <p class="sub">Captured on the device, synced when you have signal.</p>
+          <form novalidate onsubmit="return false">
+            <div class="field-row">
+              <div class="field"><label for="l-biz">Business name</label><input type="text" id="l-biz"></div>
+              <div class="field"><label for="l-owner">Owner</label><input type="text" id="l-owner"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="l-phone">Mobile number</label><input type="tel" id="l-phone"></div>
+              <div class="field"><label for="l-area">Area</label><input type="text" id="l-area"></div>
+            </div>
+            <div class="field"><label for="l-note">Notes</label><textarea id="l-note" rows="3"></textarea></div>
+            <button class="btn btn-primary" type="submit">Save lead</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ================= APPLICATIONS ================= -->
+      <div class="tabpanel" id="panel-applications" role="tabpanel" hidden>
+        <div class="panel" style="margin-top:0">
+          <h2>Applications</h2>
+          <p class="sub">Applications you captured, and what each one is waiting on.</p>
+          <div class="list-row"><span class="who">Mokoena Trading</span><span class="muted small">FG-482910 &middot; Working Capital &middot; R150 000</span><span class="spacer"></span><span class="chip chip-green">Approved &middot; awaiting contracting</span></div>
+          <div class="list-row"><span class="who">Zanele&rsquo;s Kitchen</span><span class="muted small">FG-471255 &middot; Micro Enterprise &middot; R35 000</span><span class="spacer"></span><span class="chip">Credit committee</span></div>
+          <div class="list-row"><span class="who">TK Civils</span><span class="muted small">FG-469003 &middot; Purchase Order &middot; R280 000</span><span class="spacer"></span><span class="chip chip-amber">Waiting on bank statements</span><a class="btn btn-outline btn-sm" href="contact.html">Chase client</a></div>
+          <div class="list-row"><span class="who">Bokamoso Farms</span><span class="muted small">FG-455871 &middot; Asset Finance &middot; R220 000</span><span class="spacer"></span><span class="chip chip-green">Disbursed</span></div>
+          <a class="btn btn-primary mt-24" href="apply.html">Capture a new application</a>
+        </div>
+      </div>
+
+      <!-- ================= READINESS ================= -->
+      <div class="tabpanel" id="panel-readiness" role="tabpanel" hidden>
+        <div class="panel" style="margin-top:0">
+          <h2>Readiness assessments</h2>
+          <p class="sub">Run the same assessment the public site uses, on-site with the client on your tablet.</p>
+          <a class="btn btn-primary" href="assessment.html">Start an assessment</a>
+
+          <div class="table-wrap mt-32">
+            <table class="data">
+              <thead><tr><th>Business</th><th>Date</th><th>Score</th><th>Routed to</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Naledi Catering</strong></td><td>21 Jul 2026</td><td>61</td><td><span class="chip chip-amber">Advisory &amp; compliance</span></td></tr>
+                <tr><td><strong>Kgomotso Salon</strong></td><td>19 Jul 2026</td><td>73</td><td><span class="chip chip-green">Funding solutions</span></td></tr>
+                <tr><td><strong>Sipho Auto Spares</strong></td><td>18 Jul 2026</td><td>52</td><td><span class="chip chip-amber">Business clinics</span></td></tr>
+                <tr><td><strong>Mabena Transport</strong></td><td>15 Jul 2026</td><td>38</td><td><span class="chip chip-red">Aptivo training</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fine-print mt-24">Every assessment you run stays attached to your book, so commission follows the client through whichever service they end up in.</p>
+        </div>
+      </div>
+
+      <!-- ================= CLINICS ================= -->
+      <div class="tabpanel" id="panel-clinics" role="tabpanel" hidden>
+        <div class="panel" style="margin-top:0">
+          <h2>Clinics you are hosting</h2>
+          <p class="sub">You earn a fee per paid seat, on top of any funding commission that follows.</p>
+          <div class="list-row"><span class="who">Funding Ready Clinic</span><span class="muted small">Soshanguve &middot; 12 August</span><span class="spacer"></span><span class="chip chip-green">8 of 15 seats sold</span></div>
+          <div class="list-row"><span class="who">Cashflow Masterclass</span><span class="muted small">Ga-Rankuwa &middot; 26 August</span><span class="spacer"></span><span class="chip chip-amber">3 of 15 seats sold</span></div>
+          <div class="list-row"><span class="who">Tax Bootcamp</span><span class="muted small">Online &middot; 4 September</span><span class="spacer"></span><span class="chip">Open for booking</span></div>
+          <div class="btn-row mt-24">
+            <a class="btn btn-primary btn-sm" href="clinics.html">Schedule a clinic</a>
+            <a class="btn btn-outline btn-sm" href="clinics.html">See the full calendar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= COMMISSIONS ================= -->
+      <div class="tabpanel" id="panel-commissions" role="tabpanel" hidden>
+        <div class="panel" style="margin-top:0">
+          <h2>Commission statement</h2>
+          <p class="sub">July 2026 &middot; paid on the 7th of the following month.</p>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Source</th><th>Reference</th><th>Basis</th><th>Amount</th></tr></thead>
+              <tbody>
+                <tr><td>Funded deal &mdash; Bokamoso Farms</td><td>FG-455871</td><td>Asset Finance, R220 000</td><td><strong>R6 600</strong></td></tr>
+                <tr><td>Funded deal &mdash; Mokoena Trading</td><td>FG-482910</td><td>Working Capital, R150 000</td><td><strong>R4 500</strong></td></tr>
+                <tr><td>Clinic seats sold</td><td>CL-2026-07</td><td>8 seats &times; R150</td><td><strong>R1 200</strong></td></tr>
+                <tr><td>Advisory referral</td><td>AD-11204</td><td>Compliance work, Naledi Catering</td><td><strong>R100</strong></td></tr>
+              </tbody>
+              <tbody><tr><td colspan="3"><strong>Total month to date</strong></td><td><strong style="color:var(--green-700)">R12 400</strong></td></tr></tbody>
+            </table>
+          </div>
+          <p class="fine-print mt-24">Commission is governed by your agent agreement. Amounts shown are gross and before any tax you are responsible for as an independent contractor.</p>
+        </div>
+      </div>
+
+      <!-- ================= TRAINING ================= -->
+      <div class="tabpanel" id="panel-training" role="tabpanel" hidden>
+        <div class="panel" style="margin-top:0">
+          <h2>Your training</h2>
+          <p class="sub">Served from Aptivo Institute. Accreditation keeps you able to sign off assessments.</p>
+          <div class="list-row"><span class="who">Agent induction</span><span class="muted small">Products, process and compliance</span><span class="spacer"></span><span class="chip chip-green">Complete</span></div>
+          <div class="list-row"><span class="who">Responsible lending &amp; the NCA</span><span class="muted small">Annual refresher</span><span class="spacer"></span><span class="chip chip-green">Complete</span></div>
+          <div class="list-row"><span class="who">Running a business clinic</span><span class="muted small">Facilitation and materials</span><span class="spacer"></span><span class="chip chip-amber">In progress &middot; 60%</span></div>
+          <div class="list-row"><span class="who">Finance for SMEs</span><span class="muted small">Accredited &middot; optional</span><span class="spacer"></span><a class="btn btn-outline btn-sm" href="aptivo.html">Enrol</a></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" style="padding:40px 0 32px">
+  <div class="shell">
+    <div class="wrap-between fine-print">
+      <span>&copy; <span data-year>2026</span> FlexiGrowth Capital &middot; NCRCP23507</span>
+      <span class="spacer"></span>
+      <a href="partners.html">Agent programme</a>
+    </div>
+    <p class="fine-print mt-16" style="max-width:70ch">
+      Front-end prototype. Figures shown are illustrative. Live lead, application and commission
+      data arrive with the Phase&nbsp;3 agent portal build.
+    </p>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  'use strict';
+  var tabs = document.querySelectorAll('#tabs button');
+
+  function show(name) {
+    tabs.forEach(function (b) {
+      var on = b.dataset.tab === name;
+      b.setAttribute('aria-selected', String(on));
+    });
+    document.querySelectorAll('.tabpanel').forEach(function (p) {
+      p.hidden = p.id !== 'panel-' + name;
+    });
+  }
+
+  tabs.forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.tab); });
+  });
+
+  document.querySelectorAll('[data-goto]').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); show(a.dataset.goto); });
+  });
+})();
+</script>
+</body>
+</html>

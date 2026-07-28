@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funding Readiness Assessment | FlexiGrowth Capital</title>
+<meta name="description" content="Eleven questions, five minutes, an instant Funding Readiness Score out of 100 — and a clear plan for whatever is missing.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/flexigrowth.css">
+<style>
+  /* Assessment-only chrome */
+  .assess-shell{max-width:760px;margin:0 auto;padding:0 24px}
+  .assess-head{background:var(--ink);color:var(--text-onink);padding:26px 0 30px}
+  .assess-head .bar{display:flex;align-items:center;gap:16px}
+  .assess-head .brand{color:#fff}
+  .assess-head .exit{margin-left:auto;font-size:.88rem;color:var(--text-onink-muted)}
+  .progress-steps{display:flex;gap:10px;margin-top:26px}
+  .progress-steps div{flex:1}
+  .progress-steps .track{height:5px;border-radius:99px;background:rgba(255,255,255,.16);overflow:hidden}
+  .progress-steps .track span{display:block;height:100%;width:0;background:var(--green);transition:width .4s ease}
+  .progress-steps .lbl{font-size:.72rem;margin-top:9px;color:var(--text-onink-muted);letter-spacing:.04em}
+  .progress-steps .on .lbl{color:#fff;font-weight:600}
+  @media(max-width:640px){.progress-steps .lbl{display:none}}
+
+  .q{margin-bottom:36px}
+  .q > .field-label{font-family:var(--display);font-size:1.12rem;font-weight:600;margin-bottom:6px}
+  .q .hint{font-size:.9rem;color:var(--text-muted);margin-bottom:14px}
+  .step-nav{display:flex;gap:14px;align-items:center;margin-top:8px;flex-wrap:wrap}
+  .step-nav .spacer{margin-left:auto}
+
+  /* Result */
+  .score-dial{display:flex;align-items:baseline;gap:14px;justify-content:center}
+  .score-dial .n{font-family:var(--display);font-size:clamp(3.4rem,11vw,5.4rem);font-weight:700;line-height:1;letter-spacing:-.04em}
+  .score-dial .of{font-size:1.1rem;color:var(--text-muted)}
+  .diag-row{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:700px){.diag-row{grid-template-columns:1fr 1fr}}
+  .diag .name{display:flex;font-size:.85rem;font-weight:600;margin-bottom:8px}
+  .diag .name span:last-child{margin-left:auto;color:var(--text-muted);font-weight:500}
+</style>
+</head>
+<body>
+
+<header class="assess-head">
+  <div class="assess-shell bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 690 715" aria-hidden="true"><g fill="#22D669"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
+      <span>flexigrowth<span class="dot">.</span></span>
+    </a>
+    <a class="exit" href="funding-readiness.html">Save &amp; exit</a>
+  </div>
+  <div class="assess-shell">
+    <div class="progress-steps" id="progress" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-top:44px">
+    <div class="assess-shell">
+
+      <!-- ---------- Questions ---------- -->
+      <div id="form-view">
+        <span class="kicker">Funding Readiness Assessment</span>
+        <h1 id="step-title" style="font-size:clamp(1.6rem,3.4vw,2.2rem)">About your business</h1>
+        <p class="muted mt-8" id="step-sub">Who you are and how long you have been trading.</p>
+
+        <div class="alert alert-bad mt-24" id="err" hidden>Please answer every question before continuing.</div>
+
+        <form id="assess-form" class="mt-32" novalidate>
+          <div id="questions"></div>
+
+          <div class="step-nav">
+            <button type="button" class="btn btn-outline" id="back">&larr; Back</button>
+            <span class="spacer"></span>
+            <button type="submit" class="btn btn-primary" id="next">Continue &rarr;</button>
+          </div>
+        </form>
+
+        <p class="fine-print mt-32">
+          Your answers are used to score your readiness and recommend services. FlexiGrowth Capital is a
+          registered credit provider (NCRCP23507). Completing this assessment is free and is not a credit
+          application &mdash; no credit bureau enquiry is made at this stage.
+        </p>
+      </div>
+
+      <!-- ---------- Result ---------- -->
+      <div id="result-view" hidden></div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" style="padding:36px 0 30px">
+  <div class="assess-shell">
+    <div class="wrap-between fine-print">
+      <span>&copy; <span data-year>2026</span> FlexiGrowth Capital &middot; NCRCP23507</span>
+      <span class="spacer"></span>
+      <a href="index.html">Back to flexigrowth.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/readiness.js"></script>
+<script>
+(function () {
+  'use strict';
+  var Q = window.FGReadiness, Fmt = window.FG.Fmt, Store = window.FG.Store;
+  var answers = {};
+  var contact = {};
+  var step = 1;
+  var LAST = Q.STEPS.length;
+
+  var elQuestions = document.getElementById('questions');
+  var elErr = document.getElementById('err');
+  var elBack = document.getElementById('back');
+  var elNext = document.getElementById('next');
+
+  /* ---------- Progress ---------- */
+  function renderProgress() {
+    document.getElementById('progress').innerHTML = Q.STEPS.map(function (s) {
+      var fill = step > s.n ? 100 : (step === s.n ? 55 : 0);
+      return '<div class="' + (step >= s.n ? 'on' : '') + '">' +
+             '<div class="track"><span style="width:' + fill + '%"></span></div>' +
+             '<div class="lbl">' + s.n + ' &middot; ' + s.title + '</div></div>';
+    }).join('');
+  }
+
+  /* ---------- Questions ---------- */
+  function renderStep() {
+    var meta = Q.STEPS[step - 1];
+    document.getElementById('step-title').textContent = meta.title;
+    document.getElementById('step-sub').textContent = meta.sub;
+    elErr.hidden = true;
+
+    var html = Q.QUESTIONS.filter(function (q) { return q.step === step; }).map(function (q) {
+      return '<fieldset class="q">' +
+        '<legend class="field-label">' + q.label + '</legend>' +
+        (q.hint ? '<p class="hint">' + q.hint + '</p>' : '') +
+        '<div class="options">' + q.options.map(function (o) {
+          var checked = answers[q.id] === o.v ? ' checked' : '';
+          return '<label class="opt"><input type="radio" name="' + q.id + '" value="' + o.v + '"' + checked + '>' +
+                 '<span class="opt-body"><span class="opt-title">' + o.t + '</span></span></label>';
+        }).join('') + '</div></fieldset>';
+    }).join('');
+
+    /* Final step also collects who we are sending the result to. */
+    if (step === LAST) {
+      html += '<fieldset class="q">' +
+        '<legend class="field-label">How much do you need?</legend>' +
+        '<p class="hint">A rough figure is fine — it helps us match the right product.</p>' +
+        '<div class="field"><label for="amount" class="visually-hidden">Amount needed in rand</label>' +
+        '<input type="number" id="amount" min="5000" step="1000" placeholder="e.g. 150000" value="' + (contact.amount || '') + '"></div>' +
+        '</fieldset>' +
+        '<fieldset class="q">' +
+        '<legend class="field-label">Where should we send your result?</legend>' +
+        '<div class="field"><label for="c-business">Business name</label><input type="text" id="c-business" value="' + Fmt.escape(contact.business || '') + '" autocomplete="organization"></div>' +
+        '<div class="field-row">' +
+          '<div class="field"><label for="c-name">Your name</label><input type="text" id="c-name" value="' + Fmt.escape(contact.name || '') + '" autocomplete="name"></div>' +
+          '<div class="field"><label for="c-phone">Mobile number</label><input type="tel" id="c-phone" value="' + Fmt.escape(contact.phone || '') + '" autocomplete="tel"></div>' +
+        '</div>' +
+        '<div class="field"><label for="c-email">Email address</label><input type="email" id="c-email" value="' + Fmt.escape(contact.email || '') + '" autocomplete="email"></div>' +
+        '</fieldset>';
+    }
+
+    elQuestions.innerHTML = html;
+    elBack.hidden = step === 1;
+    elNext.textContent = step === LAST ? 'Get my readiness score →' : 'Continue →';
+    renderProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function collect() {
+    Q.QUESTIONS.filter(function (q) { return q.step === step; }).forEach(function (q) {
+      var picked = elQuestions.querySelector('input[name="' + q.id + '"]:checked');
+      if (picked) answers[q.id] = picked.value;
+    });
+    if (step === LAST) {
+      ['amount'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) contact.amount = el.value;
+      });
+      [['business', 'c-business'], ['name', 'c-name'], ['phone', 'c-phone'], ['email', 'c-email']].forEach(function (pair) {
+        var el = document.getElementById(pair[1]);
+        if (el) contact[pair[0]] = el.value.trim();
+      });
+    }
+  }
+
+  function stepComplete() {
+    return Q.QUESTIONS.filter(function (q) { return q.step === step; })
+      .every(function (q) { return !!answers[q.id]; });
+  }
+
+  document.getElementById('assess-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    collect();
+    if (!stepComplete()) {
+      elErr.hidden = false;
+      elErr.textContent = 'Please answer every question before continuing.';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (step < LAST) { step++; renderStep(); return; }
+    finish();
+  });
+
+  elBack.addEventListener('click', function () {
+    collect();
+    if (step > 1) { step--; renderStep(); }
+  });
+
+  /* ---------- Result ---------- */
+  function finish() {
+    var result = Q.assess(answers);
+    var band = result.band;
+    var r = result.routedTo;
+
+    /* Write into the one client record the portal reads from. */
+    var data = Store.read();
+    data.readiness = {
+      score: result.score, band: band, answers: answers,
+      routedTo: r.key, improvements: result.improvements,
+      qualifies: result.qualifies, date: result.date
+    };
+    data.diagnostic = result.diagnostic;
+    data.profile = {
+      name: contact.name || data.profile.name,
+      email: contact.email || data.profile.email,
+      phone: contact.phone || data.profile.phone,
+      business: contact.business || data.profile.business,
+      reg: data.profile.reg
+    };
+    if (contact.amount) data.requestedAmount = Number(contact.amount);
+    Store.write(data);
+
+    var diag = result.diagnostic;
+    var diagNames = {
+      financial: 'Financial', compliance: 'Compliance', operations: 'Operations',
+      sales: 'Sales', funding: 'Funding', growth: 'Growth'
+    };
+
+    function tone(v) { return v >= 70 ? '' : (v >= 40 ? ' amber' : ' red'); }
+
+    var html =
+      '<div class="center">' +
+        '<span class="kicker">Your result</span>' +
+        '<div class="score-dial"><span class="n">' + result.score + '</span><span class="of">/ 100</span></div>' +
+        '<p class="mt-16"><span class="chip ' + (band.tone === 'green' ? 'chip-green' : band.tone === 'amber' ? 'chip-amber' : 'chip-red') + '">' + band.label + '</span></p>' +
+        '<div class="meter meter-lg mt-24' + tone(result.score) + '" style="max-width:460px;margin-left:auto;margin-right:auto">' +
+          '<span style="width:' + result.score + '%"></span></div>' +
+      '</div>' +
+
+      '<div class="card card-pad-lg mt-48">' +
+        '<h2 style="font-size:clamp(1.5rem,3vw,2rem)">' + r.headline + '</h2>' +
+        '<p class="muted mt-16">' + r.body + '</p>' +
+        '<div class="btn-row mt-32">' +
+          '<a class="btn btn-primary" href="' + r.cta.href + '">' + r.cta.text + '</a>' +
+          '<a class="btn btn-outline" href="' + r.alt.href + '">' + r.alt.text + '</a>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="grid grid-2 mt-32" style="gap:24px">' +
+        '<div class="card">' +
+          '<h3>Your business qualifies for</h3>' +
+          '<ul class="ticks mt-16">' + result.qualifies.map(function (q) {
+            return '<li>' + Fmt.escape(q) + '</li>'; }).join('') + '</ul>' +
+        '</div>' +
+        '<div class="card">' +
+          '<h3>' + (result.improvements.length ? 'Before funding, improve' : 'Keep it up') + '</h3>' +
+          (result.improvements.length
+            ? '<ul class="dots mt-16">' + result.improvements.map(function (f) {
+                return '<li><strong style="color:var(--text)">' + f.title + '</strong><br>' + f.body + '</li>'; }).join('') + '</ul>'
+            : '<p class="muted mt-16">Nothing is holding your application back. Keep your statements and tax status current and you will stay funding ready.</p>') +
+        '</div>' +
+      '</div>' +
+
+      '<div class="card card-pad-lg mt-32">' +
+        '<span class="kicker">Business diagnostic</span>' +
+        '<h3 class="mb-24">Where your business stands today</h3>' +
+        '<div class="diag-row">' + Object.keys(diagNames).map(function (k) {
+          return '<div class="diag"><div class="name"><span>' + diagNames[k] + '</span><span>' + diag[k] + '%</span></div>' +
+                 '<div class="meter' + tone(diag[k]) + '"><span style="width:' + diag[k] + '%"></span></div></div>';
+        }).join('') + '</div>' +
+        '<p class="fine-print mt-24">These six scores drive the recommendations on your dashboard, and update every time you re-take the assessment or complete a service.</p>' +
+      '</div>' +
+
+      '<div class="cta-band mt-48">' +
+        '<h2 style="font-size:clamp(1.4rem,3vw,1.9rem)">Your result is saved to your dashboard.</h2>' +
+        '<p>Track your scores, upload documents and work through your recommended next steps in the client portal.</p>' +
+        '<div class="btn-row">' +
+          '<a class="btn btn-primary" href="portal.html">Go to my dashboard &rarr;</a>' +
+          '<a class="btn btn-outline btn-outline-onink" href="contact.html">Book a consultation</a>' +
+        '</div>' +
+      '</div>' +
+
+      '<p class="center mt-32"><a href="assessment.html">Re-take the assessment</a></p>';
+
+    document.getElementById('form-view').hidden = true;
+    var view = document.getElementById('result-view');
+    view.innerHTML = html;
+    view.hidden = false;
+    document.getElementById('progress').innerHTML =
+      '<div class="on"><div class="track"><span style="width:100%"></span></div><div class="lbl">Complete</div></div>';
+    window.scrollTo({ top: 0 });
+  }
+
+  renderStep();
+})();
+</script>
+</body>
+</html>

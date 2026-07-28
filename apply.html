@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply for funding | FlexiGrowth Capital</title>
+<meta name="description" content="Apply for business funding from any phone. Four short steps, then verification, FlexiScore assessment and a credit decision.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/flexigrowth.css">
+<style>
+  .assess-shell{max-width:760px;margin:0 auto;padding:0 24px}
+  .assess-head{background:var(--ink);color:var(--text-onink);padding:26px 0 30px}
+  .assess-head .bar{display:flex;align-items:center;gap:16px}
+  .assess-head .brand{color:#fff}
+  .assess-head .exit{margin-left:auto;font-size:.88rem;color:var(--text-onink-muted)}
+  .progress-steps{display:flex;gap:10px;margin-top:26px}
+  .progress-steps div{flex:1}
+  .progress-steps .track{height:5px;border-radius:99px;background:rgba(255,255,255,.16);overflow:hidden}
+  .progress-steps .track span{display:block;height:100%;width:0;background:var(--green);transition:width .4s ease}
+  .progress-steps .lbl{font-size:.72rem;margin-top:9px;color:var(--text-onink-muted);letter-spacing:.04em}
+  .progress-steps .on .lbl{color:#fff;font-weight:600}
+  @media(max-width:640px){.progress-steps .lbl{display:none}}
+  .step-nav{display:flex;gap:14px;align-items:center;margin-top:8px;flex-wrap:wrap}
+  .step-nav .spacer{margin-left:auto}
+  .doc-item{display:flex;align-items:center;gap:14px;border:1.5px dashed var(--line);border-radius:var(--radius-sm);padding:15px 18px;margin-bottom:12px}
+  .doc-item .name{font-weight:500;font-size:.95rem}
+  .doc-item .spacer{margin-left:auto}
+  .doc-item.done{border-style:solid;border-color:var(--green);background:var(--green-50)}
+  .track-flow{display:grid;gap:0}
+  .track-flow .row{display:grid;grid-template-columns:38px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .track-flow .row:last-child{border-bottom:0}
+  .track-flow .pip{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-family:var(--display);font-weight:700}
+  .track-flow .row.done .pip{background:var(--green);border-color:var(--green)}
+  .track-flow .row.current .pip{border-color:var(--indigo);color:var(--indigo)}
+  .track-flow .row.pending{opacity:.5}
+</style>
+</head>
+<body>
+
+<header class="assess-head">
+  <div class="assess-shell bar">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 690 715" aria-hidden="true"><g fill="#22D669"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
+      <span>flexigrowth<span class="dot">.</span></span>
+    </a>
+    <a class="exit" href="funding.html">Save &amp; exit</a>
+  </div>
+  <div class="assess-shell">
+    <div class="progress-steps" id="progress" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main>
+  <section class="section" style="padding-top:44px">
+    <div class="assess-shell">
+
+      <div id="form-view">
+        <span class="kicker">Funding application</span>
+        <h1 id="step-title" style="font-size:clamp(1.6rem,3.4vw,2.2rem)">What do you need?</h1>
+        <p class="muted mt-8" id="step-sub">The product, the amount and the term.</p>
+
+        <div class="alert alert-info mt-24" id="readiness-note" hidden></div>
+        <div class="alert alert-bad mt-24" id="err" hidden></div>
+
+        <form id="apply-form" class="mt-32" novalidate>
+          <div id="fields"></div>
+          <div class="step-nav">
+            <button type="button" class="btn btn-outline" id="back">&larr; Back</button>
+            <span class="spacer"></span>
+            <button type="submit" class="btn btn-primary" id="next">Continue &rarr;</button>
+          </div>
+        </form>
+
+        <p class="fine-print mt-32">
+          FlexiGrowth Capital is a registered credit provider (NCRCP23507). All applications are subject to
+          identity and AML verification, a credit bureau enquiry with your consent, and affordability
+          assessment in terms of the National Credit Act. Approval, amount, term and pricing depend on the
+          outcome of that assessment. Terms and conditions apply.
+        </p>
+      </div>
+
+      <div id="result-view" hidden></div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" style="padding:36px 0 30px">
+  <div class="assess-shell">
+    <div class="wrap-between fine-print">
+      <span>&copy; <span data-year>2026</span> FlexiGrowth Capital &middot; NCRCP23507</span>
+      <span class="spacer"></span>
+      <a href="index.html">Back to flexigrowth.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+(function () {
+  'use strict';
+  var Store = window.FG.Store, Fmt = window.FG.Fmt;
+  var saved = Store.read();
+
+  var PRODUCTS = [
+    { v: 'working-capital', t: 'Working Capital', range: 'R20 000 – R500 000+' },
+    { v: 'purchase-order', t: 'Purchase Order Finance', range: 'Up to R300 000+' },
+    { v: 'contract-finance', t: 'Contract Finance', range: 'By contract value' },
+    { v: 'asset-finance', t: 'Business Asset Finance', range: 'By asset value' },
+    { v: 'micro-enterprise', t: 'Micro Enterprise Finance', range: 'R5 000 – R50 000' },
+    { v: 'inventory-finance', t: 'Inventory Finance', range: 'R20 000 – R500 000' },
+    { v: 'expansion-finance', t: 'Expansion Finance', range: 'R50 000 – R500 000+' },
+    { v: 'property', t: 'Property Finance', range: 'By project' },
+    { v: 'construction-finance', t: 'Construction Finance', range: 'By project' },
+    { v: 'residential-development', t: 'Residential Development Shortfall', range: 'By project' },
+    { v: 'housing-bridging', t: 'Housing Bridging Finance', range: 'By transaction' }
+  ];
+
+  var DOCS = [
+    'ID document', 'CIPC registration documents', 'Business bank statements (6–12 months)',
+    'Annual financial statements or management accounts', 'SARS tax clearance / compliance PIN',
+    'Signed contracts or purchase orders (if applicable)', 'Recent invoices', 'Business plan (if available)'
+  ];
+  /* Conditional or nice-to-have — missing these does not hold up verification. */
+  var OPTIONAL_DOCS = [
+    'Signed contracts or purchase orders (if applicable)', 'Business plan (if available)'
+  ];
+  function isRequired(d) { return OPTIONAL_DOCS.indexOf(d) === -1; }
+
+  var STEPS = [
+    { n: 1, title: 'What do you need?', sub: 'The product, the amount and the term.' },
+    { n: 2, title: 'Business details', sub: 'Who is applying, and what the business looks like.' },
+    { n: 3, title: 'Documents', sub: 'Tick what you can provide. You can upload later from your dashboard.' },
+    { n: 4, title: 'Consent &amp; submit', sub: 'The permissions we need to assess the application.' }
+  ];
+
+  var state = {
+    product: new URLSearchParams(location.search).get('product') || '',
+    amount: saved.requestedAmount || '',
+    term: '12',
+    business: saved.profile.business || '',
+    reg: saved.profile.reg || '',
+    name: saved.profile.name || '',
+    phone: saved.profile.phone || '',
+    email: saved.profile.email || '',
+    turnover: '',
+    purpose: '',
+    docs: [],
+    consentBureau: false,
+    consentTerms: false
+  };
+
+  var step = 1, LAST = STEPS.length;
+  var elFields = document.getElementById('fields');
+  var elErr = document.getElementById('err');
+
+  /* Carry the readiness result through so the applicant isn't asked twice. */
+  if (saved.readiness) {
+    var note = document.getElementById('readiness-note');
+    note.innerHTML = 'Readiness score on file: <strong>' + saved.readiness.score + '/100 &middot; ' +
+      saved.readiness.band.label + '</strong>. We have pre-filled what we already know.' +
+      (saved.readiness.score < 70
+        ? ' Your score is below our funding threshold, so this application will most likely be routed to advisory support first — you are welcome to submit it anyway.'
+        : '');
+    note.hidden = false;
+  }
+
+  function renderProgress() {
+    document.getElementById('progress').innerHTML = STEPS.map(function (s) {
+      var fill = step > s.n ? 100 : (step === s.n ? 55 : 0);
+      return '<div class="' + (step >= s.n ? 'on' : '') + '">' +
+             '<div class="track"><span style="width:' + fill + '%"></span></div>' +
+             '<div class="lbl">' + s.n + ' &middot; ' + s.title.replace('&amp;', '&') + '</div></div>';
+    }).join('');
+  }
+
+  function opt(name, value, label, sub, checked) {
+    return '<label class="opt"><input type="radio" name="' + name + '" value="' + value + '"' + (checked ? ' checked' : '') + '>' +
+      '<span class="opt-body"><span class="opt-title">' + label + '</span>' +
+      (sub ? '<span class="opt-sub">' + sub + '</span>' : '') + '</span></label>';
+  }
+
+  function renderStep() {
+    var meta = STEPS[step - 1];
+    document.getElementById('step-title').innerHTML = meta.title;
+    document.getElementById('step-sub').textContent = meta.sub;
+    elErr.hidden = true;
+    var h = '';
+
+    if (step === 1) {
+      h += '<fieldset class="q"><legend class="field-label">Which product?</legend><div class="options">' +
+        PRODUCTS.map(function (p) { return opt('product', p.v, p.t, p.range, state.product === p.v); }).join('') +
+        '</div></fieldset>';
+      h += '<div class="field-row">' +
+        '<div class="field"><label for="amount">How much do you need? (R)</label>' +
+        '<input type="number" id="amount" min="5000" step="1000" value="' + (state.amount || '') + '"></div>' +
+        '<div class="field"><label for="term">Preferred term</label><select id="term">' +
+          ['3 months', '6 months', '12 months', '24 months', '36 months', '60 months'].map(function (t, i) {
+            var v = ['3', '6', '12', '24', '36', '60'][i];
+            return '<option value="' + v + '"' + (state.term === v ? ' selected' : '') + '>' + t + '</option>';
+          }).join('') + '</select></div></div>';
+      h += '<div class="field"><label for="purpose">What will the money be used for?</label>' +
+        '<textarea id="purpose" rows="3" placeholder="e.g. Stock for a confirmed order from Shoprite, delivery due end of next month.">' + Fmt.escape(state.purpose) + '</textarea></div>';
+    }
+
+    if (step === 2) {
+      h += '<div class="field"><label for="business">Registered business name</label><input type="text" id="business" value="' + Fmt.escape(state.business) + '" autocomplete="organization"></div>';
+      h += '<div class="field"><label for="reg">CIPC registration number</label><input type="text" id="reg" value="' + Fmt.escape(state.reg) + '" placeholder="e.g. 2019/443180/07"></div>';
+      h += '<fieldset class="q"><legend class="field-label">Monthly turnover</legend><div class="options">' +
+        [['under50k', 'Under R50 000'], ['50to150k', 'R50 000 – R150 000'], ['150to500k', 'R150 000 – R500 000'],
+         ['500kto1m', 'R500 000 – R1 million'], ['over1m', 'More than R1 million']]
+        .map(function (t) { return opt('turnover', t[0], t[1], '', state.turnover === t[0]); }).join('') +
+        '</div></fieldset>';
+      h += '<div class="field-row">' +
+        '<div class="field"><label for="name">Your full name</label><input type="text" id="name" value="' + Fmt.escape(state.name) + '" autocomplete="name"></div>' +
+        '<div class="field"><label for="phone">Mobile number</label><input type="tel" id="phone" value="' + Fmt.escape(state.phone) + '" autocomplete="tel"></div></div>';
+      h += '<div class="field"><label for="email">Email address</label><input type="email" id="email" value="' + Fmt.escape(state.email) + '" autocomplete="email"></div>';
+    }
+
+    if (step === 3) {
+      h += '<p class="muted mb-24">Tick everything you can provide. Anything missing becomes a task on your dashboard &mdash; the application still goes through, it just cannot be assessed until the file is complete.</p>';
+      h += DOCS.map(function (d, i) {
+        var on = state.docs.indexOf(d) > -1;
+        return '<label class="doc-item' + (on ? ' done' : '') + '" data-doc="' + i + '">' +
+          '<input type="checkbox" style="width:19px;height:19px;accent-color:var(--indigo)"' + (on ? ' checked' : '') + '>' +
+          '<span class="name">' + d + '</span>' +
+          (isRequired(d) ? '' : '<span class="spacer"></span><span class="chip">Optional</span>') +
+          '</label>';
+      }).join('');
+      h += '<p class="fine-print mt-16">Document upload is handled in the client portal after submission, so you can gather paperwork without losing your place.</p>';
+    }
+
+    if (step === 4) {
+      h += '<div class="card mb-24"><h3>Application summary</h3><ul class="dots mt-16 small">' +
+        '<li>Product: <strong style="color:var(--text)">' + (productName(state.product) || 'Not selected') + '</strong></li>' +
+        '<li>Amount: <strong style="color:var(--text)">' + (state.amount ? Fmt.rand(state.amount) : 'Not given') + '</strong> over <strong style="color:var(--text)">' + state.term + ' months</strong></li>' +
+        '<li>Business: <strong style="color:var(--text)">' + (Fmt.escape(state.business) || 'Not given') + '</strong></li>' +
+        '<li>Documents ready: <strong style="color:var(--text)">' + state.docs.filter(isRequired).length +
+          ' of ' + DOCS.filter(isRequired).length + '</strong> required</li>' +
+        '</ul></div>';
+      h += '<label class="opt mb-16"><input type="checkbox" id="c-bureau"' + (state.consentBureau ? ' checked' : '') + '>' +
+        '<span class="opt-body"><span class="opt-title">Credit and identity checks</span>' +
+        '<span class="opt-sub">I consent to FlexiGrowth Capital performing identity and AML verification and obtaining a credit bureau report on the business and its principals in terms of the National Credit Act.</span></span></label>';
+      h += '<label class="opt"><input type="checkbox" id="c-terms"' + (state.consentTerms ? ' checked' : '') + '>' +
+        '<span class="opt-body"><span class="opt-title">Accuracy and information handling</span>' +
+        '<span class="opt-sub">The information I have given is true and complete, and I consent to FlexiGrowth Capital processing it in line with POPIA to assess this application and recommend services.</span></span></label>';
+    }
+
+    elFields.innerHTML = h;
+    document.getElementById('back').hidden = step === 1;
+    document.getElementById('next').textContent = step === LAST ? 'Submit application →' : 'Continue →';
+
+    if (step === 3) {
+      elFields.querySelectorAll('.doc-item').forEach(function (el) {
+        el.addEventListener('change', function () {
+          el.classList.toggle('done', el.querySelector('input').checked);
+        });
+      });
+    }
+
+    renderProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function productName(v) {
+    for (var i = 0; i < PRODUCTS.length; i++) if (PRODUCTS[i].v === v) return PRODUCTS[i].t;
+    return '';
+  }
+
+  function collect() {
+    function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
+    if (step === 1) {
+      var p = elFields.querySelector('input[name=product]:checked');
+      if (p) state.product = p.value;
+      state.amount = val('amount');
+      state.term = val('term') || state.term;
+      state.purpose = val('purpose');
+    }
+    if (step === 2) {
+      state.business = val('business'); state.reg = val('reg');
+      state.name = val('name'); state.phone = val('phone'); state.email = val('email');
+      var t = elFields.querySelector('input[name=turnover]:checked');
+      if (t) state.turnover = t.value;
+    }
+    if (step === 3) {
+      state.docs = [];
+      elFields.querySelectorAll('.doc-item').forEach(function (el, i) {
+        if (el.querySelector('input').checked) state.docs.push(DOCS[i]);
+      });
+    }
+    if (step === 4) {
+      state.consentBureau = !!document.getElementById('c-bureau').checked;
+      state.consentTerms = !!document.getElementById('c-terms').checked;
+    }
+  }
+
+  function validate() {
+    if (step === 1) {
+      if (!state.product) return 'Please choose a funding product.';
+      if (!state.amount || Number(state.amount) < 5000) return 'Please enter an amount of R5 000 or more.';
+      if (!state.purpose) return 'Please tell us what the funding is for.';
+    }
+    if (step === 2) {
+      if (!state.business) return 'Please give the registered business name.';
+      if (!state.turnover) return 'Please choose a monthly turnover band.';
+      if (!state.name) return 'Please give your full name.';
+      if (!state.phone) return 'Please give a mobile number we can reach you on.';
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(state.email)) return 'Please give a valid email address.';
+    }
+    if (step === 4) {
+      if (!state.consentBureau || !state.consentTerms) return 'We cannot assess the application without both consents.';
+    }
+    return '';
+  }
+
+  /* ---- Indicative FlexiScore ------------------------------------------------
+     A stand-in for the FlexiScore™ engine so the flow can be demonstrated
+     end to end. Replace with the scoring service in Phase 2. */
+  function flexiScore() {
+    var s = saved.readiness ? saved.readiness.score : 55;
+    var turnoverPoints = { under50k: -6, '50to150k': 0, '150to500k': 4, '500kto1m': 7, over1m: 9 };
+    s += turnoverPoints[state.turnover] || 0;
+    var req = DOCS.filter(isRequired);
+    s += Math.round((state.docs.filter(isRequired).length / req.length) * 10) - 5;
+    var monthly = { under50k: 35000, '50to150k': 100000, '150to500k': 325000, '500kto1m': 750000, over1m: 1500000 }[state.turnover] || 100000;
+    var ratio = Number(state.amount) / (monthly * 12);
+    if (ratio > 0.5) s -= 10; else if (ratio > 0.25) s -= 4; else if (ratio < 0.1) s += 3;
+    return Math.max(1, Math.min(99, Math.round(s)));
+  }
+
+  document.getElementById('apply-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    collect();
+    var msg = validate();
+    if (msg) { elErr.textContent = msg; elErr.hidden = false; window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    if (step < LAST) { step++; renderStep(); return; }
+    submit();
+  });
+
+  document.getElementById('back').addEventListener('click', function () {
+    collect();
+    if (step > 1) { step--; renderStep(); }
+  });
+
+  function submit() {
+    var score = flexiScore();
+    var app = {
+      ref: Fmt.ref('FG'),
+      product: productName(state.product),
+      productId: state.product,
+      amount: Number(state.amount),
+      term: Number(state.term),
+      purpose: state.purpose,
+      turnover: state.turnover,
+      docs: state.docs,
+      docsOutstanding: DOCS.filter(function (d) { return isRequired(d) && state.docs.indexOf(d) === -1; }),
+      flexiScore: score,
+      stage: DOCS.filter(isRequired).every(function (d) { return state.docs.indexOf(d) > -1; }) ? 1 : 0,
+      created: Date.now()
+    };
+
+    var data = Store.read();
+    data.profile = {
+      name: state.name, email: state.email, phone: state.phone,
+      business: state.business, reg: state.reg
+    };
+    data.applications.unshift(app);
+    data.documents = DOCS.map(function (d) { return { label: d, uploaded: state.docs.indexOf(d) > -1 }; });
+    Store.write(data);
+
+    var stages = [
+      ['Apply', 'Application received and recorded.'],
+      ['Verify', 'AML, identity and J-Cred bureau checks.'],
+      ['Assess', 'FlexiScore™ and affordability assessment.'],
+      ['Decide & disburse', 'Credit decision, contracting and payout.'],
+      ['Support', 'Advisory and enterprise development support.']
+    ];
+
+    var html =
+      '<div class="center">' +
+        '<span class="kicker">Application submitted</span>' +
+        '<h1 style="font-size:clamp(1.7rem,4vw,2.6rem)">We have your application.</h1>' +
+        '<p class="muted mt-16 mx-auto">Reference <strong style="color:var(--text)">' + app.ref + '</strong> &mdash; ' +
+        Fmt.escape(app.product) + ', ' + Fmt.rand(app.amount) + ' over ' + app.term + ' months.</p>' +
+        '<p class="mt-24"><span class="score-chip">FlexiScore ' + score + ' <small>indicative</small></span></p>' +
+      '</div>' +
+
+      (app.docsOutstanding.length
+        ? '<div class="alert alert-warn mt-32"><strong>' + app.docsOutstanding.length + ' document' +
+          (app.docsOutstanding.length === 1 ? '' : 's') + ' still outstanding.</strong> Your application cannot move past ' +
+          'verification until the file is complete. Upload the rest from your dashboard: ' +
+          app.docsOutstanding.map(function (d) { return Fmt.escape(d); }).join(', ') + '.</div>'
+        : '<div class="alert alert-good mt-32"><strong>Your file is complete.</strong> Verification starts immediately.</div>') +
+
+      '<div class="card card-pad-lg mt-24"><h3>What happens now</h3><div class="track-flow mt-16">' +
+        stages.map(function (s, i) {
+          var cls = i < app.stage ? 'done' : (i === app.stage ? 'current' : 'pending');
+          return '<div class="row ' + cls + '"><span class="pip">' + (i < app.stage ? '✓' : (i + 1)) + '</span>' +
+            '<div><strong>' + s[0] + '</strong><p class="muted small">' + s[1] + '</p></div></div>';
+        }).join('') +
+      '</div></div>' +
+
+      '<div class="cta-band mt-48">' +
+        '<h2 style="font-size:clamp(1.4rem,3vw,1.9rem)">Track it from your dashboard.</h2>' +
+        '<p>Upload outstanding documents, follow the application stage by stage, and see your recommended next steps.</p>' +
+        '<div class="btn-row">' +
+          '<a class="btn btn-primary" href="portal.html">Go to my dashboard &rarr;</a>' +
+          '<a class="btn btn-outline btn-outline-onink" href="index.html">Back to the site</a>' +
+        '</div>' +
+      '</div>' +
+
+      '<p class="fine-print mt-32">The FlexiScore shown is indicative and generated from the information you supplied. ' +
+      'It is not a credit decision. A final assessment is made once verification, bureau and affordability checks are complete.</p>';
+
+    document.getElementById('form-view').hidden = true;
+    var v = document.getElementById('result-view');
+    v.innerHTML = html; v.hidden = false;
+    document.getElementById('progress').innerHTML =
+      '<div class="on"><div class="track"><span style="width:100%"></span></div><div class="lbl">Submitted</div></div>';
+    window.scrollTo({ top: 0 });
+  }
+
+  renderStep();
+})();
+</script>
+</body>
+</html>

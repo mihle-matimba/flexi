@@ -3,349 +3,297 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FlexiGrowth Portal | Track Your Funding Applications</title>
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20690%20715%22%3E%3Cg%20fill%3D%22%2322C55E%22%3E%3Cpath%20d%3D%22M0%200h690v355c0%20150-75%20255-210%20305V150H0Z%22%2F%3E%3Cpath%20d%3D%22M0%20310h310v342q-186%2055-267-77Q0%20505%200%20445Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E'>
+<title>Client dashboard | FlexiGrowth Capital</title>
+<meta name="description" content="Track your funding readiness, compliance and growth scores, follow applications and work through your recommended next steps.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/flexigrowth.css">
 <style>
-  :root{
-    --green:#22c55e; --green-dark:#16a34a; --green-soft:#e8f9ef;
-    --navy:#08081b; --ink:#1c1c28; --gray:#6d6f81; --line:#e5e8ee;
-    --bg:#f3f6f8; --card:#ffffff; --blue:#2563eb; --amber:#b45309;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  [hidden]{display:none!important}
-  body{font-family:Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column}
-  a{color:var(--green-dark);text-decoration:none}
+  .dash-head{background:var(--ink);color:var(--text-onink);padding:22px 0 40px}
+  .dash-head .bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .dash-head .brand{color:#fff}
+  .dash-head .bar .spacer{margin-left:auto}
+  .dash-head .link{font-size:.88rem;color:var(--text-onink-muted)}
+  .dash-title{margin-top:32px}
+  .dash-title h1{color:#fff;font-size:clamp(1.6rem,3.4vw,2.3rem)}
+  .dash-title p{color:var(--text-onink-muted);margin-top:8px}
 
-  header{background:#fff;box-shadow:0 2px 4px rgba(136,136,136,.1);position:sticky;top:0;z-index:10}
-  .shell{max-width:1080px;margin:0 auto;padding:0 24px;width:100%}
-  .topbar{display:flex;align-items:center;gap:12px;height:72px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink)}
-  .brand svg{width:34px;height:35px}
-  .brand small{font-weight:400;color:var(--gray);font-size:14px;border-left:1px solid var(--line);padding-left:10px}
-  .topbar .spacer{margin-left:auto}
-  .userchip{font-size:14px;color:var(--gray)}
+  .tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:32px}
+  @media(max-width:1000px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.tiles{grid-template-columns:1fr}}
+  .tile{background:var(--ink-800);border:1px solid var(--line-onink);border-radius:var(--radius-sm);padding:20px}
+  .tile .lbl{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-onink-muted)}
+  .tile .val{font-family:var(--display);font-size:1.7rem;font-weight:700;color:#fff;line-height:1;margin-top:12px}
+  .tile .val.sm{font-size:1.15rem}
 
-  .btn{display:inline-block;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:14px;line-height:1;border-radius:9999px;padding:12px 22px;transition:background .15s,color .15s,border-color .15s}
-  .btn-solid{background:var(--green);color:#fff}
-  .btn-solid:hover{background:var(--green-dark)}
-  .btn-outline{background:transparent;color:var(--green-dark);border:2px solid var(--green);padding:10px 20px}
-  .btn-outline:hover{background:var(--green-soft)}
-  .btn-ghost{background:transparent;color:var(--ink);padding:12px 14px}
-  .btn-ghost:hover{color:var(--green-dark)}
-  .btn-block{width:100%;padding:14px 22px;font-size:15px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin-bottom:24px;box-shadow:var(--shadow-sm)}
+  .panel h2{font-size:1.3rem;margin-bottom:6px}
+  .panel .sub{color:var(--text-muted);font-size:.92rem;margin-bottom:24px}
 
-  main{flex:1;width:100%}
-  .hero-strip{background:var(--navy);color:#fff;padding:34px 0}
-  .hero-strip h1{font-size:26px;font-weight:700}
-  .hero-strip p{color:#b6b6ba;margin-top:6px;font-size:15px}
+  .app-row{border:1px solid var(--line);border-radius:var(--radius-sm);padding:22px;margin-bottom:16px}
+  .app-row .top{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+  .app-row .top .spacer{margin-left:auto}
+  .stages{display:flex;margin-top:24px}
+  .stages .s{flex:1;text-align:center;position:relative;font-size:.72rem;color:var(--text-muted)}
+  .stages .s .dot{width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--line);margin:0 auto 8px;position:relative;z-index:2;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:#fff}
+  .stages .s:not(:first-child)::before{content:"";position:absolute;top:10px;left:-50%;width:100%;height:2px;background:var(--line);z-index:1}
+  .stages .s.done .dot{background:var(--green);border-color:var(--green)}
+  .stages .s.done .dot::after{content:"✓"}
+  .stages .s.done:not(:first-child)::before{background:var(--green)}
+  .stages .s.current .dot{border-color:var(--indigo)}
+  .stages .s.current .dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--indigo)}
+  .stages .s.current{color:var(--text);font-weight:600}
 
-  .view{display:none;padding:36px 0 64px}
-  .view.active{display:block}
+  .next-step{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .next-step:last-child{border-bottom:0}
+  .next-step .idx{width:30px;height:30px;flex:none;border-radius:50%;background:var(--indigo-50);color:var(--indigo);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:.82rem}
+  .next-step .spacer{margin-left:auto}
+  .next-step .body{flex:1;min-width:200px}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:0 1px 3px rgba(8,8,27,.05)}
-  .auth-card{max-width:420px;margin:0 auto}
-  .auth-card h2{font-size:22px;margin-bottom:4px}
-  .auth-card .sub{color:var(--gray);font-size:14px;margin-bottom:22px}
-  .field{margin-bottom:16px}
-  .field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
-  .field input,.field select,.field textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--green);border-color:var(--green)}
-  .swap{font-size:14px;color:var(--gray);text-align:center;margin-top:18px}
-  .notice{background:var(--green-soft);border:1px solid #bbf0cf;color:#14532d;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:18px;display:none}
-  .notice.show{display:block}
-  .error{background:#fdeaea;border:1px solid #f5c2c7;color:#842029;border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:18px;display:none}
-  .error.show{display:block}
+  .diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:700px){.diag-grid{grid-template-columns:1fr 1fr}}
+  .diag .name{display:flex;font-size:.86rem;font-weight:600;margin-bottom:8px}
+  .diag .name .spacer{margin-left:auto}
+  .diag .name span:last-child{color:var(--text-muted);font-weight:500}
 
-  .dash-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
-  .dash-head h2{font-size:22px}
-  .dash-head .spacer{margin-left:auto}
-  .empty{color:var(--gray);text-align:center;padding:48px 20px;font-size:15px}
-  .empty strong{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}
-
-  .app-card{margin-bottom:18px}
-  .app-top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-  .app-top h3{font-size:17px}
-  .ref{font-size:13px;color:var(--gray)}
-  .amount{margin-left:auto;font-weight:700;font-size:17px}
-  .badge{display:inline-block;font-size:12px;font-weight:700;border-radius:9999px;padding:5px 12px}
-  .badge.submitted{background:#eef2ff;color:var(--blue)}
-  .badge.review{background:#fef3c7;color:var(--amber)}
-  .badge.approved{background:var(--green-soft);color:var(--green-dark)}
-  .badge.paid{background:var(--navy);color:#fff}
-  .meta{color:var(--gray);font-size:13px;margin-top:6px}
-
-  .steps{display:flex;margin-top:22px}
-  .step{flex:1;text-align:center;position:relative;font-size:12px;color:var(--gray)}
-  .step .dot{width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--line);margin:0 auto 8px;position:relative;z-index:2;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
-  .step:not(:first-child):before{content:"";position:absolute;top:10px;left:-50%;width:100%;height:2px;background:var(--line);z-index:1}
-  .step.done .dot{background:var(--green);border-color:var(--green)}
-  .step.done .dot:after{content:"✓"}
-  .step.done:not(:first-child):before{background:var(--green)}
-  .step.current .dot{border-color:var(--green);background:#fff}
-  .step.current .dot:after{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
-  .step.current{color:var(--ink);font-weight:700}
-
-  .apply-card{max-width:560px;margin:0 auto}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
-
-  footer{background:var(--navy);color:#b6b6ba;font-size:13px;padding:22px 0;text-align:center}
-  footer b{color:#fff}
+  .doc-line{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.94rem}
+  .doc-line:last-child{border-bottom:0}
+  .doc-line .spacer{margin-left:auto}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="shell topbar">
-    <a class="brand" href="index.html">
-      <svg viewBox="0 0 690 715" xmlns="http://www.w3.org/2000/svg"><g fill="#22C55E"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
-      flexigrowth <small>applicant portal</small>
-    </a>
-    <span class="spacer"></span>
-    <span class="userchip" id="who" hidden></span>
-    <button class="btn btn-ghost" id="nav-login" onclick="go('login')">Log in</button>
-    <button class="btn btn-outline" id="nav-signup" onclick="go('signup')">Sign up</button>
-    <button class="btn btn-solid" id="nav-apply" onclick="go('apply')">Apply for funding</button>
-    <button class="btn btn-ghost" id="nav-logout" onclick="logout()" hidden>Log out</button>
+<header class="dash-head">
+  <div class="shell">
+    <div class="bar">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 690 715" aria-hidden="true"><g fill="#22D669"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
+        <span>flexigrowth<span class="dot">.</span></span>
+      </a>
+      <span class="spacer"></span>
+      <a class="link" href="index.html">Main site</a>
+      <a class="link" href="contact.html">Get help</a>
+      <button class="btn btn-outline btn-outline-onink btn-sm" id="reset">Clear this device</button>
+    </div>
+
+    <div class="dash-title">
+      <span class="kicker kicker-onink">My business</span>
+      <h1 id="biz-name">Your dashboard</h1>
+      <p id="biz-sub">Everything FlexiGrowth knows about your business, in one place.</p>
+    </div>
+
+    <div class="tiles" id="tiles"></div>
   </div>
 </header>
 
 <main>
-  <div class="hero-strip">
-    <div class="shell">
-      <h1 id="strip-title">Track your funding applications</h1>
-      <p id="strip-sub">Apply in minutes and follow every step — from submission to funds paid.</p>
-    </div>
-  </div>
-
-  <!-- LOGIN -->
-  <section class="view" id="view-login">
-    <div class="shell">
-      <div class="card auth-card">
-        <h2>Welcome back</h2>
-        <p class="sub">Log in to see the status of your applications.</p>
-        <div class="notice" id="login-notice"></div>
-        <div class="error" id="login-error"></div>
-        <form onsubmit="return doLogin(event)">
-          <div class="field"><label for="li-email">Email</label><input id="li-email" type="email" required autocomplete="email"></div>
-          <div class="field"><label for="li-pass">Password</label><input id="li-pass" type="password" required autocomplete="current-password"></div>
-          <button class="btn btn-solid btn-block" type="submit">Log in</button>
-        </form>
-        <p class="swap">New to FlexiGrowth? <a href="#signup">Sign up</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SIGN UP -->
-  <section class="view" id="view-signup">
-    <div class="shell">
-      <div class="card auth-card">
-        <h2>Create your account</h2>
-        <p class="sub">One account to apply for funding and track it all the way.</p>
-        <div class="notice" id="signup-notice"></div>
-        <div class="error" id="signup-error"></div>
-        <form onsubmit="return doSignup(event)">
-          <div class="field"><label for="su-name">Full name</label><input id="su-name" required autocomplete="name"></div>
-          <div class="field"><label for="su-email">Email</label><input id="su-email" type="email" required autocomplete="email"></div>
-          <div class="field"><label for="su-pass">Password</label><input id="su-pass" type="password" minlength="6" required autocomplete="new-password"></div>
-          <button class="btn btn-solid btn-block" type="submit">Sign up</button>
-        </form>
-        <p class="swap">Already have an account? <a href="#login">Log in</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DASHBOARD -->
-  <section class="view" id="view-dash">
-    <div class="shell">
-      <div class="dash-head">
-        <h2>Your applications</h2>
-        <span class="spacer"></span>
-        <button class="btn btn-solid" onclick="go('apply')">Apply for funding</button>
-      </div>
-      <div id="apps"></div>
-    </div>
-  </section>
-
-  <!-- APPLY -->
-  <section class="view" id="view-apply">
-    <div class="shell">
-      <div class="card apply-card">
-        <h2>Apply for funding</h2>
-        <p class="sub" style="color:var(--gray);font-size:14px;margin:4px 0 22px">Tell us a little about your business. It takes about 2 minutes.</p>
-        <form onsubmit="return doApply(event)">
-          <div class="field"><label for="ap-biz">Registered business name</label><input id="ap-biz" required></div>
-          <div class="grid2">
-            <div class="field"><label for="ap-amount">Amount needed (R)</label><input id="ap-amount" type="number" min="10000" max="5000000" step="1000" value="250000" required></div>
-            <div class="field"><label for="ap-term">Repayment term</label>
-              <select id="ap-term"><option value="6">6 months</option><option value="12" selected>12 months</option></select>
-            </div>
-          </div>
-          <div class="field"><label for="ap-purpose">What is the funding for?</label>
-            <textarea id="ap-purpose" rows="3" placeholder="e.g. Stock for the festive season, new equipment, opening a second branch…" required></textarea>
-          </div>
-          <button class="btn btn-solid btn-block" type="submit">Submit application</button>
-        </form>
-        <p class="swap"><a href="#dash">Back to my applications</a></p>
-      </div>
-    </div>
+  <section class="section" style="padding-top:44px;background:var(--paper)">
+    <div class="shell" id="dash"></div>
   </section>
 </main>
 
-<footer><div class="shell"><b>flexigrowth</b> | business funding &nbsp;·&nbsp; Demo portal — applications are stored in your browser only.</div></footer>
+<footer class="site-footer" style="padding:40px 0 32px">
+  <div class="shell">
+    <div class="wrap-between fine-print">
+      <span>&copy; <span data-year>2026</span> FlexiGrowth Capital &middot; Registered credit provider NCRCP23507</span>
+      <span class="spacer"></span>
+      <a href="index.html">flexigrowth.com</a>
+    </div>
+    <p class="fine-print mt-16" style="max-width:70ch">
+      Front-end prototype. Data on this page is stored in this browser only and is not sent to
+      FlexiGrowth. Accounts, authentication and live application data arrive with the Phase&nbsp;1
+      portal build.
+    </p>
+  </div>
+</footer>
 
+<script src="assets/js/site.js"></script>
 <script>
-  // ------- tiny storage helpers (all data stays in this browser) -------
-  const store = {
-    get users(){ return JSON.parse(localStorage.getItem('fg_users') || '{}'); },
-    set users(v){ localStorage.setItem('fg_users', JSON.stringify(v)); },
-    get session(){ return localStorage.getItem('fg_session') || ''; },
-    set session(v){ v ? localStorage.setItem('fg_session', v) : localStorage.removeItem('fg_session'); },
-    get apps(){ return JSON.parse(localStorage.getItem('fg_apps') || '{}'); },
-    set apps(v){ localStorage.setItem('fg_apps', JSON.stringify(v)); },
-  };
-  let pendingApply = false; // user hit "apply" while logged out
+(function () {
+  'use strict';
+  var Store = window.FG.Store, Fmt = window.FG.Fmt;
+  var data = Store.read();
+  var r = data.readiness;
 
-  // ------- status model: applications progress over time (demo) -------
-  const STEPS = ['Submitted', 'In review', 'Approved', 'Funds paid'];
-  const BADGE = ['submitted', 'review', 'approved', 'paid'];
-  function stageOf(app){
-    const mins = (Date.now() - app.created) / 60000;
-    if (mins < 1) return 0;       // just submitted
-    if (mins < 5) return 1;       // in review
-    if (mins < 10) return 2;      // approved
-    return 3;                     // funds paid (within 24h in real life!)
+  var STAGES = ['Apply', 'Verify', 'Assess', 'Decide', 'Support'];
+
+  /* Applications move forward over time once the document file is complete —
+     stand-in for status pushed from the loan management system. */
+  function stageOf(app) {
+    if (app.docsOutstanding && app.docsOutstanding.length) return 0;
+    var mins = (Date.now() - app.created) / 60000;
+    if (mins < 2) return 1;
+    if (mins < 5) return 2;
+    if (mins < 10) return 3;
+    return 4;
   }
 
-  // ------- routing -------
-  function go(r){
-    if (location.hash === '#' + r) route();   // hash unchanged -> no hashchange event
-    else location.hash = r;
-  }
-  function route(){
-    const user = store.session;
-    let r = (location.hash || '#').slice(1) || (user ? 'dash' : 'login');
-    if ((r === 'dash' || r === 'apply') && !user){
-      pendingApply = r === 'apply';
-      r = user ? r : (pendingApply ? 'signup' : 'login');
-      note(pendingApply ? 'signup-notice' : 'login-notice',
-           pendingApply ? 'Create your account first — then we’ll take you straight to the application.' : '');
-    }
-    if ((r === 'login' || r === 'signup') && user) r = 'dash';
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    (document.getElementById('view-' + r) || document.getElementById('view-login')).classList.add('active');
-    const strip = {
-      login:  ['Track your funding applications', 'Log in to see progress on every application.'],
-      signup: ['Let’s get you set up', 'Sign up to apply for up to R5 million in funding.'],
-      dash:   ['Track your funding applications', 'Follow every step — from submission to funds paid.'],
-      apply:  ['Apply for funding', 'Get up to R5 million with funds paid in 24 hours for successful applications.'],
-    }[r] || [];
-    if (strip.length){ strip1.textContent = strip[0]; strip2.textContent = strip[1]; }
-    syncHeader();
-    if (r === 'dash') renderApps();
-  }
-  const strip1 = document.getElementById('strip-title'), strip2 = document.getElementById('strip-sub');
+  function tone(v) { return v >= 70 ? '' : (v >= 40 ? ' amber' : ' red'); }
 
-  function syncHeader(){
-    const user = store.session, users = store.users;
-    document.getElementById('nav-login').hidden  = !!user;
-    document.getElementById('nav-signup').hidden = !!user;
-    document.getElementById('nav-logout').hidden = !user;
-    const who = document.getElementById('who');
-    who.hidden = !user;
-    if (user && users[user]) who.textContent = 'Hi, ' + users[user].name.split(' ')[0];
+  /* ---------- Header ---------- */
+  if (data.profile.business) {
+    document.getElementById('biz-name').textContent = data.profile.business;
+    document.getElementById('biz-sub').textContent =
+      (data.profile.name ? data.profile.name + ' · ' : '') +
+      (r ? 'Last assessed ' + Fmt.date(r.date) : 'No readiness assessment yet');
   }
 
-  function note(id, msg){
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.textContent = msg;
-    el.classList.toggle('show', !!msg);
+  var funded = data.applications.some(function (a) { return stageOf(a) >= 3; });
+  var fundingLabel = !data.applications.length ? 'Not started'
+    : (funded ? 'Approved' : 'In progress');
+
+  var tiles = [
+    { lbl: 'Funding readiness', val: r ? r.score + '%' : '—', meter: r ? r.score : 0 },
+    { lbl: 'Compliance', val: data.diagnostic ? data.diagnostic.compliance + '%' : '—', meter: data.diagnostic ? data.diagnostic.compliance : 0 },
+    { lbl: 'Funding', val: fundingLabel, sm: true },
+    { lbl: 'Business growth', val: data.diagnostic ? data.diagnostic.growth + '%' : '—', meter: data.diagnostic ? data.diagnostic.growth : 0 },
+    { lbl: 'Training', val: '7 courses', sm: true }
+  ];
+
+  document.getElementById('tiles').innerHTML = tiles.map(function (t) {
+    return '<div class="tile"><div class="lbl">' + t.lbl + '</div>' +
+      '<div class="val' + (t.sm ? ' sm' : '') + '">' + t.val + '</div>' +
+      (typeof t.meter === 'number' && t.meter
+        ? '<div class="meter mt-16' + tone(t.meter) + '"><span style="width:' + t.meter + '%"></span></div>' : '') +
+      '</div>';
+  }).join('');
+
+  /* ---------- Body ---------- */
+  var out = '';
+
+  if (!r) {
+    out += '<div class="panel center" style="padding:56px 28px">' +
+      '<span class="kicker">Start here</span>' +
+      '<h2 style="font-size:1.6rem">Your dashboard fills up after the assessment.</h2>' +
+      '<p class="muted mt-16 mx-auto">The Funding Readiness Assessment takes five minutes and produces your score, ' +
+      'your six diagnostic sub-scores and the recommended next steps that drive everything on this page.</p>' +
+      '<a class="btn btn-primary mt-32" href="assessment.html">Check my funding readiness &rarr;</a>' +
+      '</div>';
   }
 
-  // ------- auth -------
-  function doSignup(e){
-    e.preventDefault();
-    const name = document.getElementById('su-name').value.trim();
-    const email = document.getElementById('su-email').value.trim().toLowerCase();
-    const pass = document.getElementById('su-pass').value;
-    const users = store.users;
-    if (users[email]){ note('signup-error', 'That email already has an account — try logging in.'); return false; }
-    note('signup-error', '');
-    users[email] = { name, pass };
-    store.users = users;
-    store.session = email;
-    go(pendingApply ? 'apply' : 'dash');
-    pendingApply = false;
-    return false;
-  }
-  function doLogin(e){
-    e.preventDefault();
-    const email = document.getElementById('li-email').value.trim().toLowerCase();
-    const pass = document.getElementById('li-pass').value;
-    const u = store.users[email];
-    if (!u || u.pass !== pass){ note('login-error', 'Email or password doesn’t match — please try again.'); return false; }
-    note('login-error', '');
-    store.session = email;
-    go(pendingApply ? 'apply' : 'dash');
-    pendingApply = false;
-    return false;
-  }
-  function logout(){
-    store.session = '';
-    go('login');
-  }
-
-  // ------- applications -------
-  function doApply(e){
-    e.preventDefault();
-    const user = store.session;
-    if (!user){ go('signup'); return false; }
-    const apps = store.apps;
-    const mine = apps[user] || [];
-    mine.unshift({
-      ref: 'FG-' + String(Math.floor(100000 + Math.random() * 900000)),
-      biz: document.getElementById('ap-biz').value.trim(),
-      amount: +document.getElementById('ap-amount').value,
-      term: +document.getElementById('ap-term').value,
-      purpose: document.getElementById('ap-purpose').value.trim(),
-      created: Date.now(),
+  /* --- Recommended next steps --- */
+  var steps = [];
+  if (r) {
+    r.improvements.forEach(function (f) {
+      var link = f.route === 'advisory' ? ['advisory.html', 'Book advisory']
+               : f.route === 'esd' ? ['enterprise-development.html', 'See programmes']
+               : ['aptivo.html', 'Browse courses'];
+      steps.push({ title: f.title, body: f.body, href: link[0], cta: link[1] });
     });
-    apps[user] = mine;
-    store.apps = apps;
-    e.target.reset();
-    go('dash');
-    return false;
+  }
+  (data.documents || []).filter(function (d) { return !d.uploaded; }).slice(0, 3).forEach(function (d) {
+    steps.push({ title: 'Upload: ' + d.label, body: 'Verification cannot start until this document is on file.', href: '#documents', cta: 'Upload' });
+  });
+  if (r && r.score >= 70 && !data.applications.length) {
+    steps.unshift({ title: 'Start a funding application', body: 'You are funding ready — choose a product and apply.', href: 'apply.html', cta: 'Apply now' });
+  }
+  if (r && r.score < 70) {
+    steps.push({ title: 'Re-take the assessment', body: 'Once you have closed the items above, re-take the assessment to move your score.', href: 'assessment.html', cta: 'Re-assess' });
   }
 
-  const rand = n => 'R' + n.toLocaleString('en-ZA');
-  function renderApps(){
-    const mine = store.apps[store.session] || [];
-    const box = document.getElementById('apps');
-    if (!mine.length){
-      box.innerHTML = '<div class="card"><div class="empty"><strong>No applications yet</strong>' +
-        'When you apply for funding, you’ll track its progress right here.<br><br>' +
-        '<button class="btn btn-solid" onclick="go(\'apply\')">Apply for funding</button></div></div>';
-      return;
-    }
-    box.innerHTML = mine.map(app => {
-      const st = stageOf(app);
-      const steps = STEPS.map((s, i) =>
-        '<div class="step ' + (i < st ? 'done' : i === st ? 'current' : '') + '"><div class="dot"></div>' + s + '</div>'
-      ).join('');
-      return '<div class="card app-card">' +
-        '<div class="app-top"><h3>' + esc(app.biz) + '</h3><span class="ref">' + app.ref + '</span>' +
-        '<span class="amount">' + rand(app.amount) + '</span></div>' +
-        '<div class="meta">' + app.term + '-month term · applied ' + new Date(app.created).toLocaleString('en-ZA') +
-        ' · <span class="badge ' + BADGE[st] + '">' + STEPS[st] + '</span></div>' +
-        '<div class="steps">' + steps + '</div></div>';
+  if (steps.length) {
+    out += '<div class="panel"><h2>Recommended next steps</h2>' +
+      '<p class="sub">Worked out from your assessment and the state of your application file. Highest impact first.</p>' +
+      steps.slice(0, 7).map(function (s, i) {
+        return '<div class="next-step"><span class="idx">' + (i + 1) + '</span>' +
+          '<div class="body"><strong>' + Fmt.escape(s.title) + '</strong>' +
+          '<p class="muted small mt-8">' + Fmt.escape(s.body) + '</p></div>' +
+          '<span class="spacer"></span>' +
+          '<a class="btn btn-outline btn-sm" href="' + s.href + '">' + s.cta + '</a></div>';
+      }).join('') + '</div>';
+  }
+
+  /* --- Applications --- */
+  out += '<div class="panel"><div class="wrap-between"><h2>Funding applications</h2><span class="spacer"></span>' +
+    '<a class="btn btn-primary btn-sm" href="apply.html">New application</a></div>' +
+    '<p class="sub mt-8">Every application, from submission through to payout.</p>';
+
+  if (!data.applications.length) {
+    out += '<p class="muted">No applications yet. When you apply, you will track every stage here.</p>';
+  } else {
+    out += data.applications.map(function (app) {
+      var st = stageOf(app);
+      return '<div class="app-row"><div class="top">' +
+        '<h3 style="font-size:1.1rem">' + Fmt.escape(app.product) + '</h3>' +
+        '<span class="muted small">' + app.ref + '</span>' +
+        '<span class="spacer"></span>' +
+        '<strong>' + Fmt.rand(app.amount) + '</strong>' +
+        '</div>' +
+        '<p class="muted small mt-8">' + app.term + '-month term &middot; applied ' + Fmt.date(app.created) +
+        ' &middot; <span class="score-chip" style="padding:3px 12px;font-size:.8rem">FlexiScore ' + app.flexiScore + '</span></p>' +
+        (app.docsOutstanding && app.docsOutstanding.length
+          ? '<div class="alert alert-warn mt-16" style="margin-bottom:0">Waiting on ' + app.docsOutstanding.length +
+            ' document' + (app.docsOutstanding.length === 1 ? '' : 's') + ' before verification can start.</div>' : '') +
+        '<div class="stages">' + STAGES.map(function (s, i) {
+          var cls = i < st ? 'done' : (i === st ? 'current' : '');
+          return '<div class="s ' + cls + '"><div class="dot"></div>' + s + '</div>';
+        }).join('') + '</div></div>';
     }).join('');
   }
-  function esc(t){ const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+  out += '</div>';
 
-  window.addEventListener('hashchange', route);
-  route();
-  setInterval(() => { if (document.getElementById('view-dash').classList.contains('active')) renderApps(); }, 30000);
+  /* --- Business diagnostic --- */
+  if (data.diagnostic) {
+    var names = { financial: 'Financial', compliance: 'Compliance', operations: 'Operations', sales: 'Sales', funding: 'Funding', growth: 'Growth' };
+    out += '<div class="panel"><h2>Business diagnostic</h2>' +
+      '<p class="sub">Six scores across the whole business. These move as you complete advisory work, clinics and training.</p>' +
+      '<div class="diag-grid">' + Object.keys(names).map(function (k) {
+        var v = data.diagnostic[k];
+        return '<div class="diag"><div class="name"><span>' + names[k] + '</span><span class="spacer"></span><span>' + v + '%</span></div>' +
+          '<div class="meter' + tone(v) + '"><span style="width:' + v + '%"></span></div></div>';
+      }).join('') + '</div>' +
+      '<div class="btn-row mt-32">' +
+      '<a class="btn btn-outline btn-sm" href="enterprise-development.html#diagnostic">Book a full diagnostic</a>' +
+      '<a class="btn btn-outline btn-sm" href="assessment.html">Re-take the assessment</a></div></div>';
+  }
+
+  /* --- Documents --- */
+  if (data.documents && data.documents.length) {
+    out += '<div class="panel" id="documents"><h2>Documents</h2>' +
+      '<p class="sub">Your application file. Anything outstanding holds up verification.</p>' +
+      data.documents.map(function (d) {
+        return '<div class="doc-line"><span>' + Fmt.escape(d.label) + '</span><span class="spacer"></span>' +
+          (d.uploaded
+            ? '<span class="chip chip-green">On file</span>'
+            : '<span class="chip chip-amber">Outstanding</span>') + '</div>';
+      }).join('') +
+      '<p class="fine-print mt-24">Document upload connects to the SharePoint repository in Phase&nbsp;1 of the build.</p></div>';
+  }
+
+  /* --- Repeat growth cycle --- */
+  if (funded) {
+    out += '<div class="panel" style="background:var(--ink);border-color:var(--ink);color:var(--text-onink)">' +
+      '<span class="kicker kicker-onink">The next cycle</span>' +
+      '<h2 style="color:#fff">You are funded. Here is what comes next.</h2>' +
+      '<p class="sub" style="color:var(--text-onink-muted)">Repayment history feeds straight back into your score — a clean record raises your funding limit.</p>' +
+      '<div class="grid grid-3" style="gap:18px">' +
+        '<div class="card"><h3>Repayment progress</h3><div class="meter mt-16"><span style="width:18%"></span></div><p class="small mt-8" style="color:var(--text-onink-muted)">On schedule</p></div>' +
+        '<div class="card"><h3>Business coach</h3><p class="small mt-8" style="color:var(--text-onink-muted)">An advisor is assigned for the life of the facility.</p><a class="btn btn-primary btn-sm mt-16" href="advisory.html">Book a session</a></div>' +
+        '<div class="card"><h3>Next funding limit</h3><p class="small mt-8" style="color:var(--text-onink-muted)">Reviewed after six months of clean repayment.</p><a class="btn btn-outline btn-outline-onink btn-sm mt-16" href="funding.html">See products</a></div>' +
+      '</div></div>';
+  }
+
+  /* --- Services --- */
+  out += '<div class="panel"><h2>Your services</h2><p class="sub">Everything else FlexiGrowth can put behind the business.</p>' +
+    '<div class="grid grid-4" style="gap:18px">' +
+      '<a class="num-card" href="advisory.html"><span class="num">01</span><h3>Accounting &amp; tax</h3><p>Bookkeeping, VAT, payroll and financial statements.</p></a>' +
+      '<a class="num-card" href="clinics.html"><span class="num">02</span><h3>Business clinics</h3><p>Monthly paid working sessions on one topic at a time.</p></a>' +
+      '<a class="num-card" href="aptivo.html"><span class="num">03</span><h3>Aptivo training</h3><p>Accredited programmes and short courses.</p></a>' +
+      '<a class="num-card" href="enterprise-development.html"><span class="num">04</span><h3>Enterprise development</h3><p>Diagnostics, coaching and improvement programmes.</p></a>' +
+    '</div></div>';
+
+  document.getElementById('dash').innerHTML = out;
+
+  document.getElementById('reset').addEventListener('click', function () {
+    if (confirm('Clear the business record stored in this browser? This cannot be undone.')) {
+      Store.reset();
+      location.reload();
+    }
+  });
+})();
 </script>
 </body>
 </html>
