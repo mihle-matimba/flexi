@@ -9,7 +9,7 @@
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family: Inter, Arial, sans-serif; background:#111; color:#fff; }
     .hero { position:relative; min-height:100vh; min-height:100svh; overflow:hidden; padding:28px 40px 40px; display:flex; flex-direction:column; }
-    .hero::before { content:""; position:absolute; inset:0; background-image:url("https://pehrklnvmjwsuyjyjtjq.supabase.co/storage/v1/object/public/Client%20Media/Flexie%20Growth/Sunlit%20Candid%20Portrait%20by%20Concrete%20Walls.png"); background-size:cover; background-position:58% 34%; background-repeat:no-repeat; transform:scale(1.02); }
+    .hero::before { content:""; position:absolute; inset:0; background-image:url("https://pehrklnvmjwsuyjyjtjq.supabase.co/storage/v1/object/public/Client%20Media/Flexie%20Growth/Sunlit%20Candid%20Portrait%20by%20Concrete%20Walls.png"); background-size:cover; background-position:58% 22%; background-repeat:no-repeat; transform:scale(1); transform-origin:60% 40%; animation:bg-settle 2.4s cubic-bezier(.22,1,.36,1) both, bg-drift 22s ease-in-out 2.4s infinite alternate; will-change:transform; }
     .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.24),rgba(0,0,0,.08) 28%,rgba(0,0,0,.34) 72%,rgba(0,0,0,.5) 100%),linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.12) 55%,rgba(0,0,0,.1)); z-index:0; }
     .bottom-blur { position:absolute; left:0; right:0; bottom:0; height:220px; z-index:1; pointer-events:none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.55) 58%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.55) 58%, rgba(0,0,0,0) 100%); background: linear-gradient(to top, rgba(236,231,220,.16) 0%, rgba(255,255,255,.06) 38%, rgba(255,255,255,0) 100%); }
     .hero-inner { position:relative; z-index:2; flex:1; display:flex; flex-direction:column; justify-content:space-between; gap:90px; }
@@ -17,6 +17,7 @@
     .nav-pill { display:inline-flex; width:max-content; align-items:center; gap:5px; padding:10px 12px; background:rgba(18,18,18,.7); backdrop-filter:blur(12px); border-radius:999px; }
     a { color:inherit; }
     .nav-pill a { text-decoration:none; padding:10px 12px; font-size:15px; white-space:nowrap; border-radius:999px; }
+    .nav-pill .nav-login { display:none; }
     .nav-pill a:hover { background:rgba(255,255,255,.12); }
     .logo-wrap { display:flex; align-items:center; justify-content:center; }
     .logo-wrap img { display:block; height:40px; max-width:210px; width:auto; object-fit:contain; filter:brightness(0) invert(1); }
@@ -50,8 +51,56 @@
     .bar.dark { height:42px; background:#526800; }
     .bar.tall { height:56px; }
     .card-note { color:#777; font-size:.78rem; }
+
+    /* ---- Hero entrance + ambient motion ---- */
+    @keyframes bg-settle { from { transform:scale(1.16); opacity:.4; } to { transform:scale(1); opacity:1; } }
+    @keyframes bg-drift { from { transform:scale(1) translate3d(0,0,0); } to { transform:scale(1.045) translate3d(-1%,-.8%,0); } }
+    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
+    @keyframes fade-down { from { opacity:0; transform:translate3d(0,-18px,0); } to { opacity:1; transform:none; } }
+    @keyframes fade-up { from { opacity:0; transform:translate3d(0,26px,0); filter:blur(6px); } to { opacity:1; transform:none; filter:blur(0); } }
+    @keyframes card-in { from { opacity:0; transform:translate3d(40px,40px,0) scale(.94); } to { opacity:1; transform:none; } }
+    @keyframes card-float { 0%,100% { transform:translate3d(0,0,0); } 50% { transform:translate3d(0,-10px,0); } }
+    @keyframes bar-grow { from { transform:scaleY(0); } to { transform:scaleY(1); } }
+    @keyframes bar-pulse { 0%,100% { transform:scaleY(1); } 50% { transform:scaleY(1.22); } }
+    @keyframes badge-pop { 0% { opacity:0; transform:scale(.4); } 70% { transform:scale(1.15); } 100% { opacity:1; transform:scale(1); } }
+    @keyframes sheen { from { transform:translateX(-130%) skewX(-18deg); } to { transform:translateX(260%) skewX(-18deg); } }
+    @keyframes cta-glow { 0%,100% { box-shadow:0 0 0 0 rgba(216,239,82,.5); } 50% { box-shadow:0 0 0 14px rgba(216,239,82,0); } }
+    .topbar { position:relative; z-index:10; animation:fade-in .9s ease .1s both; }
+    .copy p { animation:fade-up .9s cubic-bezier(.22,1,.36,1) 1.1s both; }
+    .cta-btn { position:relative; overflow:hidden; animation:fade-up .9s cubic-bezier(.22,1,.36,1) 1.3s both, cta-glow 2.6s ease-out 2.4s infinite; transition:transform .25s; }
+    .cta-btn:hover { transform:translateY(-2px); }
+    .cta-btn::after { content:""; position:absolute; top:0; bottom:0; width:40%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent); transform:translateX(-130%) skewX(-18deg); animation:sheen 3.6s ease-in-out 2.6s infinite; }
+    .hero-card-wrap { animation:card-in 1.1s cubic-bezier(.22,1,.36,1) 1.2s both; }
+    .hero-card { animation:card-float 6s ease-in-out 2.4s infinite; }
+    .growth-badge { display:inline-block; animation:badge-pop .7s cubic-bezier(.34,1.56,.64,1) 2.3s both; }
+    .bar { transform-origin:bottom; animation:bar-grow .8s cubic-bezier(.22,1,.36,1) both, bar-pulse 3.2s ease-in-out infinite; animation-delay:calc(1.7s + var(--b,0) * 90ms), calc(3s + var(--b,0) * 260ms); }
+    .card-tabs span:first-child { position:relative; }
+    .card-tabs span:first-child::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#526800; border-radius:2px; transform-origin:left; animation:bar-grow-x .8s ease 2s both; }
+    @keyframes bar-grow-x { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+    /* ---- Mobile menu ---- */
+    .menu-btn { display:none; position:relative; z-index:6; }
+    .menu-btn span { position:absolute; left:50%; top:50%; width:18px; height:2px; margin:-1px 0 0 -9px; background:#fff; border-radius:2px; transition:transform .3s, opacity .2s; }
+    .menu-btn span:nth-child(1) { transform:translateY(-6px); }
+    .menu-btn span:nth-child(3) { transform:translateY(6px); }
+    .menu-open .menu-btn span:nth-child(1) { transform:rotate(45deg); }
+    .menu-open .menu-btn span:nth-child(2) { opacity:0; }
+    .menu-open .menu-btn span:nth-child(3) { transform:rotate(-45deg); }
+    @media (prefers-reduced-motion:reduce) { .hero::before,.topbar,.copy p,.cta-btn,.cta-btn::after,.hero-card-wrap,.hero-card,.growth-badge,.bar,.card-tabs span:first-child::after { animation:none!important; } }
     @media(max-width:1100px){ .topbar { grid-template-columns:1fr auto; } .logo-wrap { grid-column:1; grid-row:1; justify-content:flex-start; } .actions { grid-column:2; grid-row:1; } .nav-pill { grid-column:1/-1; grid-row:2; } .hero-content { grid-template-columns:1fr; } .hero-card-wrap { justify-content:flex-start; } }
     @media(max-width:650px){ .hero { padding:20px 18px 28px; } .hero::before { background-position:64% 28%; } .hero::after { background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.06) 35%,rgba(0,0,0,.62) 72%,rgba(0,0,0,.8)); } .bottom-blur { height:170px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); } .hero-inner { gap:100px; } .topbar { gap:14px; } .logo-wrap img { height:31px; max-width:140px; } .nav-pill { max-width:100%; flex-wrap:wrap; } .nav-pill a { font-size:13px; padding:8px; } .login-btn { display:none!important; } .signup-btn { padding:0 15px; min-height:41px!important; font-size:13px!important; } .menu-btn { width:41px; min-height:41px; } .copy h1 { font-size:clamp(2.7rem,12vw,4rem); } .hero-card { max-width:320px; width:100%; } }
+
+    @media(max-width:650px){
+      .menu-btn { display:inline-flex; }
+      .nav-pill { display:flex; position:fixed; inset:0; z-index:5; width:auto; max-width:none; flex-direction:column; justify-content:center; align-items:stretch; gap:6px; padding:90px 28px 40px; border-radius:0; background:rgba(14,14,14,.94); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); opacity:0; visibility:hidden; transform:translate3d(0,-12px,0); transition:opacity .35s, transform .35s, visibility .35s; }
+      .nav-pill a { font-size:clamp(1.8rem,8vw,2.4rem); font-weight:600; letter-spacing:-.03em; padding:14px 6px; border-radius:14px; opacity:0; transform:translate3d(0,18px,0); transition:opacity .4s, transform .4s, background .2s; }
+      .nav-pill .nav-login { display:block; color:#d8ef52; }
+      .menu-open .nav-pill { opacity:1; visibility:visible; transform:none; }
+      .menu-open .nav-pill a { opacity:1; transform:none; }
+      .menu-open .nav-pill a:nth-child(1) { transition-delay:.08s; } .menu-open .nav-pill a:nth-child(2) { transition-delay:.15s; } .menu-open .nav-pill a:nth-child(3) { transition-delay:.22s; } .menu-open .nav-pill a:nth-child(4) { transition-delay:.29s; }
+      body.menu-open { overflow:hidden; }
+      .topbar { grid-template-columns:1fr auto; }
+      .nav-pill { grid-column:auto; grid-row:auto; }
+    }
   </style>
 </head>
 <body>
@@ -59,10 +108,11 @@
     <div class="bottom-blur" aria-hidden="true"></div>
     <div class="hero-inner">
       <header class="topbar">
-        <nav class="nav-pill" aria-label="Main navigation">
+        <nav class="nav-pill" id="main-nav" aria-label="Main navigation">
           <a href="https://flexiegrowth.com/">Funding</a>
           <a href="https://flexiegrowth.com/">Business Support</a>
           <a href="https://flexiegrowth.com/">Products</a>
+          <a class="nav-login" href="https://flexiegrowth.com/">Login</a>
         </nav>
         <a class="logo-wrap" href="https://flexiegrowth.com/" aria-label="FlexiGrowth home">
           <img src="https://flexi-gray.vercel.app/assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" />
@@ -70,7 +120,7 @@
         <div class="actions">
           <a class="login-btn" href="https://flexiegrowth.com/">Login</a>
           <a class="signup-btn" href="https://flexiegrowth.com/">Sign up</a>
-          <button class="menu-btn" type="button" aria-label="Menu" onclick="document.querySelector('.nav-pill').scrollIntoView({behavior:'smooth'})">≡</button>
+          <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
         </div>
       </header>
       <main class="hero-content">
@@ -84,10 +134,10 @@
             <div class="card-top"><h3>Business Growth</h3><span class="growth-badge">+23%</span></div>
             <div class="card-tabs"><span>Weekly</span><span>Monthly</span><span>Yearly</span></div>
             <div class="bar-grid" aria-hidden="true">
-              <div class="bar-group"><div class="bar"></div><div class="bar dark"></div><div class="bar"></div></div>
-              <div class="bar-group"><div class="bar mid"></div><div class="bar dark"></div><div class="bar"></div></div>
-              <div class="bar-group"><div class="bar mid"></div><div class="bar dark tall"></div><div class="bar"></div></div>
-              <div class="bar-group"><div class="bar"></div><div class="bar mid"></div><div class="bar dark tall"></div></div>
+              <div class="bar-group"><div style="--b:0" class="bar"></div><div style="--b:1" class="bar dark"></div><div style="--b:2" class="bar"></div></div>
+              <div class="bar-group"><div style="--b:3" class="bar mid"></div><div style="--b:4" class="bar dark"></div><div style="--b:5" class="bar"></div></div>
+              <div class="bar-group"><div style="--b:6" class="bar mid"></div><div style="--b:7" class="bar dark tall"></div><div style="--b:8" class="bar"></div></div>
+              <div class="bar-group"><div style="--b:9" class="bar"></div><div style="--b:10" class="bar mid"></div><div style="--b:11" class="bar dark tall"></div></div>
             </div>
             <p class="card-note">Illustrative graphic — not actual performance data.</p>
           </div>
@@ -117,6 +167,20 @@
         heading.append(wordSpan);
       });
     });
+
+    // Mobile menu toggle.
+    (() => {
+      const btn = document.querySelector('.menu-btn');
+      const nav = document.querySelector('.nav-pill');
+      const set = (open) => {
+        document.body.classList.toggle('menu-open', open);
+        btn.setAttribute('aria-expanded', open);
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      btn.addEventListener('click', () => set(!document.body.classList.contains('menu-open')));
+      nav.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+    })();
   </script>
 </body>
 </html>
