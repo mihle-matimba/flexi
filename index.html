@@ -265,7 +265,7 @@
     .growth-tile:hover { box-shadow:0 38px 80px rgba(39,49,4,.22); }
     .growth-tile::after { content:""; position:absolute; inset:0; z-index:3; pointer-events:none; background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 60%); opacity:0; transition:opacity .4s; }
     .growth-tile:hover::after { opacity:1; }
-    .growth-tile-three::after { display:none; }
+    .growth-tile::after { display:none; }
     /* tile 1 */
     .growth-tile-one { animation:gradient-shift 9s ease-in-out infinite alternate; background-size:140% 140%,140% 140%,100% 100%; }
     @keyframes gradient-shift { from { background-position:0% 0%,100% 0%,0 0; } to { background-position:25% 30%,70% 25%,0 0; } }
