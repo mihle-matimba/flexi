@@ -530,7 +530,9 @@
     .footer nav a{position:relative;transition:color .3s;}
     .footer nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#d8ef52;transform:scaleX(0);transform-origin:left;transition:transform .35s;}
     .footer nav a:hover{color:#fff;}.footer nav a:hover::after{transform:scaleX(1);}
-    .footer-logo{transition:color .3s;}.footer-logo:hover{color:#d8ef52;}
+    .footer-logo{display:inline-flex;align-items:center;}
+    .footer-logo img{display:block;height:34px;width:auto;max-width:190px;object-fit:contain;filter:brightness(0) invert(1);transition:transform .3s,opacity .3s;}
+    .footer-logo:hover img{transform:translateY(-2px);opacity:.85;}
     @media(prefers-reduced-motion:reduce){.statement::before,.last-cta,.last-cta::after{animation:none!important}.statement h2 .line>span,.last-cta h2 .line>span,.statement .eyebrow::before,.last-cta .eyebrow::before{transform:none!important;transition:none}}
   </style>
 </head>
@@ -663,7 +665,7 @@
     </div></section>
     <section class="section statement" aria-labelledby="statement-title"><div class="container statement-inner"><div class="reveal"><span class="eyebrow">Built for ambition</span><h2 id="statement-title"><span class="line" style="--l:0"><span>Built for businesses</span></span><span class="line" style="--l:1"><span>building something</span></span><span class="line" style="--l:2"><span>bigger.</span></span></h2></div><div class="reveal"><p>Whether you're managing today's expenses, taking on a new contract or preparing for your next stage of growth, we're here to help you move forward.</p><a href="https://flexiegrowth.com/" class="text-link">Get Started <span aria-hidden="true">↗</span></a></div></div></section>
     <section class="section last-cta" id="get-started" aria-labelledby="last-cta-title"><div class="container"><div class="reveal"><span class="eyebrow">Let's move forward</span><h2 id="last-cta-title"><span class="line" style="--l:0"><span>Ready for</span></span><span class="line" style="--l:1"><span>what's next?</span></span></h2></div><div class="cta-bottom-row reveal"><p>Find out where your business stands and take the next step with confidence.</p><div class="cta-buttons"><a href="https://flexiegrowth.com/" class="btn-dark">Check Your Funding Readiness <span aria-hidden="true">↗</span></a><a href="https://flexiegrowth.com/" class="text-link">Speak to Our Team <span aria-hidden="true">↗</span></a></div></div></div></section>
-    <footer class="footer"><div class="container footer-inner"><a href="#" class="footer-logo">FlexiGrowth</a><p>Business finance &amp; support for South African businesses.</p><nav aria-label="Footer navigation"><a href="#funding">Funding</a><a href="#business-support">Business Support</a><a href="#how-it-works">How it works</a><a href="https://flexiegrowth.com/">Contact</a></nav></div></footer>
+    <footer class="footer"><div class="container footer-inner"><a href="#" class="footer-logo" aria-label="FlexiGrowth — back to top"><img src="assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" /></a><p>Business finance &amp; support for South African businesses.</p><nav aria-label="Footer navigation"><a href="#funding">Funding</a><a href="#business-support">Business Support</a><a href="#how-it-works">How it works</a><a href="https://flexiegrowth.com/">Contact</a></nav></div></footer>
   </div>
   <script src="assets/js/lenis.min.js"></script>
   <script>
