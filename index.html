@@ -420,11 +420,13 @@
     .process .step.visible .step-form span{transform:none;transition-delay:calc(.5s + var(--n,0) * .2s);}
     .process .step-form span:nth-child(2){--n:1}.process .step-form span:nth-child(3){--n:2}
     .process .step-options{animation:drift 6.5s ease-in-out -2s infinite;}
-    .process .step-options span{animation:row-pick 6s ease-in-out infinite;animation-delay:calc(var(--n) * 2s);}
+    .process .step.visible .step-options span{animation:row-pick 6s ease-in-out infinite;animation-delay:calc(1.7s + var(--n) * 2s - .72s);}
     .process .step-options span:nth-child(1){--n:0}.process .step-options span:nth-child(2){--n:1}.process .step-options span:nth-child(3){--n:2}
     @keyframes row-pick{0%,6%{background:#edf0ea;}12%,30%{background:#dceca9;}38%,100%{background:#edf0ea;}}
     .process .step-options:after{transform:scale(0);transition:transform .7s cubic-bezier(.34,1.56,.64,1) 1s;}
     .process .step.visible .step-options:after{transform:scale(1);}
+    .process .step.visible .step-options:after{animation:check-hop 6s ease-in-out 1.7s infinite;}
+    @keyframes check-hop{0%,26%{top:29%;}38%,62%{top:46%;}74%,94%{top:66%;}100%{top:29%;}}
     .process .step-document{animation:drift 6s ease-in-out -1s infinite;}
     .process .step-document::before{transform:scale(0);transition:transform .7s cubic-bezier(.34,1.56,.64,1) .7s;}
     .process .step.visible .step-document::before{transform:scale(1);}
