@@ -333,8 +333,8 @@
     .step-form{width:76%;height:120px;border-radius:17px;background:white;box-shadow:0 12px 32px #33452a12;transform:rotate(-4deg);padding:18px;display:flex;flex-direction:column;gap:12px;}
     .step-form span{display:block;background:#edf0eb;border-radius:6px;height:10px;}.step-form span:first-child{width:43%;height:22px;border-radius:50%;background:#e5ebdb;}.step-form span:nth-child(2){width:88%;}.step-form span:nth-child(3){width:69%;}
     .step-options{width:88%;padding:17px;background:#fff;border-radius:17px;box-shadow:0 14px 28px #26331e0c;display:flex;flex-direction:column;gap:11px;}
-    .step-options span{height:22px;border-radius:8px;background:#edf0ea;position:relative;}.step-options span:first-child{background:#e0ead5;}.step-options span:last-child{width:75%;}.step-options:after{content:'✓';position:absolute;right:9%;top:22%;background:#e1ead7;color:#607550;border-radius:50%;padding:7px 11px;}
-    .step-document{width:124px;height:135px;background:#fff;border-radius:14px;box-shadow:0 15px 30px #25371a13;transform:rotate(-8deg);padding:30px 16px;display:flex;flex-direction:column;gap:11px;}.step-document:before{content:'✓';align-self:center;background:#e5eddf;color:#71865c;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;font-size:19px;}.step-document span{height:8px;border-radius:5px;background:#e9ede6;}.step-document span:last-child{width:63%;margin:auto;}
+    .step-options span{height:22px;border-radius:8px;background:#edf0ea;position:relative;}.step-options span:first-child{background:#e0ead5;}.step-options span:last-child{width:75%;}.step-options:after{content:'';position:absolute;right:9%;top:22%;width:30px;height:30px;background:#e1ead7 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23607550' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/55% no-repeat;border-radius:50%;}
+    .step-document{width:124px;height:135px;background:#fff;border-radius:14px;box-shadow:0 15px 30px #25371a13;transform:rotate(-8deg);padding:30px 16px;display:flex;flex-direction:column;gap:11px;}.step-document:before{content:'';align-self:center;background:#e5eddf url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2371865c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/55% no-repeat;border-radius:50%;width:36px;height:36px;}.step-document span{height:8px;border-radius:5px;background:#e9ede6;}.step-document span:last-child{width:63%;margin:auto;}
     .step-next{display:grid;gap:9px;place-items:center;transform:rotate(-5deg);}.step-next span{padding:11px 17px;border-radius:11px;background:white;color:#53614b;box-shadow:0 10px 24px #1c31120d;font-size:13px;white-space:nowrap;}.step-next span:nth-child(2){background:#26341d;color:white;font-weight:600;transform:rotate(5deg);}
     @media(max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.step,.step:not(:first-child){min-height:370px}.step:nth-child(2) .step-arrow{display:none}}
     @media(max-width:650px){.process{padding:78px 0 85px}.process-intro{margin-bottom:38px}.process h2{font-size:clamp(2.5rem,10vw,3.7rem)}.process-subtitle{font-size:14px}.steps{grid-template-columns:1fr;gap:14px}.step,.step:not(:first-child){min-height:330px;padding:26px}.step-arrow{display:none}}
@@ -354,7 +354,7 @@
     .process .step-arrow{background:#e2e7d7;color:#3f5130;border-color:#fbfbf8;}
     .process .step-form,.process .step-options,.process .step-document{box-shadow:0 15px 35px #252a1710;}
     .process .step-form span:first-child{background:#dbe2cc;}
-    .process .step-options span:first-child,.process .step-options:after,.process .step-document:before{background:#e0e7d4;color:#425d34;}
+    .process .step-options span:first-child{background:#e0e7d4;}
     .process .step-next span:nth-child(2){background:#314328;color:#fff;}
     /* How it works — richer visuals, one focal point, restrained palette */
     .process{background:radial-gradient(ellipse at 50% 92%,#edf1e5 0%,#fbfbf8 55%,#fbfbf8 100%);}
@@ -388,9 +388,9 @@
     .process .step-options{min-height:142px;transform:rotate(3deg);box-shadow:0 20px 40px #26331e15;gap:12px;justify-content:center;}
     .process .step-options::before{content:"Readiness check";font-size:10px;color:#516047;font-weight:700;letter-spacing:.02em;}
     .process .step-options span{height:13px;}
-    .process .step-options:after{top:34%;background:#dceca9;color:#344622;box-shadow:0 6px 15px #1d33181c;}
+    .process .step-options:after{top:34%;background-color:#dceca9;box-shadow:0 6px 15px #1d33181c;}
     .process .step-document{width:156px;height:164px;transform:rotate(-7deg);border:1px solid #f1f4ec;background:#f9faf7;box-shadow:14px 15px 0 -3px #bbcaa36b,0 18px 35px #08180945;}
-    .process .step-document::before{background:#dff078;color:#263422;width:44px;height:44px;}
+    .process .step-document::before{background-color:#dff078;width:44px;height:44px;}
     .process .step-next{gap:12px;}
     .process .step-next span{box-shadow:0 15px 32px #21321c1a;padding:14px 18px;}
     .process .step-next span:nth-child(2){background:#263422;color:white;}
@@ -502,7 +502,7 @@
     .statement p{color:#566a5d;font-size:18px;line-height:1.7;margin-bottom:28px;max-width:520px;}
     .statement-points{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 36px;padding:0;list-style:none;}
     .statement-points li{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:999px;background:#fff;border:1px solid #e3e8dc;color:#2c3b2f;font-size:14px;font-weight:600;box-shadow:0 6px 18px rgba(32,43,23,.05);transition:transform .3s,box-shadow .3s,background .3s;opacity:0;transform:translateY(12px) scale(.96);}
-    .statement-points li::before{content:"\2713";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#d8ef52;color:#273104;font-size:11px;}
+    .statement-points li::before{content:"";width:20px;height:20px;border-radius:50%;background:#d8ef52 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23273104' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/60% no-repeat;flex:none;}
     .statement-copy.visible .statement-points li{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .3s;transition-delay:calc(.5s + var(--i) * .12s);}
     .statement-copy.visible .statement-points li:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(32,43,23,.1);transition-delay:0s;}
     .statement-media{position:relative;min-height:560px;}
@@ -552,7 +552,7 @@
     .footer-disclosure{max-width:860px;font-size:12px;line-height:1.7;color:#9db2a3;}
     .footer-disclosure strong{color:#d5e2d5;font-weight:650;}
     .footer-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(216,239,82,.4);border-radius:999px;color:#d8ef52;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
-    .footer-badge::before{content:"\2713";font-size:11px;}
+    .footer-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#d8ef52;}
     .footer-copy{grid-column:1/-1;font-size:12px;color:#7f9887;display:flex;gap:22px;flex-wrap:wrap;}
     .footer-copy a{color:#9db2a3;transition:color .3s;}.footer-copy a:hover{color:#d8ef52;}
     /* shared reveal for headings */
@@ -611,6 +611,13 @@
     }
     @media(max-width:650px){.topbar{padding:20px 18px 0;}.topbar.scrolled{padding:10px 18px;}.topbar-spacer{height:46px;}}
     body.menu-open .topbar,body.menu-open .topbar.scrolled{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;}
+
+    /* Vector icons (replace text glyphs that can render as emoji on some devices) */
+    svg.i{display:inline-block;vertical-align:-.14em;width:1em;height:1em;flex:none;}
+    .check-dot svg.i,.panel-icon svg.i,.step-arrow svg.i,.statement-badge i svg.i,.process-pill-icon svg.i,.feature-topline span svg.i{display:block;vertical-align:baseline;}
+    .check-dot svg.i{width:11px;height:11px;}
+    .panel-icon svg.i,.step-arrow svg.i{width:1em;height:1em;}
+    .statement-badge i svg.i{width:1em;height:1em;}
   </style>
 </head>
 <body>
@@ -639,7 +646,7 @@
         <div class="copy">
           <h1 class="animated-title" data-animate-title data-highlight="Let's get it there.">Your business has places to go. Let's get it there.</h1>
           <p>Access business funding, get funding-ready and find the support you need to make your next move.</p>
-          <a class="cta-btn" href="https://flexiegrowth.com/">Check your readiness <span aria-hidden="true">→</span></a>
+          <a class="cta-btn" href="https://flexiegrowth.com/">Check your readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
         <div class="hero-card-wrap">
           <div class="hero-card" aria-label="Illustrative business growth graphic">
@@ -669,25 +676,25 @@
           <div class="showcase-intro reveal">
             <span class="eyebrow">More than funding</span>
             <h2 id="offer-title"><span class="line" style="--l:0"><span>More than funding.</span></span><span class="line" style="--l:1"><span>A way forward.</span></span></h2>
-            <div class="showcase-actions"><a class="btn-dark" href="https://flexiegrowth.com/">Explore Funding <span aria-hidden="true">→</span></a><a class="btn-outline" href="https://flexiegrowth.com/">Our services</a></div>
+            <div class="showcase-actions"><a class="btn-dark" href="https://flexiegrowth.com/">Explore Funding <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="btn-outline" href="https://flexiegrowth.com/">Our services</a></div>
             <p><strong>Funding that fits.</strong> From everyday cash flow to bigger opportunities, explore finance that suits your business.</p>
             <p><strong>Support that moves you forward.</strong> Build stronger financial records, improve your readiness and get practical help to grow.</p>
           </div>
           <div class="showcase-card readiness-card reveal" style="--d:.15s">
-            <div class="feature-topline">01 / FUNDING READINESS <span aria-hidden="true">↗</span></div>
+            <div class="feature-topline">01 / FUNDING READINESS <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></div>
             <h3>Know where you stand before you apply.</h3>
             <div class="readiness-graphic" aria-hidden="true">
               <div class="readiness-graphic-title">Your next steps</div>
-              <div class="check-row" style="--i:0"><span class="check-dot">✓</span><span>Understand your finances</span></div>
-              <div class="check-row" style="--i:1"><span class="check-dot">✓</span><span>Identify what to improve</span></div>
-              <div class="check-row" style="--i:2"><span class="check-dot">✓</span><span>Explore suitable options</span></div>
+              <div class="check-row" style="--i:0"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Understand your finances</span></div>
+              <div class="check-row" style="--i:1"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Identify what to improve</span></div>
+              <div class="check-row" style="--i:2"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>Explore suitable options</span></div>
             </div>
-            <a class="btn-dark showcase-card-action" href="https://flexiegrowth.com/">Check Your Readiness <span aria-hidden="true">→</span></a>
+            <a class="btn-dark showcase-card-action" href="https://flexiegrowth.com/">Check Your Readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
           </div>
           <div class="showcase-card support-card reveal" style="--d:.3s">
-            <div class="feature-topline">02 / BUSINESS SUPPORT <span aria-hidden="true">↗</span></div>
+            <div class="feature-topline">02 / BUSINESS SUPPORT <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></div>
             <div class="support-visual" aria-hidden="true"><span class="support-orbit orbit-one"></span><span class="support-orbit orbit-two"></span><span class="support-center">Flexi<span>Growth</span></span><span class="support-pill pill-top">Accounting</span><span class="support-pill pill-mid">Training</span><span class="support-pill pill-bottom">Guidance</span></div>
-            <div class="support-card-bottom"><h3>Build a stronger business, beyond finance.</h3><a href="https://flexiegrowth.com/" class="support-link">Explore Business Support <span aria-hidden="true">↗</span></a></div>
+            <div class="support-card-bottom"><h3>Build a stronger business, beyond finance.</h3><a href="https://flexiegrowth.com/" class="support-link">Explore Business Support <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
           </div>
         </div>
       </div>
@@ -696,7 +703,7 @@
       <div class="container">
         <div class="growth-heading reveal">
           <h2 id="needs-title"><span class="w" style="--w:0"><span>Funding</span></span> <span class="w" style="--w:1"><span>for</span></span> <span class="w" style="--w:2"><span>wherever</span></span> <span class="w" style="--w:3"><span>business</span></span> <span class="w" style="--w:4"><span>takes</span></span> <span class="w" style="--w:5"><span>you.</span></span> </h2>
-          <a class="growth-more" href="https://flexiegrowth.com/">Explore funding <span aria-hidden="true">→</span></a>
+          <a class="growth-more" href="https://flexiegrowth.com/">Explore funding <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
         <div class="growth-cards">
           <article class="growth-tile growth-tile-one reveal">
@@ -710,7 +717,7 @@
           <article class="growth-tile growth-tile-two reveal" style="--d:.15s">
             <div class="growth-tile-head"><span class="growth-index">02 / OPPORTUNITY</span><h3>Ready for what’s next.</h3></div>
             <div class="opportunity-visual" aria-hidden="true">
-              <div class="opportunity-bar"><span>Business opportunities</span><span>↗</span></div>
+              <div class="opportunity-bar"><span>Business opportunities</span><span><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></div>
               <div class="opportunity-graph"><span style="--b:0"></span><span style="--b:1"></span><span style="--b:2"></span><span style="--b:3"></span><span style="--b:4"></span></div>
               <div class="opportunity-label">Finance to help you take on more.</div>
             </div>
@@ -718,7 +725,7 @@
           <article class="growth-tile growth-tile-three reveal" style="--d:.3s">
             <div class="growth-photo" aria-hidden="true"></div>
             <div class="growth-photo-shade" aria-hidden="true"></div>
-            <div class="growth-tile-photo-copy"><span class="growth-index">03 / FUNDING READINESS</span><h3>Make your next move with confidence.</h3><p>Know where you stand and what to improve before you apply.</p><a href="https://flexiegrowth.com/">Check your readiness <span aria-hidden="true">↗</span></a></div>
+            <div class="growth-tile-photo-copy"><span class="growth-index">03 / FUNDING READINESS</span><h3>Make your next move with confidence.</h3><p>Know where you stand and what to improve before you apply.</p><a href="https://flexiegrowth.com/">Check your readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
           </article>
         </div>
       </div>
@@ -726,33 +733,33 @@
     <section class="section process" id="how-it-works" aria-labelledby="process-title">
       <div class="container">
         <div class="process-intro reveal">
-          <span class="process-pill"><span class="process-pill-icon" aria-hidden="true">◎</span> How it works</span>
+          <span class="process-pill"><span class="process-pill-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.4" fill="currentColor" stroke="none"/></svg></span> How it works</span>
           <h2 id="process-title"><span class="line" style="--l:0"><span>Four simple steps.</span></span><span class="line" style="--l:1"><span>One clearer way forward.</span></span></h2>
           <p class="process-subtitle">From understanding your funding readiness to finding your next step — here's how to get started.</p>
         </div>
         <div class="steps">
-          <article class="step step-reveal" style="--d:0s"><span class="step-num">STEP ONE</span><h3>Tell us about your business</h3><div class="step-visual" aria-hidden="true"><div class="step-form"><span></span><span></span><span></span></div></div><p>Share the basics about your business and what you're looking for.</p><span class="step-tag">Get started</span><span class="step-arrow" aria-hidden="true">→</span></article>
-          <article class="step step-reveal" style="--d:.12s"><span class="step-num">STEP TWO</span><h3>Check your readiness</h3><div class="step-visual" aria-hidden="true"><div class="step-options"><span></span><span></span><span></span></div></div><p>Understand where you stand and which areas may need attention.</p><span class="step-tag">Know your position</span><span class="step-arrow" aria-hidden="true">→</span></article>
-          <article class="step step-reveal" style="--d:.24s"><span class="step-num">STEP THREE</span><h3>Explore your options</h3><div class="step-visual" aria-hidden="true"><div class="step-document"><span></span><span></span></div></div><p>Discover funding and business support suited to your needs.</p><span class="step-tag">Find a fit</span><span class="step-arrow" aria-hidden="true">→</span></article>
-          <article class="step step-reveal" style="--d:.36s"><span class="step-num">STEP FOUR</span><h3>Take your next step</h3><div class="step-visual" aria-hidden="true"><div class="step-next"><span>Funding application</span><span>Or business support ↗</span><span>Move forward</span></div></div><p>Apply for suitable finance or get guidance on closing the gaps.</p><span class="step-tag">Move forward</span></article>
+          <article class="step step-reveal" style="--d:0s"><span class="step-num">STEP ONE</span><h3>Tell us about your business</h3><div class="step-visual" aria-hidden="true"><div class="step-form"><span></span><span></span><span></span></div></div><p>Share the basics about your business and what you're looking for.</p><span class="step-tag">Get started</span><span class="step-arrow" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>
+          <article class="step step-reveal" style="--d:.12s"><span class="step-num">STEP TWO</span><h3>Check your readiness</h3><div class="step-visual" aria-hidden="true"><div class="step-options"><span></span><span></span><span></span></div></div><p>Understand where you stand and which areas may need attention.</p><span class="step-tag">Know your position</span><span class="step-arrow" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>
+          <article class="step step-reveal" style="--d:.24s"><span class="step-num">STEP THREE</span><h3>Explore your options</h3><div class="step-visual" aria-hidden="true"><div class="step-document"><span></span><span></span></div></div><p>Discover funding and business support suited to your needs.</p><span class="step-tag">Find a fit</span><span class="step-arrow" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></article>
+          <article class="step step-reveal" style="--d:.36s"><span class="step-num">STEP FOUR</span><h3>Take your next step</h3><div class="step-visual" aria-hidden="true"><div class="step-next"><span>Funding application</span><span>Or business support <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span><span>Move forward</span></div></div><p>Apply for suitable finance or get guidance on closing the gaps.</p><span class="step-tag">Move forward</span></article>
         </div>
       </div>
     </section>
     <section class="section ready" id="business-support" aria-labelledby="ready-title"><div class="container ready-layout">
-      <div class="reveal ready-copy"><span class="eyebrow">We're here for the whole journey</span><h2 id="ready-title"><span class="line" style="--l:0"><span>Not quite ready?</span></span><span class="line" style="--l:1"><span>You're still in the</span></span><span class="line" style="--l:2"><span>right place.</span></span></h2><p class="section-intro">A business shouldn't be defined by one funding decision. If you're not ready to apply, we'll help you understand what needs attention — from financial records to compliance and cash flow.</p><a class="btn-dark" href="https://flexiegrowth.com/">Check My Readiness <span aria-hidden="true">↗</span></a></div>
-      <div class="ready-panel reveal" aria-label="Restaurant owner business support illustration"><div class="panel-photo" aria-hidden="true"></div><div class="panel-icon" aria-hidden="true">✓</div><div class="panel-bottom"><p class="panel-small">Progress starts with clarity</p><strong>Every next step counts.</strong><span class="panel-note">Whether you run a restaurant, retail store or service business, we’ll help you understand what to fix next.</span></div></div>
+      <div class="reveal ready-copy"><span class="eyebrow">We're here for the whole journey</span><h2 id="ready-title"><span class="line" style="--l:0"><span>Not quite ready?</span></span><span class="line" style="--l:1"><span>You're still in the</span></span><span class="line" style="--l:2"><span>right place.</span></span></h2><p class="section-intro">A business shouldn't be defined by one funding decision. If you're not ready to apply, we'll help you understand what needs attention — from financial records to compliance and cash flow.</p><a class="btn-dark" href="https://flexiegrowth.com/">Check My Readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+      <div class="ready-panel reveal" aria-label="Restaurant owner business support illustration"><div class="panel-photo" aria-hidden="true"></div><div class="panel-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div class="panel-bottom"><p class="panel-small">Progress starts with clarity</p><strong>Every next step counts.</strong><span class="panel-note">Whether you run a restaurant, retail store or service business, we’ll help you understand what to fix next.</span></div></div>
     </div></section>
     <section class="section statement" aria-labelledby="statement-title"><div class="container statement-inner">
-      <div class="reveal statement-copy"><span class="eyebrow">Built for ambition</span><h2 id="statement-title"><span class="line" style="--l:0"><span>Built for businesses</span></span><span class="line" style="--l:1"><span>building something</span></span><span class="line" style="--l:2"><span>bigger.</span></span></h2><p>Whether you're managing today's expenses, taking on a new contract or preparing for your next stage of growth, we're here to help you move forward.</p><ul class="statement-points"><li style="--i:0">Today's expenses</li><li style="--i:1">New contracts</li><li style="--i:2">Your next stage of growth</li></ul><a href="https://flexiegrowth.com/" class="text-link">Get Started <span aria-hidden="true">↗</span></a></div>
+      <div class="reveal statement-copy"><span class="eyebrow">Built for ambition</span><h2 id="statement-title"><span class="line" style="--l:0"><span>Built for businesses</span></span><span class="line" style="--l:1"><span>building something</span></span><span class="line" style="--l:2"><span>bigger.</span></span></h2><p>Whether you're managing today's expenses, taking on a new contract or preparing for your next stage of growth, we're here to help you move forward.</p><ul class="statement-points"><li style="--i:0">Today's expenses</li><li style="--i:1">New contracts</li><li style="--i:2">Your next stage of growth</li></ul><a href="https://flexiegrowth.com/" class="text-link">Get Started <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
       <div class="statement-media reveal" aria-hidden="true">
         <div class="statement-img one" data-parallax="0.06"><img src="assets/hero.webp" alt="" loading="lazy" /></div>
         <div class="statement-img two" data-parallax="-0.08"><img src="assets/femaf/sec5.webp" alt="" loading="lazy" /></div>
-        <div class="statement-badge"><i>↗</i><div><b>Funding + support</b><small>Everything in one place</small></div></div>
+        <div class="statement-badge"><i><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></i><div><b>Funding + support</b><small>Everything in one place</small></div></div>
       </div>
     </div></section>
     <section class="section last-cta" id="get-started" aria-labelledby="last-cta-title">
       <div class="cta-bg" data-cta-parallax aria-hidden="true"><img src="assets/femaf/sec4.webp" alt="" loading="lazy" /></div>
-      <div class="container"><div class="reveal"><span class="eyebrow">Let's move forward</span><h2 id="last-cta-title"><span class="line" style="--l:0"><span>Ready for</span></span><span class="line" style="--l:1"><span><em>what's next?</em></span></span></h2></div><div class="cta-bottom-row reveal"><p>Find out where your business stands and take the next step with confidence.</p><div class="cta-buttons"><a href="https://flexiegrowth.com/" class="btn-lime">Check Your Funding Readiness <span aria-hidden="true">↗</span></a><a href="https://flexiegrowth.com/" class="text-link">Speak to Our Team <span aria-hidden="true">↗</span></a></div></div></div>
+      <div class="container"><div class="reveal"><span class="eyebrow">Let's move forward</span><h2 id="last-cta-title"><span class="line" style="--l:0"><span>Ready for</span></span><span class="line" style="--l:1"><span><em>what's next?</em></span></span></h2></div><div class="cta-bottom-row reveal"><p>Find out where your business stands and take the next step with confidence.</p><div class="cta-buttons"><a href="https://flexiegrowth.com/" class="btn-lime">Check Your Funding Readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a href="https://flexiegrowth.com/" class="text-link">Speak to Our Team <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div></div></div>
     </section>
     <footer class="footer"><div class="container">
       <div class="footer-inner"><a href="#" class="footer-logo" aria-label="FlexiGrowth — back to top"><img src="assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" /></a><p>Business finance &amp; support for South African businesses.</p><nav aria-label="Footer navigation"><a href="#funding">Funding</a><a href="#business-support">Business Support</a><a href="#how-it-works">How it works</a><a href="https://flexiegrowth.com/">Contact</a></nav></div>
