@@ -251,11 +251,6 @@
 
     /* ---- Third section: motion + life ---- */
     .growth-options { position:relative; overflow:hidden; }
-    .growth-options::before,.growth-options::after { content:""; position:absolute; border-radius:50%; filter:blur(70px); opacity:.45; pointer-events:none; z-index:0; }
-    .growth-options::before { width:420px; height:420px; background:#d8ef52; top:-120px; right:-80px; animation:blob-a 14s ease-in-out infinite alternate; }
-    .growth-options::after { width:380px; height:380px; background:#c3d9f7; bottom:-140px; left:-100px; animation:blob-b 17s ease-in-out infinite alternate; }
-    @keyframes blob-a { to { transform:translate(-160px,120px) scale(1.25); } }
-    @keyframes blob-b { to { transform:translate(180px,-90px) scale(1.2); } }
     .growth-options .container { position:relative; z-index:1; }
     .growth-options h2 .w { display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.14em; margin-bottom:-.14em; }
     .growth-options h2 .w > span { display:inline-block; transform:translateY(110%) rotate(4deg); transition:transform 1s cubic-bezier(.22,1,.36,1); transition-delay:calc(.1s + var(--w) * 70ms); }
@@ -270,6 +265,7 @@
     .growth-tile:hover { box-shadow:0 38px 80px rgba(39,49,4,.22); }
     .growth-tile::after { content:""; position:absolute; inset:0; z-index:3; pointer-events:none; background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 60%); opacity:0; transition:opacity .4s; }
     .growth-tile:hover::after { opacity:1; }
+    .growth-tile-three::after { display:none; }
     /* tile 1 */
     .growth-tile-one { animation:gradient-shift 9s ease-in-out infinite alternate; background-size:140% 140%,140% 140%,100% 100%; }
     @keyframes gradient-shift { from { background-position:0% 0%,100% 0%,0 0; } to { background-position:25% 30%,70% 25%,0 0; } }
@@ -311,14 +307,13 @@
     .growth-tile-photo-copy a:hover { background-size:100% 2px; color:#d8ef52; }
     .growth-tile-photo-copy a span { display:inline-block; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
     .growth-tile-photo-copy a:hover span { transform:translate(5px,-5px); }
-    .growth-tile-three::before { content:""; position:absolute; top:0; bottom:0; width:30%; z-index:2; pointer-events:none; background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent); transform:translateX(-200%) skewX(-18deg); animation:sheen 6s ease-in-out 1.5s infinite; }
     .growth-index { display:inline-flex; align-items:center; gap:8px; }
     .growth-index::before { content:""; width:7px; height:7px; border-radius:50%; background:currentColor; animation:live2 2s ease-in-out infinite; }
     @keyframes live2 { 0%,100% { opacity:.3; transform:scale(.8); } 50% { opacity:1; transform:scale(1.2); } }
     .growth-tile h3 { transition:transform .4s cubic-bezier(.22,1,.36,1); }
     .growth-tile:hover h3 { transform:translateX(6px); }
     @media (hover:none) { .growth-tile.visible { transform:none; } }
-    @media (prefers-reduced-motion:reduce) { .growth-options::before,.growth-options::after,.growth-tile *,.growth-tile::before,.growth-photo,.growth-more,.growth-tile-one,.growth-tile-two,.float-finance,.growth-index::before,.finance-mini-note::after { animation:none!important; } .growth-options h2 .w > span,.finance-tags span,.opportunity-graph span { transform:none!important; opacity:1!important; transition:none; } .growth-tile.visible { transform:none; } }
+    @media (prefers-reduced-motion:reduce) { .growth-tile *,.growth-tile::before,.growth-photo,.growth-more,.growth-tile-one,.growth-tile-two,.float-finance,.growth-index::before,.finance-mini-note::after { animation:none!important; } .growth-options h2 .w > span,.finance-tags span,.opportunity-graph span { transform:none!important; opacity:1!important; transition:none; } .growth-tile.visible { transform:none; } }
   </style>
 </head>
 <body>
