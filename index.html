@@ -510,10 +510,11 @@
     .statement-img img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 1.4s cubic-bezier(.22,1,.36,1);}
     .statement-media.visible .statement-img img{transform:scale(1);}
     .statement-media:hover .statement-img img{transform:scale(1.05);}
-    .statement-img.one{inset:0 0 70px 70px;clip-path:inset(0 0 100% 0 round 26px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1);}
-    .statement-img.two{left:0;bottom:0;width:230px;height:260px;border:8px solid #f6f7f1;border-radius:30px;clip-path:inset(100% 0 0 0 round 24px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1) .35s;}
+    @media(min-width:951px){.statement-media{order:-1;}}
+    .statement-img.one{inset:0 70px 70px 0;clip-path:inset(0 0 100% 0 round 26px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1);}
+    .statement-img.two{right:0;bottom:0;width:230px;height:260px;border:8px solid #f6f7f1;border-radius:30px;clip-path:inset(100% 0 0 0 round 24px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1) .35s;}
     .statement-media.visible .statement-img.one,.statement-media.visible .statement-img.two{clip-path:inset(0 0 0 0 round 26px);}
-    .statement-badge{position:absolute;right:-12px;top:44px;z-index:3;display:flex;align-items:center;gap:12px;padding:14px 18px 14px 14px;border-radius:18px;background:#fff;box-shadow:0 18px 40px rgba(23,33,18,.16);opacity:0;transform:translateY(16px);transition:opacity .7s ease .9s,transform .8s cubic-bezier(.34,1.56,.64,1) .9s;}
+    .statement-badge{position:absolute;left:-12px;top:44px;z-index:3;display:flex;align-items:center;gap:12px;padding:14px 18px 14px 14px;border-radius:18px;background:#fff;box-shadow:0 18px 40px rgba(23,33,18,.16);opacity:0;transform:translateY(16px);transition:opacity .7s ease .9s,transform .8s cubic-bezier(.34,1.56,.64,1) .9s;}
     .statement-media.visible .statement-badge{opacity:1;transform:none;animation:badge-float 6s ease-in-out 2s infinite;}
     @keyframes badge-float{0%,100%{translate:0 0;}50%{translate:0 -8px;}}
     .statement-badge i{font-style:normal;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#26341d;color:#d8ef52;font-size:18px;}
@@ -561,7 +562,7 @@
     .statement .eyebrow::before,.last-cta .eyebrow::before{transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.22,1,.36,1) .1s;}
     .statement-copy.visible .eyebrow::before,.last-cta .visible .eyebrow::before{transform:none;}
     @media(max-width:950px){.statement{padding:85px 0}.statement-inner{grid-template-columns:1fr;gap:56px;}.statement-media{min-height:480px;}.last-cta{padding:110px 0 90px;min-height:560px}.cta-bottom-row{align-items:flex-start;flex-direction:column}.footer-inner{flex-wrap:wrap;}.footer-legal{grid-template-columns:1fr;}}
-    @media(max-width:600px){.statement{padding:72px 0}.statement-media{min-height:400px}.statement-img.one{inset:0 0 56px 40px}.statement-img.two{width:150px;height:175px;border-width:6px}.statement-badge{right:0;top:20px;padding:10px 14px 10px 10px}.last-cta{padding:90px 0 80px;min-height:0}.last-cta .container{width:calc(100% - 36px)}.last-cta h2{font-size:clamp(3rem,13vw,4.6rem)}.footer{padding:44px 0 26px}.footer-inner{display:grid}.footer nav{gap:15px}.cta-buttons{align-items:stretch;flex-direction:column;width:100%}.cta-buttons a{justify-content:center}.text-link{align-self:flex-start}}
+    @media(max-width:600px){.statement{padding:72px 0}.statement-media{min-height:400px}.statement-img.one{inset:0 40px 56px 0}.statement-img.two{width:150px;height:175px;border-width:6px}.statement-badge{left:0;top:20px;padding:10px 14px 10px 10px}.last-cta{padding:90px 0 80px;min-height:0}.last-cta .container{width:calc(100% - 36px)}.last-cta h2{font-size:clamp(3rem,13vw,4.6rem)}.footer{padding:44px 0 26px}.footer-inner{display:grid}.footer nav{gap:15px}.cta-buttons{align-items:stretch;flex-direction:column;width:100%}.cta-buttons a{justify-content:center}.text-link{align-self:flex-start}}
     @media(prefers-reduced-motion:reduce){.statement-badge{animation:none!important}.statement h2 .line>span,.last-cta h2 .line>span,.statement .eyebrow::before,.last-cta .eyebrow::before,.statement-points li,.statement-badge{transform:none!important;opacity:1!important;transition:none}.statement-img,.statement-img img{clip-path:none!important;transform:none!important;transition:none}.cta-bg{transform:none!important}}
 
     /* ---- Sticky header: normal at the top, blurred bar once scrolled ---- */
