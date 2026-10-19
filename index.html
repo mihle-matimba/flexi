@@ -102,6 +102,61 @@
       .topbar { grid-template-columns:1fr auto; }
       .nav-pill { grid-column:auto; grid-row:auto; }
     }
+
+    /* ---- Second section: "More than funding" showcase ---- */
+    :root { --paper:#f7f7f2; --ink:#17211e; --muted:#68736d; --forest:#203b2f; --lime:#d8ef52; --line:#e0e4dc; }
+    html {scroll-behavior:smooth;}
+    .page-content { color:var(--ink); background:var(--paper); font-family:Inter,Arial,sans-serif; }
+    .page-content a {text-decoration:none;}
+    .container {width:min(1260px,calc(100% - 92px));margin-inline:auto;}
+    .section {padding:116px 0;}
+    .eyebrow {display:inline-flex;gap:12px;align-items:center;text-transform:uppercase;letter-spacing:.15em;font-weight:700;font-size:11px;color:#5a7063;margin-bottom:25px;}
+    .eyebrow::before{content:'';width:22px;height:1px;background:currentColor;}
+    .section h2 {font-size:clamp(2.65rem,5.1vw,5.35rem);line-height:1.02;letter-spacing:-.063em;font-weight:550;max-width:850px;}
+    .btn-dark {display:inline-flex;align-items:center;gap:40px;padding:17px 24px;border-radius:999px;font-size:14px;font-weight:650;transition:transform .25s,background .25s;background:var(--forest);color:#fff;}
+    .btn-dark:hover {transform:translateY(-3px);}
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:950px){.container{width:min(1260px,calc(100% - 48px));}.section{padding:85px 0}}
+    @media(max-width:600px){.container{width:calc(100% - 36px)}.section{padding:72px 0}.section h2{font-size:clamp(2.45rem,10vw,3.7rem)}}
+    .offer-showcase{background:#fff;padding:70px 0 114px;overflow:hidden}
+    .trust-note{width:fit-content;margin:0 auto 48px;padding:13px 26px;border-radius:99px;background:#f2f2ef;color:#343e0a;font-size:14px;font-weight:550;text-align:center}
+    .trust-strip{display:flex;align-items:center;justify-content:space-between;gap:22px 30px;padding:0 15px 132px;flex-wrap:wrap}
+    .trust-strip span{font-size:clamp(13px,1.48vw,21px);font-weight:700;letter-spacing:-.045em;color:#48552a;white-space:nowrap}
+    .trust-strip span:first-child,.trust-strip span:last-child{color:#a4a996}
+    .showcase-grid{display:grid;grid-template-columns:1.32fr .9fr .9fr;align-items:end;gap:16px}
+    .showcase-intro{align-self:stretch;padding:6px 34px 0 0;display:flex;flex-direction:column}
+    .showcase-intro .eyebrow{margin-bottom:22px}
+    .offer-showcase .showcase-intro h2{font-size:clamp(2.65rem,4vw,4.65rem);letter-spacing:-.065em;line-height:1.03;font-weight:540;max-width:580px;color:#2d3803}
+    .showcase-actions{display:flex;gap:11px;flex-wrap:wrap;margin:38px 0 42px}
+    .showcase-actions .btn-dark{background:#2f3f05;gap:24px}
+    .btn-outline{display:inline-flex;align-items:center;justify-content:center;border:1px solid #ccd0c3;border-radius:999px;color:#35430e;padding:15px 24px;font-size:14px;font-weight:600}
+    .showcase-intro p{max-width:490px;color:#7f837a;font-size:15px;line-height:1.58;margin-bottom:16px}
+    .showcase-intro p strong{color:#37421b;font-weight:650}
+    .showcase-card{min-height:382px;border-radius:24px;padding:26px;display:flex;flex-direction:column;overflow:hidden;position:relative}
+    .feature-topline{font-size:11px;letter-spacing:.1em;font-weight:750;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+    .feature-topline span{font-size:23px;letter-spacing:0;font-weight:400}
+    .readiness-card{background:#e1f1f2;color:#263e35}
+    .readiness-card h3{font-size:clamp(1.55rem,2vw,2.2rem);line-height:1.12;letter-spacing:-.055em;font-weight:550;margin:31px 0 19px;max-width:290px}
+    .readiness-graphic{background:#fff9;padding:16px 17px;border:1px solid #ffffff9c;border-radius:15px;margin-top:auto;margin-bottom:18px;box-shadow:0 12px 27px #0b25200d}
+    .readiness-graphic-title{font-size:12px;font-weight:700;margin-bottom:9px}
+    .check-row{display:flex;align-items:center;gap:9px;margin:7px 0;font-size:12px;color:#465c58}
+    .check-dot{width:17px;height:17px;display:grid;place-items:center;border-radius:50%;background:#d3eb8d;color:#263d18;font-size:11px;flex-shrink:0}
+    .showcase-card-action{align-self:flex-start;gap:20px!important;padding:14px 18px!important;font-size:13px!important;background:#344606}
+    .support-card{background:#1b2900;color:#effa94}
+    .support-visual{position:relative;min-height:205px;flex:1;margin:-5px -24px 10px;overflow:hidden}
+    .support-orbit{position:absolute;border:1px solid #a8c06e55;width:250px;height:250px;border-radius:50%;top:15px;left:50%;transform:translateX(-50%)}
+    .orbit-two{width:160px;height:160px;top:60px}
+    .support-center{position:absolute;left:50%;top:110px;transform:translate(-50%,-50%);font-size:24px;letter-spacing:-.08em;font-weight:700;color:#e0f6a0;white-space:nowrap}
+    .support-center span{font-weight:400}
+    .support-pill{position:absolute;background:#c8ee71;color:#253705;border-radius:24px;padding:10px 14px;font-size:12px;font-weight:650;box-shadow:0 9px 28px #0a1900b3}
+    .pill-top{top:18px;left:12px}.pill-mid{top:55px;right:1px;background:#f0f4e9}.pill-bottom{bottom:10px;left:20px;background:#b7c394}
+    .support-card-bottom{position:relative;z-index:2}
+    .support-card-bottom h3{font-size:clamp(1.65rem,2vw,2.2rem);letter-spacing:-.055em;line-height:1.12;font-weight:550;margin:0 0 20px}
+    .support-link{font-size:13px;font-weight:650;display:inline-flex;align-items:center;gap:14px;color:#eaffae}
+    @media(max-width:1150px){.showcase-grid{grid-template-columns:1fr 1fr}.showcase-intro{grid-column:1/-1;padding-right:0;padding-bottom:30px}.trust-strip{padding-bottom:80px}}
+    @media(max-width:650px){.offer-showcase{padding:52px 0 74px}.trust-note{font-size:12px;padding:12px 17px;margin-bottom:32px}.trust-strip{justify-content:center;padding:0 0 72px;gap:16px 22px}.trust-strip span{font-size:14px}.showcase-grid{grid-template-columns:1fr;gap:14px}.showcase-intro{grid-column:auto}.offer-showcase .showcase-intro h2{font-size:clamp(2.55rem,11vw,4rem)}.showcase-actions{margin:28px 0}.showcase-card{min-height:375px;padding:24px}.showcase-intro p{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
   </style>
 </head>
 <body>
@@ -110,7 +165,7 @@
     <div class="hero-inner">
       <header class="topbar">
         <nav class="nav-pill" id="main-nav" aria-label="Main navigation">
-          <a href="https://flexiegrowth.com/">Funding</a>
+          <a href="#funding">Funding</a>
           <a href="https://flexiegrowth.com/">Business Support</a>
           <a href="https://flexiegrowth.com/">Products</a>
           <a class="nav-login" href="https://flexiegrowth.com/">Login</a>
@@ -146,6 +201,42 @@
       </main>
     </div>
   </section>
+
+  <div class="page-content">
+    <section class="section offer-showcase" id="funding" aria-labelledby="offer-title">
+      <div class="container">
+        <div class="trust-note reveal">One partner. More ways to grow your business.</div>
+        <div class="trust-strip reveal" aria-label="Our areas of support">
+          <span>Business finance</span><span>Funding readiness</span><span>Accounting &amp; tax</span><span>Enterprise development</span><span>Business training</span>
+        </div>
+        <div class="showcase-grid">
+          <div class="showcase-intro reveal">
+            <span class="eyebrow">More than funding</span>
+            <h2 id="offer-title">More than funding.<br>A way forward.</h2>
+            <div class="showcase-actions"><a class="btn-dark" href="https://flexiegrowth.com/">Explore Funding <span aria-hidden="true">→</span></a><a class="btn-outline" href="https://flexiegrowth.com/">Our services</a></div>
+            <p><strong>Funding that fits.</strong> From everyday cash flow to bigger opportunities, explore finance that suits your business.</p>
+            <p><strong>Support that moves you forward.</strong> Build stronger financial records, improve your readiness and get practical help to grow.</p>
+          </div>
+          <div class="showcase-card readiness-card reveal">
+            <div class="feature-topline">01 / FUNDING READINESS <span aria-hidden="true">↗</span></div>
+            <h3>Know where you stand before you apply.</h3>
+            <div class="readiness-graphic" aria-hidden="true">
+              <div class="readiness-graphic-title">Your next steps</div>
+              <div class="check-row"><span class="check-dot">✓</span><span>Understand your finances</span></div>
+              <div class="check-row"><span class="check-dot">✓</span><span>Identify what to improve</span></div>
+              <div class="check-row"><span class="check-dot">✓</span><span>Explore suitable options</span></div>
+            </div>
+            <a class="btn-dark showcase-card-action" href="https://flexiegrowth.com/">Check Your Readiness <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="showcase-card support-card reveal">
+            <div class="feature-topline">02 / BUSINESS SUPPORT <span aria-hidden="true">↗</span></div>
+            <div class="support-visual" aria-hidden="true"><span class="support-orbit orbit-one"></span><span class="support-orbit orbit-two"></span><span class="support-center">Flexi<span>Growth</span></span><span class="support-pill pill-top">Accounting</span><span class="support-pill pill-mid">Training</span><span class="support-pill pill-bottom">Guidance</span></div>
+            <div class="support-card-bottom"><h3>Build a stronger business, beyond finance.</h3><a href="https://flexiegrowth.com/" class="support-link">Explore Business Support <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   <script>
     // Keep the actual heading accessible and let the visual spans be decorative.
     document.querySelectorAll('[data-animate-title]').forEach((heading) => {
@@ -185,6 +276,15 @@
       nav.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
     })();
+
+    // Scroll reveal for the sections below the hero.
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      }, {threshold:.12, rootMargin:'0px 0px -35px 0px'});
+      revealEls.forEach(el => observer.observe(el));
+    } else revealEls.forEach(el => el.classList.add('visible'));
   </script>
 </body>
 </html>
