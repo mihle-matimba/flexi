@@ -213,6 +213,112 @@
     .support-link:hover span { transform:translate(5px,-5px); }
     @media (hover:none) { .showcase-card.visible { transform:none; } }
     @media (prefers-reduced-motion:reduce) { .trust-note::after,.support-orbit,.support-pill,.support-center { animation:none!important; } .trust-strip span,.check-row,.check-dot,.showcase-intro h2 .line > span { opacity:1!important; transform:none!important; transition:none; animation:none!important; } .showcase-card.visible { transform:none; } }
+    .growth-options{background:#fff;color:#273104;padding:118px 0 125px;}
+    .growth-options .growth-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:36px;margin-bottom:75px;}
+    .growth-options h2{font-size:clamp(2.7rem,4.7vw,5rem);letter-spacing:-.065em;line-height:1.06;max-width:930px;}
+    .growth-more{flex:none;display:inline-flex;align-items:center;gap:24px;padding:15px 20px;border:1px solid #ccd0c7;border-radius:999px;color:#30391b;font-size:14px;white-space:nowrap;transition:background .25s,transform .25s;}
+    .growth-more:hover{background:#f2f4e8;transform:translateY(-2px);}
+    .growth-cards{display:grid;grid-template-columns:.94fr .94fr 1.37fr;gap:20px;}
+    .growth-tile{height:490px;border-radius:26px;position:relative;overflow:hidden;isolation:isolate;}
+    .growth-tile-one{background:radial-gradient(ellipse at 15% 72%,#a9d749 0%,transparent 46%),radial-gradient(ellipse at 80% 7%,#d9efb6 0%,transparent 46%),linear-gradient(145deg,#d6e7b8,#b6d5bd 50%,#dfeee7);padding:34px;display:flex;justify-content:space-between;flex-direction:column;}
+    .float-finance{margin:28px auto 0;width:100%;max-width:300px;background:#fff;border-radius:27px;padding:28px 21px;box-shadow:0 22px 65px #516f3b1a;transform:rotate(-2deg);}
+    .finance-mini-head{font-size:24px;font-weight:550;letter-spacing:-.06em;line-height:1.1;margin-bottom:34px;}
+    .finance-tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:33px;}
+    .finance-tags span{font-size:11px;white-space:nowrap;border-radius:999px;background:#ecf2dc;padding:9px 11px;}
+    .finance-tags span:nth-child(2){background:#333d0b;color:white;}.finance-tags span:nth-child(3){background:#ddf273;}
+    .finance-mini-note{color:#697064;font-size:12px;line-height:1.5;}
+    .growth-index{font-size:11px;letter-spacing:.12em;font-weight:650;opacity:.72;}
+    .growth-tile-foot h3{font-size:clamp(1.5rem,2.2vw,2.3rem);line-height:1.08;letter-spacing:-.05em;margin-top:10px;font-weight:550;}
+    .growth-tile-two{background:#dfe5fa;padding:33px;display:flex;flex-direction:column;justify-content:space-between;}
+    .growth-tile-head h3{font-size:clamp(2.15rem,3vw,3.4rem);line-height:1;letter-spacing:-.06em;margin-top:15px;font-weight:550;max-width:320px;}
+    .opportunity-visual{background:#fff;padding:25px 24px;border-radius:25px;box-shadow:0 16px 50px #64738b12;}
+    .opportunity-bar{display:flex;justify-content:space-between;font-size:14px;font-weight:650;gap:8px;}
+    .opportunity-bar span:last-child{font-size:23px;color:#889d29;}
+    .opportunity-graph{height:120px;display:flex;align-items:end;gap:12px;padding:25px 0 15px;border-bottom:1px solid #dee3d6;}
+    .opportunity-graph span{flex:1;background:#bccb96;border-radius:6px 6px 0 0;height:30%;}
+    .opportunity-graph span:nth-child(2){height:42%;}.opportunity-graph span:nth-child(3){height:58%;background:#a9ba72;}.opportunity-graph span:nth-child(4){height:73%;background:#8fa653;}.opportunity-graph span:nth-child(5){height:90%;background:#5b7118;}
+    .opportunity-label{font-size:12px;color:#65705f;padding-top:13px;}
+    .growth-tile-three{background:#565d4d;color:white;}
+    .growth-photo{position:absolute;inset:0;background:url("https://pehrklnvmjwsuyjyjtjq.supabase.co/storage/v1/object/public/Client%20Media/Flexie%20Growth/Creative%20Sewing%20Workshop%20with%20Bold%20Fabrics.png") center center/cover no-repeat;transform:scale(1.04);transition:transform .8s ease;}
+    .growth-tile-three:hover .growth-photo{transform:scale(1.1);}
+    .growth-photo-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,16,8,.22) 0%,rgba(9,16,8,.06) 30%,rgba(9,16,8,.40) 78%,rgba(9,16,8,.56) 100%);}
+    .growth-tile-photo-copy{position:absolute;z-index:1;bottom:24px;left:24px;right:24px;padding:22px 24px;border-radius:24px;background:rgba(18,26,15,.32);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 45px rgba(0,0,0,.20);}
+    .growth-tile-photo-copy h3{font-size:clamp(2rem,3vw,3.5rem);font-weight:520;line-height:1.04;letter-spacing:-.058em;margin:12px 0 12px;max-width:460px;}
+    .growth-tile-photo-copy p{font-size:15px;color:#fffffff0;line-height:1.45;max-width:330px;}
+    .growth-tile-photo-copy a{display:inline-flex;align-items:center;gap:15px;font-size:14px;font-weight:650;margin-top:22px;color:white;border-bottom:1px solid #ffffffa0;padding-bottom:6px;}
+    @media(max-width:980px){.growth-cards{grid-template-columns:1fr 1fr;}.growth-tile-three{grid-column:1/-1;}.growth-options .growth-heading{margin-bottom:46px;}}
+    @media(max-width:630px){.growth-options{padding:72px 0;}.growth-options .growth-heading{flex-direction:column;gap:22px;margin-bottom:36px;}.growth-options h2{font-size:clamp(2.5rem,10vw,3.7rem);}.growth-cards{grid-template-columns:1fr;gap:15px;}.growth-tile,.growth-tile-three{grid-column:auto;height:440px;}.growth-tile-photo-copy{left:16px;right:16px;bottom:16px;padding:18px 18px 20px;border-radius:20px;}}
+
+    /* ---- Third section: motion + life ---- */
+    .growth-options { position:relative; overflow:hidden; }
+    .growth-options::before,.growth-options::after { content:""; position:absolute; border-radius:50%; filter:blur(70px); opacity:.45; pointer-events:none; z-index:0; }
+    .growth-options::before { width:420px; height:420px; background:#d8ef52; top:-120px; right:-80px; animation:blob-a 14s ease-in-out infinite alternate; }
+    .growth-options::after { width:380px; height:380px; background:#c3d9f7; bottom:-140px; left:-100px; animation:blob-b 17s ease-in-out infinite alternate; }
+    @keyframes blob-a { to { transform:translate(-160px,120px) scale(1.25); } }
+    @keyframes blob-b { to { transform:translate(180px,-90px) scale(1.2); } }
+    .growth-options .container { position:relative; z-index:1; }
+    .growth-options h2 .w { display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.14em; margin-bottom:-.14em; }
+    .growth-options h2 .w > span { display:inline-block; transform:translateY(110%) rotate(4deg); transition:transform 1s cubic-bezier(.22,1,.36,1); transition-delay:calc(.1s + var(--w) * 70ms); }
+    .growth-heading.visible h2 .w > span { transform:none; }
+    .growth-more { position:relative; overflow:hidden; animation:nudge 3.2s ease-in-out 2.5s infinite; }
+    .growth-more span { display:inline-block; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .growth-more:hover span { transform:translateX(7px); }
+    .growth-more:hover { animation:none; background:#273104; color:#fff; border-color:#273104; }
+    @keyframes nudge { 0%,88%,100% { transform:none; } 94% { transform:translateX(5px); } }
+    .growth-tile { transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s, opacity .8s ease; transition-delay:0s,0s,var(--d,0s); will-change:transform; }
+    .growth-tile.visible { transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px)); }
+    .growth-tile:hover { box-shadow:0 38px 80px rgba(39,49,4,.22); }
+    .growth-tile::after { content:""; position:absolute; inset:0; z-index:3; pointer-events:none; background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 60%); opacity:0; transition:opacity .4s; }
+    .growth-tile:hover::after { opacity:1; }
+    /* tile 1 */
+    .growth-tile-one { animation:gradient-shift 9s ease-in-out infinite alternate; background-size:140% 140%,140% 140%,100% 100%; }
+    @keyframes gradient-shift { from { background-position:0% 0%,100% 0%,0 0; } to { background-position:25% 30%,70% 25%,0 0; } }
+    .float-finance { animation:float-card 6s ease-in-out infinite; transition:box-shadow .4s; }
+    .growth-tile-one:hover .float-finance { box-shadow:0 34px 80px #516f3b40; }
+    @keyframes float-card { 0%,100% { transform:rotate(-2deg) translateY(0); } 50% { transform:rotate(1.5deg) translateY(-14px); } }
+    .finance-tags span { opacity:0; transform:scale(.6) translateY(10px); transition:transform .6s cubic-bezier(.34,1.56,.64,1), opacity .5s, background .3s, color .3s; transition-delay:calc(.6s + var(--t) * .12s); }
+    .growth-tile.visible .finance-tags span { opacity:1; transform:none; }
+    .growth-tile.visible .finance-tags span.pulse { animation:tag-pulse 1.1s ease; }
+    @keyframes tag-pulse { 40% { transform:scale(1.18) rotate(-3deg); background:#d8ef52; color:#273104; } }
+    .finance-tags span:hover { transform:translateY(-3px) scale(1.08)!important; transition-delay:0s; }
+    .finance-mini-note::after { content:"|"; margin-left:2px; animation:blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity:0; } }
+    .growth-tile-one::before { content:""; position:absolute; width:90px; height:90px; border-radius:50%; background:#d8ef52; opacity:.55; filter:blur(2px); right:-20px; bottom:70px; z-index:-1; animation:orb 7s ease-in-out infinite; }
+    @keyframes orb { 0%,100% { transform:translate(0,0) scale(1); } 50% { transform:translate(-40px,-60px) scale(1.5); } }
+    /* tile 2 */
+    .growth-tile-two { background:linear-gradient(145deg,#dfe5fa,#e9ecfb 50%,#d3dcf8); background-size:200% 200%; animation:gradient-shift2 10s ease-in-out infinite alternate; }
+    @keyframes gradient-shift2 { to { background-position:100% 100%; } }
+    .growth-tile-two::before { content:""; position:absolute; inset:-30%; z-index:-1; background:conic-gradient(from 0deg,transparent,rgba(216,239,82,.35),transparent 30%); animation:spin 12s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .opportunity-visual { transition:transform .4s; }
+    .growth-tile-two:hover .opportunity-visual { transform:translateY(-6px) scale(1.02); }
+    .opportunity-graph span { transform-origin:bottom; transform:scaleY(0); transition:transform .9s cubic-bezier(.22,1,.36,1); transition-delay:calc(.6s + var(--b) * .12s); }
+    .growth-tile.visible .opportunity-graph span { transform:scaleY(1); animation:bar-breathe 3.4s ease-in-out infinite; animation-delay:calc(2s + var(--b) * .3s); }
+    @keyframes bar-breathe { 0%,100% { transform:scaleY(1); } 50% { transform:scaleY(.82); } }
+    .opportunity-graph span:hover { filter:brightness(1.15); }
+    .opportunity-bar span:last-child { display:inline-block; animation:arrow-bob 2s ease-in-out infinite; }
+    @keyframes arrow-bob { 0%,100% { transform:translate(0,0); } 50% { transform:translate(4px,-5px); } }
+    .opportunity-label::before { content:""; display:inline-block; width:7px; height:7px; margin-right:8px; border-radius:50%; background:#8fa653; animation:live 1.6s ease-out infinite; }
+    @keyframes live { 0% { box-shadow:0 0 0 0 rgba(143,166,83,.7); } 100% { box-shadow:0 0 0 10px rgba(143,166,83,0); } }
+    /* tile 3 */
+    .growth-photo { animation:kenburns 18s ease-in-out infinite alternate; }
+    @keyframes kenburns { from { transform:scale(1.04) translate(0,0); } to { transform:scale(1.14) translate(-2%,-2%); } }
+    .growth-tile-three:hover .growth-photo { animation-play-state:paused; transform:scale(1.12); }
+    .growth-tile-photo-copy { transition:transform .5s cubic-bezier(.22,1,.36,1), background .4s; animation:glass-float 6s ease-in-out infinite; }
+    @keyframes glass-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+    .growth-tile-three:hover .growth-tile-photo-copy { background:rgba(18,26,15,.5); }
+    .growth-tile-photo-copy a { position:relative; background:linear-gradient(#d8ef52,#d8ef52) 0 100%/0 2px no-repeat; transition:background-size .5s, color .3s; }
+    .growth-tile-photo-copy a:hover { background-size:100% 2px; color:#d8ef52; }
+    .growth-tile-photo-copy a span { display:inline-block; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .growth-tile-photo-copy a:hover span { transform:translate(5px,-5px); }
+    .growth-tile-three::before { content:""; position:absolute; top:0; bottom:0; width:30%; z-index:2; pointer-events:none; background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent); transform:translateX(-200%) skewX(-18deg); animation:sheen 6s ease-in-out 1.5s infinite; }
+    .growth-index { display:inline-flex; align-items:center; gap:8px; }
+    .growth-index::before { content:""; width:7px; height:7px; border-radius:50%; background:currentColor; animation:live2 2s ease-in-out infinite; }
+    @keyframes live2 { 0%,100% { opacity:.3; transform:scale(.8); } 50% { opacity:1; transform:scale(1.2); } }
+    .growth-tile h3 { transition:transform .4s cubic-bezier(.22,1,.36,1); }
+    .growth-tile:hover h3 { transform:translateX(6px); }
+    @media (hover:none) { .growth-tile.visible { transform:none; } }
+    @media (prefers-reduced-motion:reduce) { .growth-options::before,.growth-options::after,.growth-tile *,.growth-tile::before,.growth-photo,.growth-more,.growth-tile-one,.growth-tile-two,.float-finance,.growth-index::before,.finance-mini-note::after { animation:none!important; } .growth-options h2 .w > span,.finance-tags span,.opportunity-graph span { transform:none!important; opacity:1!important; transition:none; } .growth-tile.visible { transform:none; } }
   </style>
 </head>
 <body>
@@ -289,6 +395,37 @@
             <div class="support-visual" aria-hidden="true"><span class="support-orbit orbit-one"></span><span class="support-orbit orbit-two"></span><span class="support-center">Flexi<span>Growth</span></span><span class="support-pill pill-top">Accounting</span><span class="support-pill pill-mid">Training</span><span class="support-pill pill-bottom">Guidance</span></div>
             <div class="support-card-bottom"><h3>Build a stronger business, beyond finance.</h3><a href="https://flexiegrowth.com/" class="support-link">Explore Business Support <span aria-hidden="true">↗</span></a></div>
           </div>
+        </div>
+      </div>
+    </section>
+    <section class="section growth-options" id="your-needs" aria-labelledby="needs-title">
+      <div class="container">
+        <div class="growth-heading reveal">
+          <h2 id="needs-title"><span class="w" style="--w:0"><span>Funding</span></span> <span class="w" style="--w:1"><span>for</span></span> <span class="w" style="--w:2"><span>wherever</span></span> <span class="w" style="--w:3"><span>business</span></span> <span class="w" style="--w:4"><span>takes</span></span> <span class="w" style="--w:5"><span>you.</span></span> </h2>
+          <a class="growth-more" href="https://flexiegrowth.com/">Explore funding <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="growth-cards">
+          <article class="growth-tile growth-tile-one reveal">
+            <div class="float-finance" aria-hidden="true">
+              <div class="finance-mini-head">Made for your business</div>
+              <div class="finance-tags"><span style="--t:0">Stock & supplies</span><span style="--t:1">Cash flow</span><span style="--t:2">Daily expenses</span><span style="--t:3">New projects</span></div>
+              <div class="finance-mini-note">Finance for what matters next.</div>
+            </div>
+            <div class="growth-tile-foot"><span class="growth-index">01 / WORKING CAPITAL</span><h3>Keep business moving.</h3></div>
+          </article>
+          <article class="growth-tile growth-tile-two reveal" style="--d:.15s">
+            <div class="growth-tile-head"><span class="growth-index">02 / OPPORTUNITY</span><h3>Ready for what’s next.</h3></div>
+            <div class="opportunity-visual" aria-hidden="true">
+              <div class="opportunity-bar"><span>Business opportunities</span><span>↗</span></div>
+              <div class="opportunity-graph"><span style="--b:0"></span><span style="--b:1"></span><span style="--b:2"></span><span style="--b:3"></span><span style="--b:4"></span></div>
+              <div class="opportunity-label">Finance to help you take on more.</div>
+            </div>
+          </article>
+          <article class="growth-tile growth-tile-three reveal" style="--d:.3s">
+            <div class="growth-photo" aria-hidden="true"></div>
+            <div class="growth-photo-shade" aria-hidden="true"></div>
+            <div class="growth-tile-photo-copy"><span class="growth-index">03 / FUNDING READINESS</span><h3>Make your next move with confidence.</h3><p>Know where you stand and what to improve before you apply.</p><a href="https://flexiegrowth.com/">Check your readiness <span aria-hidden="true">↗</span></a></div>
+          </article>
         </div>
       </div>
     </section>
@@ -378,6 +515,37 @@
       new MutationObserver(() => document.body.classList.contains('menu-open') ? lenis.stop() : lenis.start())
         .observe(document.body, { attributes: true, attributeFilter: ['class'] });
     }
+
+    // Third section: tilt + spotlight, mouse parallax on the floating card, rotating tag pulse.
+    document.querySelectorAll('.growth-tile').forEach((tile) => {
+      if (!window.matchMedia('(hover:hover)').matches) return;
+      const float = tile.querySelector('.float-finance');
+      tile.addEventListener('mousemove', (e) => {
+        const r = tile.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        tile.style.transition = 'transform .1s, box-shadow .5s, opacity .8s ease';
+        tile.style.setProperty('--ry', ((x - .5) * 7) + 'deg');
+        tile.style.setProperty('--rx', ((.5 - y) * 7) + 'deg');
+        tile.style.setProperty('--ty', '-8px');
+        tile.style.setProperty('--mx', (x * 100) + '%');
+        tile.style.setProperty('--my', (y * 100) + '%');
+        if (float) float.style.translate = ((x - .5) * 18) + 'px ' + ((y - .5) * 14) + 'px';
+      });
+      tile.addEventListener('mouseleave', () => {
+        tile.style.transition = '';
+        ['--rx', '--ry', '--ty'].forEach((k) => tile.style.removeProperty(k));
+        if (float) float.style.translate = '';
+      });
+    });
+    (() => {
+      const tags = [...document.querySelectorAll('.finance-tags span')];
+      let i = 0;
+      setInterval(() => {
+        if (!tags.length || document.hidden) return;
+        const el = tags[i++ % tags.length];
+        el.classList.remove('pulse'); void el.offsetWidth; el.classList.add('pulse');
+      }, 1800);
+    })();
   </script>
 </body>
 </html>
