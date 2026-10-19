@@ -30,6 +30,7 @@
     .copy { max-width:780px; }
     .copy h1 { font-size:clamp(3.2rem,6.3vw,6.3rem); letter-spacing:-.055em; line-height:.98; text-shadow:0 2px 24px rgba(0,0,0,.35); font-weight:600; margin-bottom:26px; }
     /* Individual letters rise and fade in, with a soft stagger. */
+    .animated-title .hl .letter { color:#d8ef52; }
     .animated-title .word { display:inline-block; white-space:nowrap; }
     .animated-title .letter { display:inline-block; opacity:0; transform:translate3d(0, .65em, 0); filter:blur(7px); animation:letter-rise .82s cubic-bezier(.22,1,.36,1) forwards; animation-delay:calc(.24s + var(--i) * 48ms); will-change:transform,opacity,filter; }
     @keyframes letter-rise { to { opacity:1; transform:translate3d(0,0,0); filter:blur(0); } }
@@ -125,7 +126,7 @@
       </header>
       <main class="hero-content">
         <div class="copy">
-          <h1 class="animated-title" data-animate-title>Your business has places to go. Let's get it there.</h1>
+          <h1 class="animated-title" data-animate-title data-highlight="Let's get it there.">Your business has places to go. Let's get it there.</h1>
           <p>Access business funding, get funding-ready and find the support you need to make your next move.</p>
           <a class="cta-btn" href="https://flexiegrowth.com/">Check your readiness <span aria-hidden="true">→</span></a>
         </div>
@@ -152,10 +153,13 @@
       heading.setAttribute('aria-label', title);
       heading.textContent = '';
       let letterIndex = 0;
+      const phrase = heading.dataset.highlight || '';
+      const hlStart = phrase && title.endsWith(phrase) ? title.slice(0, -phrase.length).trim().split(' ').length : Infinity;
       title.split(' ').forEach((word, wordIndex) => {
-        if (wordIndex) heading.append(document.createTextNode(' '));
+        if (wordIndex === hlStart) heading.append(document.createElement('br'));
+        else if (wordIndex) heading.append(document.createTextNode(' '));
         const wordSpan = document.createElement('span');
-        wordSpan.className = 'word';
+        wordSpan.className = wordIndex >= hlStart ? 'word hl' : 'word';
         wordSpan.setAttribute('aria-hidden', 'true');
         for (const char of word) {
           const span = document.createElement('span');
