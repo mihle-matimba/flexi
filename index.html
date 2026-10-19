@@ -538,10 +538,24 @@
     /* ---- Sticky header: normal at the top, blurred bar once scrolled ---- */
     .topbar{position:fixed;top:0;left:0;right:0;z-index:50;padding:28px 40px 0;transition:padding .4s cubic-bezier(.22,1,.36,1),background .4s ease,box-shadow .4s ease,-webkit-backdrop-filter .4s,backdrop-filter .4s;}
     .topbar-spacer{height:66px;flex:none;}
-    .topbar.scrolled{padding:12px 40px;background:rgba(14,22,12,.5);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);box-shadow:0 1px 0 rgba(255,255,255,.08),0 10px 30px rgba(0,0,0,.12);}
-    @media(min-width:651px){.topbar.scrolled .nav-pill{background:rgba(255,255,255,.08);}}
-    .topbar.scrolled .login-btn,.topbar.scrolled .menu-btn{background:rgba(255,255,255,.1);}
-    .topbar.scrolled .logo-wrap img{height:34px;transition:height .4s;}
+    .topbar.scrolled{padding:12px 40px;}
+    /* Header has no bar background: only the menu-items card is blurred; logo and buttons adapt to what is underneath. */
+    .topbar .logo-wrap img,.topbar .nav-pill,.topbar .nav-pill a,.topbar .login-btn,.topbar .signup-btn,.topbar .menu-btn,.topbar .menu-btn span{transition:filter .35s,background .35s,color .35s,border-color .35s,height .4s;}
+    .topbar.scrolled .logo-wrap img{height:34px;}
+    @media(min-width:651px){
+      .topbar.scrolled .nav-pill{-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);background:rgba(14,22,12,.45);box-shadow:0 8px 28px rgba(0,0,0,.14);}
+      .topbar.scrolled.on-light .nav-pill{background:rgba(255,255,255,.55);box-shadow:0 8px 28px rgba(23,33,18,.1),inset 0 0 0 1px rgba(23,33,18,.06);}
+      .topbar.scrolled.on-light .nav-pill a{color:#17211e;}
+      .topbar.scrolled.on-light .nav-pill a:hover{background:rgba(23,33,18,.08);}
+    }
+    .topbar.on-light .logo-wrap img{filter:brightness(0);}
+    .topbar.on-light .login-btn{background:rgba(23,33,18,.07);color:#17211e;}
+    .topbar.on-light .signup-btn{background:#17211e;color:#fff;}
+    .topbar.on-light .menu-btn{background:rgba(23,33,18,.08);color:#17211e;}
+    .topbar.on-light .menu-btn span{background:#17211e;}
+    body.menu-open .topbar .logo-wrap img{filter:brightness(0) invert(1);}
+    body.menu-open .topbar .menu-btn{background:rgba(255,255,255,.12);color:#fff;}
+    body.menu-open .topbar .menu-btn span{background:#fff;}
     @media(min-width:651px) and (max-width:1100px){.topbar.scrolled{grid-template-columns:auto 1fr auto;}.topbar.scrolled .logo-wrap{grid-column:1;grid-row:1;}.topbar.scrolled .nav-pill{grid-column:2;grid-row:1;justify-self:center;}.topbar.scrolled .actions{grid-column:3;grid-row:1;}}
     @media(max-width:650px){.topbar{padding:20px 18px 0;}.topbar.scrolled{padding:10px 18px;}.topbar-spacer{height:46px;}}
     body.menu-open .topbar,body.menu-open .topbar.scrolled{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;}
@@ -824,7 +838,14 @@
       const spacer = document.querySelector('.topbar-spacer');
       if (!bar || !spacer) return;
       const measure = () => { spacer.style.height = (bar.offsetHeight - parseFloat(getComputedStyle(bar).paddingTop) - parseFloat(getComputedStyle(bar).paddingBottom)) + 'px'; };
-      const update = () => bar.classList.toggle('scrolled', window.scrollY > 24);
+      const hero = document.querySelector('.hero');
+      const footer = document.querySelector('.footer');
+      const update = () => {
+        bar.classList.toggle('scrolled', window.scrollY > 24);
+        const probe = 40; // header centre line
+        const onDark = hero.getBoundingClientRect().bottom > probe || (footer && footer.getBoundingClientRect().top < probe);
+        bar.classList.toggle('on-light', !onDark);
+      };
       measure(); update();
       window.addEventListener('scroll', update, { passive: true });
       window.addEventListener('resize', () => { if (!bar.classList.contains('scrolled')) measure(); });
