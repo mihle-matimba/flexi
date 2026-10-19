@@ -105,7 +105,10 @@
 
     /* ---- Second section: "More than funding" showcase ---- */
     :root { --paper:#f7f7f2; --ink:#17211e; --muted:#68736d; --forest:#203b2f; --lime:#d8ef52; --line:#e0e4dc; }
-    html {scroll-behavior:smooth;}
+    html.lenis,html.lenis body { height:auto; }
+    .lenis.lenis-smooth { scroll-behavior:auto!important; }
+    .lenis.lenis-stopped { overflow:hidden; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior:contain; }
     .page-content { color:var(--ink); background:var(--paper); font-family:Inter,Arial,sans-serif; }
     .page-content a {text-decoration:none;}
     .container {width:min(1260px,calc(100% - 92px));margin-inline:auto;}
@@ -156,7 +159,7 @@
     .support-link{font-size:13px;font-weight:650;display:inline-flex;align-items:center;gap:14px;color:#eaffae}
     @media(max-width:1150px){.showcase-grid{grid-template-columns:1fr 1fr}.showcase-intro{grid-column:1/-1;padding-right:0;padding-bottom:30px}.trust-strip{padding-bottom:80px}}
     @media(max-width:650px){.offer-showcase{padding:52px 0 74px}.trust-note{font-size:12px;padding:12px 17px;margin-bottom:32px}.trust-strip{justify-content:center;padding:0 0 72px;gap:16px 22px}.trust-strip span{font-size:14px}.showcase-grid{grid-template-columns:1fr;gap:14px}.showcase-intro{grid-column:auto}.offer-showcase .showcase-intro h2{font-size:clamp(2.55rem,11vw,4rem)}.showcase-actions{margin:28px 0}.showcase-card{min-height:375px;padding:24px}.showcase-intro p{font-size:15px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
     /* ---- Second section: extra motion + hover ---- */
     .reveal { transition-delay:var(--d,0s); }
@@ -290,6 +293,7 @@
       </div>
     </section>
   </div>
+  <script src="assets/js/lenis.min.js"></script>
   <script>
     // Keep the actual heading accessible and let the visual spans be decorative.
     document.querySelectorAll('[data-animate-title]').forEach((heading) => {
@@ -357,6 +361,23 @@
         ['--rx', '--ry', '--ty'].forEach((k) => card.style.removeProperty(k));
       });
     });
+
+    // Smooth, eased scrolling (Lenis) with anchor links and the mobile menu wired in.
+    window.lenis = null;
+    if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const lenis = window.lenis = new Lenis({ duration: 1.25, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, wheelMultiplier: 1 });
+      const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          const target = id.length > 1 && document.querySelector(id);
+          if (id === '#' || target) { e.preventDefault(); lenis.scrollTo(target || 0, { offset: 0, duration: 1.6 }); }
+        });
+      });
+      new MutationObserver(() => document.body.classList.contains('menu-open') ? lenis.stop() : lenis.start())
+        .observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
   </script>
 </body>
 </html>
