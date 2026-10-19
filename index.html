@@ -490,50 +490,79 @@
     @media(hover:none){.ready-panel.visible{transform:none;}}
     @media(prefers-reduced-motion:reduce){.ready-panel .panel-photo,.ready-panel::after,.panel-icon,.panel-small::before{animation:none!important}.ready h2 .line>span,.ready-copy .section-intro,.ready-copy .btn-dark,.panel-tag,.panel-bottom,.ready .eyebrow::before{transform:none!important;opacity:1!important;transition:none}.ready-panel.visible{transform:none}}
 
-    /* ---- Closing sections: statement, final CTA, footer ---- */
-    .text-link {display:inline-flex;align-items:center;gap:18px;font-size:14px;font-weight:700;border-bottom:1px solid currentColor;padding-bottom:9px;}
-    .statement{background:#e7edde;min-height:470px;display:flex;align-items:center;}
-    .statement-inner{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:end;}
-    .statement h2{margin:0;}.statement p{color:#4d6555;font-size:18px;line-height:1.7;margin-bottom:27px;}
-    .last-cta{background:#d9ef66;color:#1d3223;padding:108px 0 95px;}
-    .last-cta .eyebrow{color:#49613a;}.last-cta h2{font-size:clamp(3.4rem,6.9vw,7.5rem);max-width:1000px;margin-bottom:34px;}
-    .cta-bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;}
-    .cta-bottom-row p{max-width:400px;font-size:18px;line-height:1.6;color:#52663f;}
-    .cta-buttons{display:flex;flex-wrap:wrap;gap:18px;align-items:center;}
-    .footer{background:#182b21;color:#d5e2d5;padding:38px 0;}
-    .footer-inner{display:flex;gap:25px;align-items:center;justify-content:space-between;}
-    .footer-logo{font-size:23px;letter-spacing:-.04em;font-weight:700;color:white;}
-    .footer p{font-size:12px;color:#b4c4b7;}
-    .footer nav{display:flex;gap:26px;flex-wrap:wrap;font-size:13px;}
-    @media(max-width:950px){.statement-inner{grid-template-columns:1fr;gap:35px;}.cta-bottom-row{align-items:flex-start;flex-direction:column}.footer-inner{flex-wrap:wrap;}}
-    @media(max-width:600px){.statement{min-height:auto}.last-cta{padding:76px 0}.last-cta h2{font-size:clamp(3.1rem,13vw,5rem)}.footer-inner{display:grid}.footer nav{gap:15px}.cta-buttons{align-items:stretch;flex-direction:column;width:100%}.cta-buttons a{justify-content:center}}
-    /* motion + interaction */
-    .statement h2 .line,.last-cta h2 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;}
-    .statement h2 .line>span,.last-cta h2 .line>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);transition-delay:calc(.15s + var(--l) * .14s);}
-    .statement .visible h2 .line>span,.last-cta .visible h2 .line>span,.statement h2.visible .line>span{transform:none;}
-    .statement .eyebrow::before,.last-cta .eyebrow::before{transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.22,1,.36,1) .1s;}
-    .statement .visible .eyebrow::before,.last-cta .visible .eyebrow::before{transform:none;}
-    .statement{position:relative;overflow:hidden;}
-    .statement::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(73,97,58,.22);right:-140px;top:-180px;box-shadow:0 0 0 46px rgba(231,237,222,.0),0 0 0 47px rgba(73,97,58,.14),0 0 0 100px rgba(231,237,222,0),0 0 0 101px rgba(73,97,58,.09);animation:ring-breathe 9s ease-in-out infinite;pointer-events:none;}
-    .statement .container{position:relative;}
-    .text-link{position:relative;border-bottom:0;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .4s,color .3s;}
+    /* ---- Closing sections: statement, final CTA with parallax, footer with legal disclosure ---- */
+    .text-link{display:inline-flex;align-items:center;gap:18px;font-size:14px;font-weight:700;padding-bottom:9px;position:relative;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .4s,color .3s;}
     .text-link:hover{background-size:0 1px;}
     .text-link span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
     .text-link:hover span{transform:translate(5px,-5px);}
-    .last-cta{position:relative;overflow:hidden;background:linear-gradient(120deg,#d9ef66 0%,#e3f47e 50%,#d4eb5c 100%);background-size:200% 200%;animation:cta-shift 14s ease-in-out infinite alternate;}
-    @keyframes cta-shift{to{background-position:100% 50%;}}
-    .last-cta::after{content:"";position:absolute;width:620px;height:620px;border-radius:50%;border:1px solid rgba(29,50,35,.14);right:-180px;bottom:-300px;box-shadow:0 0 0 60px transparent,0 0 0 61px rgba(29,50,35,.1);animation:ring-breathe 10s ease-in-out infinite;pointer-events:none;}
-    .last-cta .container{position:relative;z-index:1;}
-    .last-cta .btn-dark span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
-    .last-cta .btn-dark:hover span{transform:translate(4px,-4px);}
-    .last-cta .btn-dark{box-shadow:0 16px 35px rgba(25,44,31,.18);}
+    /* statement */
+    .statement{background:#f6f7f1;color:#17211e;padding:120px 0;overflow:hidden;}
+    .statement-inner{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;}
+    .statement h2{margin:0 0 28px;max-width:640px;font-size:clamp(2.6rem,4.6vw,4.9rem);}
+    .statement p{color:#566a5d;font-size:18px;line-height:1.7;margin-bottom:28px;max-width:520px;}
+    .statement-points{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 36px;padding:0;list-style:none;}
+    .statement-points li{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:999px;background:#fff;border:1px solid #e3e8dc;color:#2c3b2f;font-size:14px;font-weight:600;box-shadow:0 6px 18px rgba(32,43,23,.05);transition:transform .3s,box-shadow .3s,background .3s;opacity:0;transform:translateY(12px) scale(.96);}
+    .statement-points li::before{content:"\2713";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#d8ef52;color:#273104;font-size:11px;}
+    .statement-copy.visible .statement-points li{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .3s;transition-delay:calc(.5s + var(--i) * .12s);}
+    .statement-copy.visible .statement-points li:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(32,43,23,.1);transition-delay:0s;}
+    .statement-media{position:relative;min-height:560px;}
+    .statement-img{position:absolute;overflow:hidden;border-radius:26px;box-shadow:0 28px 60px rgba(23,33,18,.16);}
+    .statement-img img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 1.4s cubic-bezier(.22,1,.36,1);}
+    .statement-media.visible .statement-img img{transform:scale(1);}
+    .statement-media:hover .statement-img img{transform:scale(1.05);}
+    .statement-img.one{inset:0 0 70px 70px;clip-path:inset(0 0 100% 0 round 26px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1);}
+    .statement-img.two{left:0;bottom:0;width:230px;height:260px;border:8px solid #f6f7f1;border-radius:30px;clip-path:inset(100% 0 0 0 round 24px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1) .35s;}
+    .statement-media.visible .statement-img.one,.statement-media.visible .statement-img.two{clip-path:inset(0 0 0 0 round 26px);}
+    .statement-badge{position:absolute;right:-12px;top:44px;z-index:3;display:flex;align-items:center;gap:12px;padding:14px 18px 14px 14px;border-radius:18px;background:#fff;box-shadow:0 18px 40px rgba(23,33,18,.16);opacity:0;transform:translateY(16px);transition:opacity .7s ease .9s,transform .8s cubic-bezier(.34,1.56,.64,1) .9s;}
+    .statement-media.visible .statement-badge{opacity:1;transform:none;animation:badge-float 6s ease-in-out 2s infinite;}
+    @keyframes badge-float{0%,100%{translate:0 0;}50%{translate:0 -8px;}}
+    .statement-badge i{font-style:normal;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#26341d;color:#d8ef52;font-size:18px;}
+    .statement-badge b{display:block;font-size:14px;color:#17211e;}
+    .statement-badge small{display:block;font-size:12px;color:#6b7a70;margin-top:2px;}
+    /* final CTA with parallax photo */
+    .last-cta{position:relative;overflow:hidden;color:#fff;background:#14210f;padding:150px 0 130px;min-height:640px;display:flex;align-items:center;isolation:isolate;}
+    .cta-bg{position:absolute;left:0;right:0;top:-18%;bottom:-18%;z-index:-2;will-change:transform;}
+    .cta-bg img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+    .last-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,26,12,.9) 0%,rgba(14,26,12,.72) 48%,rgba(14,26,12,.38) 100%),linear-gradient(180deg,rgba(14,26,12,.2),rgba(14,26,12,.55));}
+    .last-cta .container{position:relative;width:min(1260px,calc(100% - 92px));}
+    .last-cta .eyebrow{color:#d8ef52;}
+    .last-cta h2{font-size:clamp(3.2rem,6.9vw,7rem);max-width:900px;margin-bottom:34px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);}
+    .last-cta h2 em{font-style:normal;color:#d8ef52;}
+    .cta-bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;}
+    .cta-bottom-row p{max-width:420px;font-size:18px;line-height:1.6;color:rgba(255,255,255,.86);margin:0;}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:22px;align-items:center;}
+    .last-cta .btn-lime{display:inline-flex;align-items:center;gap:36px;padding:18px 26px;border-radius:999px;background:#d8ef52;color:#17211e;font-size:14px;font-weight:700;box-shadow:0 18px 40px rgba(0,0,0,.28);transition:transform .25s,background .25s,box-shadow .25s;}
+    .last-cta .btn-lime:hover{transform:translateY(-3px);background:#e6fc67;box-shadow:0 24px 50px rgba(0,0,0,.34);}
+    .last-cta .btn-lime span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+    .last-cta .btn-lime:hover span{transform:translate(4px,-4px);}
+    .last-cta .text-link{color:#fff;}
+    /* footer */
+    .footer{background:#12231a;color:#d5e2d5;padding:56px 0 30px;}
+    .footer-inner{display:flex;gap:25px;align-items:center;justify-content:space-between;}
+    .footer p{font-size:12px;color:#b4c4b7;}
+    .footer nav{display:flex;gap:26px;flex-wrap:wrap;font-size:13px;}
     .footer nav a{position:relative;transition:color .3s;}
     .footer nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#d8ef52;transform:scaleX(0);transform-origin:left;transition:transform .35s;}
     .footer nav a:hover{color:#fff;}.footer nav a:hover::after{transform:scaleX(1);}
     .footer-logo{display:inline-flex;align-items:center;}
     .footer-logo img{display:block;height:34px;width:auto;max-width:190px;object-fit:contain;filter:brightness(0) invert(1);transition:transform .3s,opacity .3s;}
     .footer-logo:hover img{transform:translateY(-2px);opacity:.85;}
-    @media(prefers-reduced-motion:reduce){.statement::before,.last-cta,.last-cta::after{animation:none!important}.statement h2 .line>span,.last-cta h2 .line>span,.statement .eyebrow::before,.last-cta .eyebrow::before{transform:none!important;transition:none}}
+    .footer-legal{margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:1fr auto;gap:12px 48px;align-items:start;}
+    .footer-disclosure{max-width:860px;font-size:12px;line-height:1.7;color:#9db2a3;}
+    .footer-disclosure strong{color:#d5e2d5;font-weight:650;}
+    .footer-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(216,239,82,.4);border-radius:999px;color:#d8ef52;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+    .footer-badge::before{content:"\2713";font-size:11px;}
+    .footer-copy{grid-column:1/-1;font-size:12px;color:#7f9887;display:flex;gap:22px;flex-wrap:wrap;}
+    .footer-copy a{color:#9db2a3;transition:color .3s;}.footer-copy a:hover{color:#d8ef52;}
+    /* shared reveal for headings */
+    .statement h2 .line,.last-cta h2 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;}
+    .statement h2 .line>span,.last-cta h2 .line>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);transition-delay:calc(.15s + var(--l) * .14s);}
+    .statement-copy.visible h2 .line>span,.last-cta .visible h2 .line>span{transform:none;}
+    .statement .eyebrow::before,.last-cta .eyebrow::before{transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.22,1,.36,1) .1s;}
+    .statement-copy.visible .eyebrow::before,.last-cta .visible .eyebrow::before{transform:none;}
+    @media(max-width:950px){.statement{padding:85px 0}.statement-inner{grid-template-columns:1fr;gap:56px;}.statement-media{min-height:480px;}.last-cta{padding:110px 0 90px;min-height:560px}.cta-bottom-row{align-items:flex-start;flex-direction:column}.footer-inner{flex-wrap:wrap;}.footer-legal{grid-template-columns:1fr;}}
+    @media(max-width:600px){.statement{padding:72px 0}.statement-media{min-height:400px}.statement-img.one{inset:0 0 56px 40px}.statement-img.two{width:150px;height:175px;border-width:6px}.statement-badge{right:0;top:20px;padding:10px 14px 10px 10px}.last-cta{padding:90px 0 80px;min-height:0}.last-cta .container{width:calc(100% - 36px)}.last-cta h2{font-size:clamp(3rem,13vw,4.6rem)}.footer{padding:44px 0 26px}.footer-inner{display:grid}.footer nav{gap:15px}.cta-buttons{align-items:stretch;flex-direction:column;width:100%}.cta-buttons a{justify-content:center}.text-link{align-self:flex-start}}
+    @media(prefers-reduced-motion:reduce){.statement-badge{animation:none!important}.statement h2 .line>span,.last-cta h2 .line>span,.statement .eyebrow::before,.last-cta .eyebrow::before,.statement-points li,.statement-badge{transform:none!important;opacity:1!important;transition:none}.statement-img,.statement-img img{clip-path:none!important;transform:none!important;transition:none}.cta-bg{transform:none!important}}
 
     /* ---- Sticky header: normal at the top, blurred bar once scrolled ---- */
     .topbar{position:fixed;top:0;left:0;right:0;z-index:50;padding:28px 40px 0;transition:padding .4s cubic-bezier(.22,1,.36,1),background .4s ease,box-shadow .4s ease,-webkit-backdrop-filter .4s,backdrop-filter .4s;}
@@ -705,9 +734,24 @@
       <div class="reveal ready-copy"><span class="eyebrow">We're here for the whole journey</span><h2 id="ready-title"><span class="line" style="--l:0"><span>Not quite ready?</span></span><span class="line" style="--l:1"><span>You're still in the</span></span><span class="line" style="--l:2"><span>right place.</span></span></h2><p class="section-intro">A business shouldn't be defined by one funding decision. If you're not ready to apply, we'll help you understand what needs attention — from financial records to compliance and cash flow.</p><a class="btn-dark" href="https://flexiegrowth.com/">Check My Readiness <span aria-hidden="true">↗</span></a></div>
       <div class="ready-panel reveal" aria-label="Restaurant owner business support illustration"><div class="panel-photo" aria-hidden="true"></div><div class="panel-icon" aria-hidden="true">✓</div><div class="panel-bottom"><p class="panel-small">Progress starts with clarity</p><strong>Every next step counts.</strong><span class="panel-note">Whether you run a restaurant, retail store or service business, we’ll help you understand what to fix next.</span></div></div>
     </div></section>
-    <section class="section statement" aria-labelledby="statement-title"><div class="container statement-inner"><div class="reveal"><span class="eyebrow">Built for ambition</span><h2 id="statement-title"><span class="line" style="--l:0"><span>Built for businesses</span></span><span class="line" style="--l:1"><span>building something</span></span><span class="line" style="--l:2"><span>bigger.</span></span></h2></div><div class="reveal"><p>Whether you're managing today's expenses, taking on a new contract or preparing for your next stage of growth, we're here to help you move forward.</p><a href="https://flexiegrowth.com/" class="text-link">Get Started <span aria-hidden="true">↗</span></a></div></div></section>
-    <section class="section last-cta" id="get-started" aria-labelledby="last-cta-title"><div class="container"><div class="reveal"><span class="eyebrow">Let's move forward</span><h2 id="last-cta-title"><span class="line" style="--l:0"><span>Ready for</span></span><span class="line" style="--l:1"><span>what's next?</span></span></h2></div><div class="cta-bottom-row reveal"><p>Find out where your business stands and take the next step with confidence.</p><div class="cta-buttons"><a href="https://flexiegrowth.com/" class="btn-dark">Check Your Funding Readiness <span aria-hidden="true">↗</span></a><a href="https://flexiegrowth.com/" class="text-link">Speak to Our Team <span aria-hidden="true">↗</span></a></div></div></div></section>
-    <footer class="footer"><div class="container footer-inner"><a href="#" class="footer-logo" aria-label="FlexiGrowth — back to top"><img src="assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" /></a><p>Business finance &amp; support for South African businesses.</p><nav aria-label="Footer navigation"><a href="#funding">Funding</a><a href="#business-support">Business Support</a><a href="#how-it-works">How it works</a><a href="https://flexiegrowth.com/">Contact</a></nav></div></footer>
+    <section class="section statement" aria-labelledby="statement-title"><div class="container statement-inner">
+      <div class="reveal statement-copy"><span class="eyebrow">Built for ambition</span><h2 id="statement-title"><span class="line" style="--l:0"><span>Built for businesses</span></span><span class="line" style="--l:1"><span>building something</span></span><span class="line" style="--l:2"><span>bigger.</span></span></h2><p>Whether you're managing today's expenses, taking on a new contract or preparing for your next stage of growth, we're here to help you move forward.</p><ul class="statement-points"><li style="--i:0">Today's expenses</li><li style="--i:1">New contracts</li><li style="--i:2">Your next stage of growth</li></ul><a href="https://flexiegrowth.com/" class="text-link">Get Started <span aria-hidden="true">↗</span></a></div>
+      <div class="statement-media reveal" aria-hidden="true">
+        <div class="statement-img one" data-parallax="0.06"><img src="assets/hero.webp" alt="" loading="lazy" /></div>
+        <div class="statement-img two" data-parallax="-0.08"><img src="assets/femaf/sec5.webp" alt="" loading="lazy" /></div>
+        <div class="statement-badge"><i>↗</i><div><b>Funding + support</b><small>Everything in one place</small></div></div>
+      </div>
+    </div></section>
+    <section class="section last-cta" id="get-started" aria-labelledby="last-cta-title">
+      <div class="cta-bg" data-cta-parallax aria-hidden="true"><img src="assets/femaf/sec4.webp" alt="" loading="lazy" /></div>
+      <div class="container"><div class="reveal"><span class="eyebrow">Let's move forward</span><h2 id="last-cta-title"><span class="line" style="--l:0"><span>Ready for</span></span><span class="line" style="--l:1"><span><em>what's next?</em></span></span></h2></div><div class="cta-bottom-row reveal"><p>Find out where your business stands and take the next step with confidence.</p><div class="cta-buttons"><a href="https://flexiegrowth.com/" class="btn-lime">Check Your Funding Readiness <span aria-hidden="true">↗</span></a><a href="https://flexiegrowth.com/" class="text-link">Speak to Our Team <span aria-hidden="true">↗</span></a></div></div></div>
+    </section>
+    <footer class="footer"><div class="container">
+      <div class="footer-inner"><a href="#" class="footer-logo" aria-label="FlexiGrowth — back to top"><img src="assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" /></a><p>Business finance &amp; support for South African businesses.</p><nav aria-label="Footer navigation"><a href="#funding">Funding</a><a href="#business-support">Business Support</a><a href="#how-it-works">How it works</a><a href="https://flexiegrowth.com/">Contact</a></nav></div>
+      <!-- TODO: add the NCR registration number (NCRCP...) to the disclosure below -->
+      <div class="footer-legal"><p class="footer-disclosure"><strong>Legal disclosure.</strong> FlexiGrowth is a registered credit provider with the National Credit Regulator (NCR) in terms of the National Credit Act 34 of 2005. All credit is subject to application, an affordability assessment and approval, and to our credit criteria and terms and conditions. Please borrow responsibly and only apply for credit you can afford to repay. Graphics on this site are illustrative and are not actual performance data.</p><span class="footer-badge">NCR registered credit provider</span>
+      <p class="footer-copy"><span>© <span id="footer-year">2026</span> FlexiGrowth. All rights reserved.</span><a href="https://flexiegrowth.com/">Privacy Policy</a><a href="https://flexiegrowth.com/">Terms &amp; Conditions</a></p></div>
+    </div></footer>
   </div>
   <script src="assets/js/lenis.min.js"></script>
   <script>
@@ -859,13 +903,40 @@
       const update = () => {
         bar.classList.toggle('scrolled', window.scrollY > 24);
         const probe = 40; // header centre line
-        const onDark = hero.getBoundingClientRect().bottom > probe || (footer && footer.getBoundingClientRect().top < probe);
+        const inDark = (el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top < probe && r.bottom > probe; };
+        const onDark = hero.getBoundingClientRect().bottom > probe || inDark(document.querySelector('.last-cta')) || (footer && footer.getBoundingClientRect().top < probe);
         bar.classList.toggle('on-light', !onDark);
       };
       measure(); update();
       window.addEventListener('scroll', update, { passive: true });
       window.addEventListener('resize', () => { if (!bar.classList.contains('scrolled')) measure(); });
       window.addEventListener('load', () => { if (!bar.classList.contains('scrolled')) measure(); });
+    })();
+
+    // Parallax: photo behind the final CTA plus depth on the statement images.
+    (() => {
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const cta = document.querySelector('[data-cta-parallax]');
+      const items = [...document.querySelectorAll('[data-parallax]')];
+      let ticking = false;
+      const run = () => {
+        ticking = false;
+        const vh = window.innerHeight;
+        if (cta) {
+          const r = cta.parentElement.getBoundingClientRect();
+          if (r.bottom > 0 && r.top < vh) cta.style.transform = 'translate3d(0,' + (((r.top + r.height / 2) - vh / 2) * -0.22).toFixed(1) + 'px,0)';
+        }
+        items.forEach((el) => {
+          const r = el.parentElement.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > vh + 100) return;
+          el.style.translate = '0 ' + (((r.top + r.height / 2) - vh / 2) * parseFloat(el.dataset.parallax)).toFixed(1) + 'px';
+        });
+      };
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(run); } };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      run();
     })();
   </script>
 </body>
