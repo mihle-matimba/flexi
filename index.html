@@ -534,12 +534,24 @@
     .footer-logo img{display:block;height:34px;width:auto;max-width:190px;object-fit:contain;filter:brightness(0) invert(1);transition:transform .3s,opacity .3s;}
     .footer-logo:hover img{transform:translateY(-2px);opacity:.85;}
     @media(prefers-reduced-motion:reduce){.statement::before,.last-cta,.last-cta::after{animation:none!important}.statement h2 .line>span,.last-cta h2 .line>span,.statement .eyebrow::before,.last-cta .eyebrow::before{transform:none!important;transition:none}}
+
+    /* ---- Sticky header: normal at the top, blurred bar once scrolled ---- */
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:50;padding:28px 40px 0;transition:padding .4s cubic-bezier(.22,1,.36,1),background .4s ease,box-shadow .4s ease,-webkit-backdrop-filter .4s,backdrop-filter .4s;}
+    .topbar-spacer{height:66px;flex:none;}
+    .topbar.scrolled{padding:12px 40px;background:rgba(14,22,12,.5);-webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2);box-shadow:0 1px 0 rgba(255,255,255,.08),0 10px 30px rgba(0,0,0,.12);}
+    @media(min-width:651px){.topbar.scrolled .nav-pill{background:rgba(255,255,255,.08);}}
+    .topbar.scrolled .login-btn,.topbar.scrolled .menu-btn{background:rgba(255,255,255,.1);}
+    .topbar.scrolled .logo-wrap img{height:34px;transition:height .4s;}
+    @media(min-width:651px) and (max-width:1100px){.topbar.scrolled{grid-template-columns:auto 1fr auto;}.topbar.scrolled .logo-wrap{grid-column:1;grid-row:1;}.topbar.scrolled .nav-pill{grid-column:2;grid-row:1;justify-self:center;}.topbar.scrolled .actions{grid-column:3;grid-row:1;}}
+    @media(max-width:650px){.topbar{padding:20px 18px 0;}.topbar.scrolled{padding:10px 18px;}.topbar-spacer{height:46px;}}
+    body.menu-open .topbar,body.menu-open .topbar.scrolled{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;}
   </style>
 </head>
 <body>
   <section class="hero" aria-label="FlexiGrowth introduction">
     <div class="bottom-blur" aria-hidden="true"></div>
     <div class="hero-inner">
+      <div class="topbar-spacer" aria-hidden="true"></div>
       <header class="topbar">
         <nav class="nav-pill" id="main-nav" aria-label="Main navigation">
           <a href="#funding">Funding</a>
@@ -804,6 +816,19 @@
         ['--rx', '--ry', '--ty'].forEach((k) => card.style.removeProperty(k));
         ['--px', '--py'].forEach((k) => photo.style.removeProperty(k));
       });
+    })();
+
+    // Sticky header: keep hero layout steady and add the blurred bar once the page scrolls.
+    (() => {
+      const bar = document.querySelector('.topbar');
+      const spacer = document.querySelector('.topbar-spacer');
+      if (!bar || !spacer) return;
+      const measure = () => { spacer.style.height = (bar.offsetHeight - parseFloat(getComputedStyle(bar).paddingTop) - parseFloat(getComputedStyle(bar).paddingBottom)) + 'px'; };
+      const update = () => bar.classList.toggle('scrolled', window.scrollY > 24);
+      measure(); update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', () => { if (!bar.classList.contains('scrolled')) measure(); });
+      window.addEventListener('load', () => { if (!bar.classList.contains('scrolled')) measure(); });
     })();
   </script>
 </body>
