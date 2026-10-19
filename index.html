@@ -314,6 +314,71 @@
     .growth-tile:hover h3 { transform:translateX(6px); }
     @media (hover:none) { .growth-tile.visible { transform:none; } }
     @media (prefers-reduced-motion:reduce) { .growth-tile *,.growth-tile::before,.growth-photo,.growth-more,.growth-tile-one,.growth-tile-two,.float-finance,.growth-index::before,.finance-mini-note::after { animation:none!important; } .growth-options h2 .w > span,.finance-tags span,.opportunity-graph span { transform:none!important; opacity:1!important; transition:none; } .growth-tile.visible { transform:none; } }
+
+    /* ---- Fourth section: How it works ---- */
+    .process{position:relative;color:#171b14;overflow:hidden;padding:112px 0 130px;background:linear-gradient(180deg,#f1f7de 0%,#e4f1e6 45%,#dfe9f8 100%);}
+    .process::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(39,59,20,.11) 1px,transparent 1.4px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%);pointer-events:none;animation:dots-drift 40s linear infinite;}
+    @keyframes dots-drift{to{background-position:26px 52px;}}
+    .process .container{position:relative;z-index:1;}
+    .process-intro{text-align:center;margin-bottom:56px;}
+    .process .process-pill{display:inline-flex;align-items:center;gap:11px;border:1px solid #cdd9bd;border-radius:999px;padding:8px 18px 8px 9px;background:#ffffffb8;color:#33401f;font-size:12px;letter-spacing:.09em;font-weight:650;text-transform:uppercase;margin-bottom:28px;}
+    .process-pill-icon{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#d8ef52;color:#273104;font-size:16px;animation:icon-spin 9s linear infinite;}
+    @keyframes icon-spin{to{transform:rotate(360deg);}}
+    .process h2{max-width:940px;font-size:clamp(2.5rem,4.65vw,5.4rem);font-weight:510;letter-spacing:-.065em;line-height:1.07;margin:0 auto;color:#1c2a14;}
+    .process h2 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;}
+    .process h2 .line>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);transition-delay:calc(.15s + var(--l) * .14s);}
+    .process-intro.visible h2 .line>span{transform:none;}
+    .process h2 em{font-style:normal;color:#5a7a0a;}
+    .process-subtitle{max-width:570px;margin:20px auto 0;font-size:16px;line-height:1.65;color:#5d6b55;}
+    .process .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;border:0;}
+    .process .step,.process .step:not(:first-child){padding:27px 24px 23px;border:0;min-height:405px;border-radius:25px;position:relative;display:flex;flex-direction:column;overflow:visible;opacity:0;transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s;}
+    .process .step.visible{opacity:1;animation:step-in .9s cubic-bezier(.22,1,.36,1) var(--d,0s) backwards;}
+    @keyframes step-in{from{opacity:0;transform:translateY(40px);}}
+    .process .step:hover{transform:translateY(-8px);box-shadow:0 28px 55px rgba(39,59,20,.16);}
+    .step-1{background:#e2f0b4;--ink:#25330b;--chip:#273104;}
+    .step-2{background:#cfeaed;--ink:#183a3a;--chip:#183a3a;}
+    .step-3{background:#dbe1fa;--ink:#262f5c;--chip:#262f5c;}
+    .step-4{background:#1b2900;--ink:#effa94;--chip:#d8ef52;}
+    .process .step-num{display:flex;align-items:center;gap:9px;margin:0 0 9px;color:var(--ink);opacity:.7;font-size:12px;letter-spacing:.065em;font-weight:700;}
+    .process .step-num::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--chip);animation:live 2.4s ease-out infinite;}
+    .process .step h3{font-size:clamp(1.25rem,1.65vw,1.72rem);font-weight:560;line-height:1.17;letter-spacing:-.046em;margin:0;color:var(--ink);}
+    .step-visual{position:relative;flex:1;min-height:178px;display:grid;place-items:center;margin:6px -12px 3px;}
+    .process .step p{font-size:13.5px;line-height:1.5;color:var(--ink);opacity:.78;max-width:240px;margin-top:5px;}
+    .step-tag{display:inline-flex;align-self:flex-start;background:#fff;color:#273104;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:600;box-shadow:0 4px 12px #1d29100f;margin-top:15px;transition:transform .3s,background .3s,color .3s;}
+    .step:hover .step-tag{transform:translateX(4px);background:var(--chip);color:#fff;}
+    .step-4:hover .step-tag{color:#1b2900;}
+    .step-arrow{position:absolute;z-index:4;top:51%;right:-22px;transform:translateY(-50%);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fff;border:5px solid #eaf2e2;color:#4f6b14;font-size:18px;animation:arrow-go 2.6s ease-in-out infinite;}
+    .step:nth-child(2) .step-arrow{animation-delay:.3s}.step:nth-child(3) .step-arrow{animation-delay:.6s}
+    @keyframes arrow-go{0%,100%{transform:translate(0,-50%);}50%{transform:translate(5px,-50%);}}
+    .step-form{width:76%;height:120px;border-radius:17px;background:#fff;box-shadow:0 12px 32px #33452a1c;transform:rotate(-4deg);padding:18px;display:flex;flex-direction:column;gap:12px;animation:drift 6s ease-in-out infinite;}
+    @keyframes drift{0%,100%{translate:0 0;}50%{translate:0 -8px;}}
+    .step-form span{display:block;background:#e6ecdd;border-radius:6px;height:10px;transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.22,1,.36,1);}
+    .step-form span:first-child{width:43%;height:22px;border-radius:50%;background:#cfe58a;transform:scale(0);}
+    .step-form span:nth-child(2){width:88%}.step-form span:nth-child(3){width:69%}
+    .step.visible .step-form span{transform:none;transition-delay:calc(.5s + var(--n,0) * .2s);}
+    .step-form span:nth-child(2){--n:1}.step-form span:nth-child(3){--n:2}
+    .step-options{width:88%;padding:17px;background:#fff;border-radius:17px;box-shadow:0 14px 28px #26331e14;display:flex;flex-direction:column;gap:11px;position:relative;animation:drift 6.5s ease-in-out -2s infinite;}
+    .step-options span{height:22px;border-radius:8px;background:#e8eef0;position:relative;animation:row-pick 6s ease-in-out infinite;animation-delay:calc(var(--n) * 2s);}
+    .step-options span:nth-child(1){--n:0}.step-options span:nth-child(2){--n:1}.step-options span:nth-child(3){--n:2;width:75%}
+    @keyframes row-pick{0%,6%{background:#e8eef0;}12%,30%{background:#a9dadf;}38%,100%{background:#e8eef0;}}
+    .step-options:after{content:'✓';position:absolute;right:9%;top:22%;background:#a9dadf;color:#0f4040;border-radius:50%;padding:7px 11px;animation:check-hop 6s ease-in-out infinite;}
+    @keyframes check-hop{0%,6%{top:20%;}12%,30%{top:20%;}38%,42%{top:48%;}50%,64%{top:48%;}72%,100%{top:74%;}}
+    .step-document{width:124px;height:135px;background:#fff;border-radius:14px;box-shadow:0 15px 30px #25371a1c;transform:rotate(-8deg);padding:30px 16px;display:flex;flex-direction:column;gap:11px;animation:drift 6s ease-in-out -1s infinite;}
+    .step-document:before{content:'✓';align-self:center;background:#c7d1f6;color:#2b3a86;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;font-size:19px;transform:scale(0);transition:transform .7s cubic-bezier(.34,1.56,.64,1) .7s;}
+    .step.visible .step-document:before{transform:scale(1);}
+    .step-document span{height:8px;border-radius:5px;background:#e3e7f6;transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.22,1,.36,1) 1.1s;}
+    .step.visible .step-document span{transform:none;}
+    .step-document span:last-child{width:63%;margin:auto;}
+    .step-next{display:grid;gap:9px;place-items:center;transform:rotate(-5deg);}
+    .step-next span{padding:11px 17px;border-radius:11px;background:#2f4208;color:#effa94;box-shadow:0 10px 24px #0007;font-size:13px;white-space:nowrap;animation:chip-float 5s ease-in-out infinite;}
+    .step-next span:nth-child(2){background:#d8ef52;color:#1b2900;font-weight:650;transform:rotate(5deg);animation-delay:-1.6s;}
+    .step-next span:nth-child(3){animation-delay:-3.2s;}
+    @keyframes chip-float{0%,100%{translate:0 0;}50%{translate:0 -6px;}}
+    .process .step-4 .step-tag{background:#d8ef52;color:#1b2900;}
+    @media(max-width:1000px){.process .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.process .step,.process .step:not(:first-child){min-height:370px}.step:nth-child(2) .step-arrow{display:none}}
+    @media(max-width:650px){.process{padding:78px 0 85px}.process-intro{margin-bottom:38px}.process h2{font-size:clamp(2.5rem,10vw,3.7rem)}.process-subtitle{font-size:14px}.process .steps{grid-template-columns:1fr;gap:14px}.process .step,.process .step:not(:first-child){min-height:340px;padding:26px}.step-arrow{display:none}}
+    @media(hover:none){.process .step:hover{transform:none;box-shadow:none}}
+    @media(prefers-reduced-motion:reduce){.process::before,.process-pill-icon,.step-arrow,.step-form,.step-options,.step-document,.step-next span,.step-options span,.step-options:after,.process .step-num::before{animation:none!important}.process .step{opacity:1;animation:none!important}.process h2 .line>span,.step-form span,.step-document:before,.step-document span{transform:none!important;transition:none}}
   </style>
 </head>
 <body>
@@ -424,6 +489,21 @@
         </div>
       </div>
     </section>
+    <section class="section process" id="how-it-works" aria-labelledby="process-title">
+      <div class="container">
+        <div class="process-intro reveal">
+          <span class="process-pill"><span class="process-pill-icon" aria-hidden="true">◎</span> How it works</span>
+          <h2 id="process-title"><span class="line" style="--l:0"><span>Four simple steps.</span></span><span class="line" style="--l:1"><span>One <em>clearer</em> way forward.</span></span></h2>
+          <p class="process-subtitle">From understanding your funding readiness to finding your next step — here's how to get started.</p>
+        </div>
+        <div class="steps">
+          <article class="step step-1 step-reveal" style="--d:0s"><span class="step-num">STEP ONE</span><h3>Tell us about your business</h3><div class="step-visual" aria-hidden="true"><div class="step-form"><span></span><span></span><span></span></div></div><p>Share the basics about your business and what you're looking for.</p><span class="step-tag">Get started</span><span class="step-arrow" aria-hidden="true">→</span></article>
+          <article class="step step-2 step-reveal" style="--d:.12s"><span class="step-num">STEP TWO</span><h3>Check your readiness</h3><div class="step-visual" aria-hidden="true"><div class="step-options"><span></span><span></span><span></span></div></div><p>Understand where you stand and which areas may need attention.</p><span class="step-tag">Know your position</span><span class="step-arrow" aria-hidden="true">→</span></article>
+          <article class="step step-3 step-reveal" style="--d:.24s"><span class="step-num">STEP THREE</span><h3>Explore your options</h3><div class="step-visual" aria-hidden="true"><div class="step-document"><span></span><span></span></div></div><p>Discover funding and business support suited to your needs.</p><span class="step-tag">Find a fit</span><span class="step-arrow" aria-hidden="true">→</span></article>
+          <article class="step step-4 step-reveal" style="--d:.36s"><span class="step-num">STEP FOUR</span><h3>Take your next step</h3><div class="step-visual" aria-hidden="true"><div class="step-next"><span>Funding application</span><span>Or business support ↗</span><span>Move forward</span></div></div><p>Apply for suitable finance or get guidance on closing the gaps.</p><span class="step-tag">Move forward</span></article>
+        </div>
+      </div>
+    </section>
   </div>
   <script src="assets/js/lenis.min.js"></script>
   <script>
@@ -467,7 +547,7 @@
     })();
 
     // Scroll reveal for the sections below the hero.
-    const revealEls = document.querySelectorAll('.reveal');
+    const revealEls = document.querySelectorAll('.reveal, .step-reveal');
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const observer = new IntersectionObserver((entries) => {
         for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
