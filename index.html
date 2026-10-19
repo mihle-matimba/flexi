@@ -559,13 +559,13 @@
     /* Logo: centred on the hero, moves into the left of the menu card once scrolled */
     .nav-pill .nav-logo{display:none;}
     @media(min-width:651px){
-      .nav-pill .nav-logo{display:inline-flex;align-items:center;max-width:0;opacity:0;overflow:hidden;padding:0;margin:0;white-space:nowrap;transition:max-width .5s cubic-bezier(.22,1,.36,1),opacity .4s ease .1s,padding .5s cubic-bezier(.22,1,.36,1);}
+      .nav-pill .nav-logo{display:inline-flex;align-items:center;max-width:0;opacity:0;overflow:hidden;padding:0;margin:0;white-space:nowrap;transition:max-width .32s cubic-bezier(.22,1,.36,1),opacity .2s ease,padding .32s cubic-bezier(.22,1,.36,1);}
       .nav-pill .nav-logo:hover{background:none;}
       .nav-pill .nav-logo img{display:block;height:24px;width:auto;filter:brightness(0) invert(1);transition:filter .35s;}
       .topbar.scrolled .nav-logo{max-width:150px;opacity:1;padding:0 14px 0 10px;}
       .topbar.scrolled.on-light .nav-logo img{filter:brightness(0);}
-      .topbar .logo-wrap{transition:opacity .35s ease;}
-      .topbar.scrolled .logo-wrap{opacity:0;pointer-events:none;}
+      .topbar .logo-wrap{transition:opacity .3s ease .2s;}
+      .topbar.scrolled .logo-wrap{opacity:0;pointer-events:none;transition:none;}
       .topbar.scrolled{grid-template-columns:auto 1fr auto;}
       .topbar.scrolled .nav-pill{grid-column:1;grid-row:1;}
       .topbar.scrolled .logo-wrap{grid-column:2;grid-row:1;}
