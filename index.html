@@ -436,6 +436,25 @@
     .process .step-next span:nth-child(2){animation-delay:-1.6s;}.process .step-next span:nth-child(3){animation-delay:-3.2s;}
     @media(hover:none){.process .step:hover{transform:none}}
     @media(prefers-reduced-motion:reduce){.process-pill-icon,.process .step-arrow,.process .step-form,.process .step-options,.process .step-document,.process .step-next span,.process .step-options span,.process .step-num::before{animation:none!important}.process .step{opacity:1;animation:none!important}.process h2 .line>span,.process .step-form span,.process .step-options:after,.process .step-document::before,.process .step-document span{transform:none!important;transition:none}}
+
+    /* ---- Fifth section: Not quite ready? ---- */
+    .ready{background:#fcfcf9;}.ready-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:90px;align-items:center;}
+    .ready h2{max-width:700px;margin-bottom:28px;}.ready p{margin-bottom:32px;}
+    .section-intro {font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.65;color:var(--muted);max-width:610px;}
+    .ready .btn-dark span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+    .ready .btn-dark:hover span{transform:translate(4px,-4px);}
+    .ready-panel{min-height:500px;border-radius:12px;background:#26341d;color:#fff;padding:45px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;isolation:isolate;}
+    .ready-panel .panel-photo{position:absolute;inset:0;z-index:-2;background:url("assets/hero.webp") 72% 30%/cover no-repeat;animation:panel-kenburns 20s ease-in-out infinite alternate;}
+    @keyframes panel-kenburns{from{transform:scale(1.02);}to{transform:scale(1.1) translate(-1.5%,-1%);}}
+    .ready-panel::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,24,12,.1) 0%,rgba(14,24,12,.28) 42%,rgba(14,24,12,.86) 100%);}
+    .panel-icon{z-index:1;background:#fff;color:#26341d;border-radius:50%;width:57px;height:57px;display:grid;place-items:center;font-size:29px;position:relative;animation:icon-ping 3s ease-out infinite;}
+    @keyframes icon-ping{0%{box-shadow:0 0 0 0 rgba(216,239,82,.7);}70%,100%{box-shadow:0 0 0 18px rgba(216,239,82,0);}}
+    .panel-bottom{position:relative;z-index:1;}.panel-small{font-size:12px;color:#e4f38b;text-transform:uppercase;letter-spacing:.15em;margin-bottom:13px;}
+    .panel-bottom strong{font-size:clamp(2.2rem,4vw,3.9rem);font-weight:500;letter-spacing:-.07em;line-height:1.04;display:block;max-width:320px;text-shadow:0 2px 20px rgba(0,0,0,.35);}
+    .ready .ready-panel.reveal{transition-delay:.15s;}
+    @media(max-width:950px){.ready-layout{grid-template-columns:1fr;gap:35px;}}
+    @media(max-width:600px){.ready-panel{min-height:420px;padding:28px}}
+    @media(prefers-reduced-motion:reduce){.ready-panel .panel-photo,.panel-icon{animation:none}}
   </style>
 </head>
 <body>
@@ -561,6 +580,10 @@
         </div>
       </div>
     </section>
+    <section class="section ready" id="business-support" aria-labelledby="ready-title"><div class="container ready-layout">
+      <div class="reveal"><span class="eyebrow">We're here for the whole journey</span><h2 id="ready-title">Not quite ready? You're still in the right place.</h2><p class="section-intro">A business shouldn't be defined by one funding decision. If you're not ready to apply, we'll help you understand what needs attention — from financial records to compliance and cash flow.</p><a class="btn-dark" href="https://flexiegrowth.com/">Check My Readiness <span aria-hidden="true">↗</span></a></div>
+      <div class="ready-panel reveal" aria-label="Business readiness illustration"><div class="panel-photo" aria-hidden="true"></div><div class="panel-icon" aria-hidden="true">✓</div><div class="panel-bottom"><p class="panel-small">Progress starts with clarity</p><strong>Every next step counts.</strong></div></div>
+    </div></section>
   </div>
   <script src="assets/js/lenis.min.js"></script>
   <script>
