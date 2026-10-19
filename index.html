@@ -157,6 +157,59 @@
     @media(max-width:1150px){.showcase-grid{grid-template-columns:1fr 1fr}.showcase-intro{grid-column:1/-1;padding-right:0;padding-bottom:30px}.trust-strip{padding-bottom:80px}}
     @media(max-width:650px){.offer-showcase{padding:52px 0 74px}.trust-note{font-size:12px;padding:12px 17px;margin-bottom:32px}.trust-strip{justify-content:center;padding:0 0 72px;gap:16px 22px}.trust-strip span{font-size:14px}.showcase-grid{grid-template-columns:1fr;gap:14px}.showcase-intro{grid-column:auto}.offer-showcase .showcase-intro h2{font-size:clamp(2.55rem,11vw,4rem)}.showcase-actions{margin:28px 0}.showcase-card{min-height:375px;padding:24px}.showcase-intro p{font-size:15px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+
+    /* ---- Second section: extra motion + hover ---- */
+    .reveal { transition-delay:var(--d,0s); }
+    .trust-note { position:relative; overflow:hidden; transition:transform .3s, background .3s; }
+    .trust-note:hover { transform:scale(1.04); background:#e9efd2; }
+    .trust-note::after { content:""; position:absolute; top:0; bottom:0; width:35%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent); transform:translateX(-150%) skewX(-18deg); animation:sheen 4.5s ease-in-out 1s infinite; }
+    .trust-strip span { position:relative; cursor:default; opacity:0; transform:translateY(16px) scale(.9); transition:color .3s, transform .3s; }
+    .trust-strip.visible span { animation:chip-in .7s cubic-bezier(.34,1.56,.64,1) forwards; animation-delay:calc(.25s + var(--i) * 110ms); }
+    @keyframes chip-in { to { opacity:1; transform:none; } }
+    .trust-strip.visible span:hover { color:#203b2f!important; transform:translateY(-4px) scale(1.08); animation:none; opacity:1; }
+    .trust-strip span::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#c6dc4a; transform:scaleX(0); transform-origin:left; transition:transform .35s; }
+    .trust-strip span:hover::after { transform:scaleX(1); }
+    .offer-showcase .showcase-intro h2 .line { display:block; overflow:hidden; padding-bottom:.14em; margin-bottom:-.14em; }
+    .offer-showcase .showcase-intro h2 .line > span { display:inline-block; transform:translateY(105%); transition:transform 1s cubic-bezier(.22,1,.36,1); transition-delay:calc(.2s + var(--l) * .14s); }
+    .showcase-intro.visible h2 .line > span { transform:none; }
+    .showcase-intro p, .showcase-actions { transition:opacity .8s, transform .8s; }
+    .btn-dark,.btn-outline { position:relative; overflow:hidden; }
+    .btn-dark span, .support-link span, .feature-topline span { display:inline-block; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .btn-dark:hover span[aria-hidden] { transform:translateX(6px); }
+    .btn-outline { transition:background .3s, color .3s, transform .25s, border-color .3s; }
+    .btn-outline:hover { background:#2f3f05; color:#fff; border-color:#2f3f05; transform:translateY(-3px); }
+    .btn-dark::after { content:""; position:absolute; top:0; bottom:0; width:40%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent); transform:translateX(-150%) skewX(-18deg); }
+    .btn-dark:hover::after { transition:transform .7s; transform:translateX(330%) skewX(-18deg); }
+    .showcase-intro p strong { background:linear-gradient(#d8ef52,#d8ef52) 0 100%/0 .4em no-repeat; transition:background-size .8s ease .9s; }
+    .showcase-intro.visible p strong { background-size:100% .4em; }
+    .showcase-card { transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s; transform-style:preserve-3d; will-change:transform; }
+    .showcase-card:hover { box-shadow:0 34px 70px rgba(27,41,0,.25); }
+    .showcase-card.visible { transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px)); }
+    .showcase-card:hover .feature-topline span { transform:translate(4px,-4px) scale(1.2); }
+    .readiness-card::before { content:""; position:absolute; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,#d3eb8d99,transparent 65%); left:var(--mx,70%); top:var(--my,10%); transform:translate(-50%,-50%); opacity:0; transition:opacity .4s; pointer-events:none; }
+    .readiness-card:hover::before { opacity:1; }
+    .check-row { opacity:0; transform:translateX(-14px); transition:opacity .5s, transform .5s; }
+    .readiness-card.visible .check-row { opacity:1; transform:none; transition-delay:calc(.7s + var(--i) * .18s); }
+    .check-dot { transform:scale(0); transition:transform .5s cubic-bezier(.34,1.56,.64,1); }
+    .readiness-card.visible .check-dot { transform:scale(1); transition-delay:calc(.85s + var(--i) * .18s); }
+    .readiness-graphic { transition:transform .35s, box-shadow .35s; }
+    .readiness-card:hover .readiness-graphic { transform:translateY(-5px); box-shadow:0 20px 38px #0b252018; }
+    .readiness-card:hover .check-dot { animation:dot-bounce .6s ease calc(var(--i) * .1s); }
+    @keyframes dot-bounce { 40% { transform:scale(1.35); } }
+    .support-orbit { animation:orbit-pulse 5s ease-in-out infinite; }
+    .orbit-two { animation-delay:-2.5s; }
+    @keyframes orbit-pulse { 0%,100% { transform:translateX(-50%) scale(1); opacity:.7; } 50% { transform:translateX(-50%) scale(1.07); opacity:1; } }
+    .support-pill { animation:pill-float 4.5s ease-in-out infinite; transition:transform .3s; }
+    .pill-mid { animation-delay:-1.5s; } .pill-bottom { animation-delay:-3s; }
+    @keyframes pill-float { 0%,100% { translate:0 0; } 50% { translate:0 -8px; } }
+    .support-card:hover .support-pill { transform:scale(1.1); }
+    .support-card:hover .support-orbit { border-color:#d8ef52aa; }
+    .support-center { animation:glow 3s ease-in-out infinite; }
+    @keyframes glow { 0%,100% { text-shadow:0 0 0 #d8ef5200; } 50% { text-shadow:0 0 22px #d8ef52aa; } }
+    .support-link { position:relative; }
+    .support-link:hover span { transform:translate(5px,-5px); }
+    @media (hover:none) { .showcase-card.visible { transform:none; } }
+    @media (prefers-reduced-motion:reduce) { .trust-note::after,.support-orbit,.support-pill,.support-center { animation:none!important; } .trust-strip span,.check-row,.check-dot,.showcase-intro h2 .line > span { opacity:1!important; transform:none!important; transition:none; animation:none!important; } .showcase-card.visible { transform:none; } }
   </style>
 </head>
 <body>
@@ -207,28 +260,28 @@
       <div class="container">
         <div class="trust-note reveal">One partner. More ways to grow your business.</div>
         <div class="trust-strip reveal" aria-label="Our areas of support">
-          <span>Business finance</span><span>Funding readiness</span><span>Accounting &amp; tax</span><span>Enterprise development</span><span>Business training</span>
+          <span style="--i:0">Business finance</span><span style="--i:1">Funding readiness</span><span style="--i:2">Accounting &amp; tax</span><span style="--i:3">Enterprise development</span><span style="--i:4">Business training</span>
         </div>
         <div class="showcase-grid">
           <div class="showcase-intro reveal">
             <span class="eyebrow">More than funding</span>
-            <h2 id="offer-title">More than funding.<br>A way forward.</h2>
+            <h2 id="offer-title"><span class="line" style="--l:0"><span>More than funding.</span></span><span class="line" style="--l:1"><span>A way forward.</span></span></h2>
             <div class="showcase-actions"><a class="btn-dark" href="https://flexiegrowth.com/">Explore Funding <span aria-hidden="true">→</span></a><a class="btn-outline" href="https://flexiegrowth.com/">Our services</a></div>
             <p><strong>Funding that fits.</strong> From everyday cash flow to bigger opportunities, explore finance that suits your business.</p>
             <p><strong>Support that moves you forward.</strong> Build stronger financial records, improve your readiness and get practical help to grow.</p>
           </div>
-          <div class="showcase-card readiness-card reveal">
+          <div class="showcase-card readiness-card reveal" style="--d:.15s">
             <div class="feature-topline">01 / FUNDING READINESS <span aria-hidden="true">↗</span></div>
             <h3>Know where you stand before you apply.</h3>
             <div class="readiness-graphic" aria-hidden="true">
               <div class="readiness-graphic-title">Your next steps</div>
-              <div class="check-row"><span class="check-dot">✓</span><span>Understand your finances</span></div>
-              <div class="check-row"><span class="check-dot">✓</span><span>Identify what to improve</span></div>
-              <div class="check-row"><span class="check-dot">✓</span><span>Explore suitable options</span></div>
+              <div class="check-row" style="--i:0"><span class="check-dot">✓</span><span>Understand your finances</span></div>
+              <div class="check-row" style="--i:1"><span class="check-dot">✓</span><span>Identify what to improve</span></div>
+              <div class="check-row" style="--i:2"><span class="check-dot">✓</span><span>Explore suitable options</span></div>
             </div>
             <a class="btn-dark showcase-card-action" href="https://flexiegrowth.com/">Check Your Readiness <span aria-hidden="true">→</span></a>
           </div>
-          <div class="showcase-card support-card reveal">
+          <div class="showcase-card support-card reveal" style="--d:.3s">
             <div class="feature-topline">02 / BUSINESS SUPPORT <span aria-hidden="true">↗</span></div>
             <div class="support-visual" aria-hidden="true"><span class="support-orbit orbit-one"></span><span class="support-orbit orbit-two"></span><span class="support-center">Flexi<span>Growth</span></span><span class="support-pill pill-top">Accounting</span><span class="support-pill pill-mid">Training</span><span class="support-pill pill-bottom">Guidance</span></div>
             <div class="support-card-bottom"><h3>Build a stronger business, beyond finance.</h3><a href="https://flexiegrowth.com/" class="support-link">Explore Business Support <span aria-hidden="true">↗</span></a></div>
@@ -285,6 +338,25 @@
       }, {threshold:.12, rootMargin:'0px 0px -35px 0px'});
       revealEls.forEach(el => observer.observe(el));
     } else revealEls.forEach(el => el.classList.add('visible'));
+
+    // Showcase cards: 3D tilt + cursor glow on hover.
+    document.querySelectorAll('.showcase-card').forEach((card) => {
+      if (!window.matchMedia('(hover:hover)').matches) return;
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.transition = 'transform .1s, box-shadow .45s';
+        card.style.setProperty('--ry', ((x - .5) * 9) + 'deg');
+        card.style.setProperty('--rx', ((.5 - y) * 9) + 'deg');
+        card.style.setProperty('--ty', '-8px');
+        card.style.setProperty('--mx', (x * 100) + '%');
+        card.style.setProperty('--my', (y * 100) + '%');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = '';
+        ['--rx', '--ry', '--ty'].forEach((k) => card.style.removeProperty(k));
+      });
+    });
   </script>
 </body>
 </html>
