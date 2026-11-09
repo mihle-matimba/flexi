@@ -1,491 +1,1180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Business Funding Solutions | FlexiGrowth Capital</title>
-<meta name="description" content="Working capital, purchase order, contract, asset, inventory, expansion, property and development finance for South African businesses. From R5 000 to R500 000+.">
-<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/flexigrowth.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Check if your business is Funding Ready, then explore FlexiGrowth business finance: working capital, order and contract finance, asset, property and construction finance." />
+  <title>Business Funding &amp; Readiness — FlexiGrowth</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Inter, Arial, sans-serif; background:#111; color:#fff; }
+    .hero { position:relative; min-height:100vh; min-height:100svh; overflow:hidden; padding:28px 40px 40px; display:flex; flex-direction:column; }
+    .hero::before { content:""; position:absolute; inset:0; background-image:url("https://pehrklnvmjwsuyjyjtjq.supabase.co/storage/v1/object/public/Client%20Media/Flexie%20Growth/Gemini_Generated_Image_d86rg4d86rg4d86r.jpeg"); background-size:cover; background-position:58% 22%; background-repeat:no-repeat; transform:scale(1); transform-origin:60% 40%; animation:bg-settle 2.4s cubic-bezier(.22,1,.36,1) both, bg-drift 22s ease-in-out 2.4s infinite alternate; will-change:transform; }
+    .hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.24),rgba(0,0,0,.08) 28%,rgba(0,0,0,.34) 72%,rgba(0,0,0,.5) 100%),linear-gradient(90deg,rgba(0,0,0,.48),rgba(0,0,0,.12) 55%,rgba(0,0,0,.1)); z-index:0; }
+    .bottom-blur { position:absolute; left:0; right:0; bottom:0; height:220px; z-index:1; pointer-events:none; backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.55) 58%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,.92) 30%, rgba(0,0,0,.55) 58%, rgba(0,0,0,0) 100%); background: linear-gradient(to top, rgba(223,229,233,.16) 0%, rgba(255,255,255,.06) 38%, rgba(255,255,255,0) 100%); }
+    .hero-inner { position:relative; z-index:2; flex:1; display:flex; flex-direction:column; justify-content:space-between; gap:90px; }
+    .topbar { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:20px; }
+    .nav-pill { display:inline-flex; width:max-content; align-items:center; gap:5px; padding:10px 12px; background:rgba(18,18,18,.7); backdrop-filter:blur(12px); border-radius:999px; }
+    a { color:inherit; }
+    .nav-pill a { text-decoration:none; padding:10px 12px; font-size:15px; white-space:nowrap; border-radius:999px; }
+    .nav-pill .nav-login { display:none; }
+    .nav-pill a:hover { background:rgba(255,255,255,.12); }
+    .logo-wrap { display:flex; align-items:center; justify-content:center; }
+    .logo-wrap img { display:block; height:40px; max-width:210px; width:auto; object-fit:contain; filter:brightness(0) invert(1); }
+    .actions { display:flex; align-items:center; justify-content:flex-end; gap:8px; }
+    .actions a,.menu-btn { display:inline-flex; align-items:center; justify-content:center; font-size:15px; text-decoration:none; border-radius:999px; min-height:46px; }
+    .login-btn { padding:0 18px; background:rgba(18,18,18,.75); }
+    .signup-btn { padding:0 22px; background:white; color:#111; font-weight:600; }
+    .menu-btn { width:46px; color:#fff; background:rgba(18,18,18,.75); border:0; cursor:pointer; font-size:23px; }
+    .hero-content { display:grid; grid-template-columns:1.1fr .9fr; gap:30px; align-items:end; }
+    .copy { max-width:780px; }
+    .copy h1 { font-size:clamp(3.2rem,6.3vw,6.3rem); letter-spacing:-.055em; line-height:.98; text-shadow:0 2px 24px rgba(0,0,0,.35); font-weight:600; margin-bottom:26px; }
+    /* Individual letters rise and fade in, with a soft stagger. */
+    .animated-title .hl .letter { color:#40a147; }
+    .animated-title .word { display:inline-block; white-space:nowrap; }
+    .animated-title .letter { display:inline-block; opacity:0; transform:translate3d(0, .65em, 0); filter:blur(7px); animation:letter-rise .82s cubic-bezier(.22,1,.36,1) forwards; animation-delay:calc(.24s + var(--i) * 48ms); will-change:transform,opacity,filter; }
+    @keyframes letter-rise { to { opacity:1; transform:translate3d(0,0,0); filter:blur(0); } }
+    @media (prefers-reduced-motion:reduce) { .animated-title .letter { animation:none; opacity:1; transform:none; filter:none; will-change:auto; } }
+    .copy p { max-width:640px; font-size:clamp(1rem,1.5vw,1.3rem); line-height:1.4; margin-bottom:30px; color:rgba(255,255,255,.94); }
+    .cta-btn { display:inline-flex; gap:18px; align-items:center; padding:18px 28px; border-radius:999px; background:#40a147; color:#111; text-decoration:none; font-weight:600; }
+    .cta-btn:hover { background:#40a147; }
+    .hero-card-wrap { display:flex; justify-content:flex-end; }
+    .hero-card { background:rgba(255,255,255,.97); color:#111; width:320px; border-radius:28px; padding:24px 22px 20px; box-shadow:0 24px 80px rgba(0,0,0,.22); }
+    .card-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:20px; }
+    .hero-card h3 { font-size:1.25rem; }
+    .growth-badge { border-radius:999px; background:#204762; color:#d6efda; font-size:.8rem; padding:6px 10px; }
+    .card-tabs { display:flex; gap:18px; color:#777; font-size:.85rem; margin-bottom:22px; }
+    .card-tabs span:first-child { font-weight:700; color:#111; }
+    .bar-grid { display:flex; height:125px; gap:10px; align-items:flex-end; margin-bottom:15px; }
+    .bar-group { flex:1; display:flex; flex-direction:column; gap:7px; justify-content:flex-end; }
+    .bar { border-radius:6px; height:18px; background:#40a147; }
+    .bar.mid { height:28px; background:#40a147; }
+    .bar.dark { height:42px; background:#1a394e; }
+    .bar.tall { height:56px; }
+    .card-note { color:#777; font-size:.78rem; }
+
+    /* ---- Hero entrance + ambient motion ---- */
+    @keyframes bg-settle { from { transform:scale(1.16); opacity:.4; } to { transform:scale(1); opacity:1; } }
+    @keyframes bg-drift { from { transform:scale(1) translate3d(0,0,0); } to { transform:scale(1.045) translate3d(-1%,-.8%,0); } }
+    @keyframes fade-in { from { opacity:0; } to { opacity:1; } }
+    @keyframes fade-down { from { opacity:0; transform:translate3d(0,-18px,0); } to { opacity:1; transform:none; } }
+    @keyframes fade-up { from { opacity:0; transform:translate3d(0,26px,0); filter:blur(6px); } to { opacity:1; transform:none; filter:blur(0); } }
+    @keyframes card-in { from { opacity:0; transform:translate3d(40px,40px,0) scale(.94); } to { opacity:1; transform:none; } }
+    @keyframes card-float { 0%,100% { transform:translate3d(0,0,0); } 50% { transform:translate3d(0,-10px,0); } }
+    @keyframes bar-grow { from { transform:scaleY(0); } to { transform:scaleY(1); } }
+    @keyframes bar-pulse { 0%,100% { transform:scaleY(1); } 50% { transform:scaleY(1.22); } }
+    @keyframes badge-pop { 0% { opacity:0; transform:scale(.4); } 70% { transform:scale(1.15); } 100% { opacity:1; transform:scale(1); } }
+    @keyframes sheen { from { transform:translateX(-130%) skewX(-18deg); } to { transform:translateX(260%) skewX(-18deg); } }
+    @keyframes cta-glow { 0%,100% { box-shadow:0 0 0 0 rgba(63,157,75,.5); } 50% { box-shadow:0 0 0 14px rgba(63,157,75,0); } }
+    .topbar { position:relative; z-index:10; animation:fade-in .9s ease .1s both; }
+    .copy p { animation:fade-up .9s cubic-bezier(.22,1,.36,1) 1.1s both; }
+    .cta-btn { position:relative; overflow:hidden; animation:fade-up .9s cubic-bezier(.22,1,.36,1) 1.3s both, cta-glow 2.6s ease-out 2.4s infinite; transition:transform .25s; }
+    .cta-btn:hover { transform:translateY(-2px); }
+    .cta-btn::after { content:""; position:absolute; top:0; bottom:0; width:40%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent); transform:translateX(-130%) skewX(-18deg); animation:sheen 3.6s ease-in-out 2.6s infinite; }
+    .hero-card-wrap { animation:card-in 1.1s cubic-bezier(.22,1,.36,1) 1.2s both; }
+    .hero-card { animation:card-float 6s ease-in-out 2.4s infinite; }
+    .growth-badge { display:inline-block; animation:badge-pop .7s cubic-bezier(.34,1.56,.64,1) 2.3s both; }
+    .bar { transform-origin:bottom; animation:bar-grow .8s cubic-bezier(.22,1,.36,1) both, bar-pulse 3.2s ease-in-out infinite; animation-delay:calc(1.7s + var(--b,0) * 90ms), calc(3s + var(--b,0) * 260ms); }
+    .card-tabs span:first-child { position:relative; }
+    .card-tabs span:first-child::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#1a394e; border-radius:2px; transform-origin:left; animation:bar-grow-x .8s ease 2s both; }
+    @keyframes bar-grow-x { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+    /* ---- Mobile menu ---- */
+    .menu-btn { display:none; position:relative; z-index:6; }
+    .menu-btn span { position:absolute; left:50%; top:50%; width:18px; height:2px; margin:-1px 0 0 -9px; background:#fff; border-radius:2px; transition:transform .3s, opacity .2s; }
+    .menu-btn span:nth-child(1) { transform:translateY(-6px); }
+    .menu-btn span:nth-child(3) { transform:translateY(6px); }
+    .menu-open .menu-btn span:nth-child(1) { transform:rotate(45deg); }
+    .menu-open .menu-btn span:nth-child(2) { opacity:0; }
+    .menu-open .menu-btn span:nth-child(3) { transform:rotate(-45deg); }
+    @media (prefers-reduced-motion:reduce) { .hero::before,.topbar,.copy p,.cta-btn,.cta-btn::after,.hero-card-wrap,.hero-card,.growth-badge,.bar,.card-tabs span:first-child::after { animation:none!important; } }
+    @media(min-width:1101px){ .hero .copy { margin-bottom:56px; } }
+    @media(max-width:1100px){ .topbar { grid-template-columns:1fr auto; } .logo-wrap { grid-column:1; grid-row:1; justify-content:flex-start; } .actions { grid-column:2; grid-row:1; } .nav-pill { grid-column:1/-1; grid-row:2; } .hero-content { grid-template-columns:1fr; } .hero-card-wrap { justify-content:flex-start; } }
+    @media(max-width:650px){ .hero { padding:20px 18px 28px; } .hero::before { background-position:64% 28%; } .hero::after { background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.12) 25%,rgba(0,0,0,.55) 48%,rgba(0,0,0,.78) 68%,rgba(0,0,0,.88)); } .bottom-blur { height:170px; backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); } .hero-inner { gap:100px; } .topbar { gap:14px; } .logo-wrap img { height:31px; max-width:140px; } .nav-pill { max-width:100%; flex-wrap:wrap; } .nav-pill a { font-size:13px; padding:8px; } .login-btn { display:none!important; } .signup-btn { padding:0 15px; min-height:41px!important; font-size:13px!important; } .menu-btn { width:41px; min-height:41px; } .copy h1 { font-size:clamp(2rem,8.6vw,2.8rem); text-shadow:0 2px 18px rgba(0,0,0,.55); } .copy p { text-shadow:0 1px 12px rgba(0,0,0,.6); } .hero-card { max-width:320px; width:100%; } }
+
+    @media(max-width:650px){
+      .menu-btn { display:inline-flex; }
+      .nav-pill { display:flex; position:fixed; inset:0; z-index:5; width:auto; max-width:none; flex-direction:column; justify-content:center; align-items:stretch; gap:6px; padding:90px 28px 40px; border-radius:0; background:rgba(14,14,14,.94); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); opacity:0; visibility:hidden; transform:translate3d(0,-12px,0); transition:opacity .35s, transform .35s, visibility .35s; }
+      .nav-pill a { font-size:clamp(1.8rem,8vw,2.4rem); font-weight:600; letter-spacing:-.03em; padding:14px 6px; border-radius:14px; opacity:0; transform:translate3d(0,18px,0); transition:opacity .4s, transform .4s, background .2s; }
+      .nav-pill .nav-login { display:block; color:#40a147; }
+      .menu-open .nav-pill { opacity:1; visibility:visible; transform:none; }
+      .menu-open .nav-pill a { opacity:1; transform:none; }
+      .menu-open .nav-pill a:nth-child(1) { transition-delay:.08s; } .menu-open .nav-pill a:nth-child(2) { transition-delay:.15s; } .menu-open .nav-pill a:nth-child(3) { transition-delay:.22s; } .menu-open .nav-pill a:nth-child(4) { transition-delay:.29s; }
+      body.menu-open { overflow:hidden; }
+      .topbar { grid-template-columns:1fr auto; }
+      .nav-pill { grid-column:auto; grid-row:auto; }
+    }
+
+    /* ---- Second section: "More than funding" showcase ---- */
+    :root { --paper:#f3f5f6; --ink:#032b45; --muted:#68736d; --forest:#053656; --lime:#40a147; --line:#dce1e4; }
+    html.lenis,html.lenis body { height:auto; }
+    .lenis.lenis-smooth { scroll-behavior:auto!important; }
+    .lenis.lenis-stopped { overflow:hidden; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior:contain; }
+    .page-content { color:var(--ink); background:var(--paper); font-family:Inter,Arial,sans-serif; }
+    .page-content a {text-decoration:none;}
+    .container {width:min(1260px,calc(100% - 92px));margin-inline:auto;}
+    .section {padding:116px 0;}
+    .eyebrow {display:inline-flex;gap:12px;align-items:center;text-transform:uppercase;letter-spacing:.15em;font-weight:700;font-size:11px;color:#326f98;margin-bottom:25px;}
+    .eyebrow::before{content:'';width:22px;height:1px;background:currentColor;}
+    .section h2 {font-size:clamp(2.65rem,5.1vw,5.35rem);line-height:1.02;letter-spacing:-.063em;font-weight:550;max-width:850px;}
+    .btn-dark {display:inline-flex;align-items:center;gap:40px;padding:17px 24px;border-radius:999px;font-size:14px;font-weight:650;transition:transform .25s,background .25s;background:var(--forest);color:#fff;}
+    .btn-dark:hover {transform:translateY(-3px);}
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1);}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:950px){.container{width:min(1260px,calc(100% - 48px));}.section{padding:85px 0}}
+    @media(max-width:600px){.container{width:calc(100% - 36px)}.section{padding:72px 0}.section h2{font-size:clamp(2.45rem,10vw,3.7rem)}}
+    .offer-showcase{background:#fff;padding:70px 0 114px;overflow:hidden}
+    .trust-note{width:fit-content;margin:0 auto 48px;padding:13px 26px;border-radius:99px;background:#eff1f2;color:#042a44;font-size:14px;font-weight:550;text-align:center}
+    .trust-strip{display:flex;align-items:center;justify-content:space-between;gap:22px 30px;padding:0 15px 132px;flex-wrap:wrap}
+    .trust-strip span{font-size:clamp(13px,1.48vw,21px);font-weight:700;letter-spacing:-.045em;color:#20465f;white-space:nowrap}
+    .trust-strip span:first-child,.trust-strip span:last-child{color:#96a1a9}
+    .showcase-grid{display:grid;grid-template-columns:1.32fr .9fr .9fr;align-items:end;gap:16px}
+    .showcase-intro{align-self:stretch;padding:6px 34px 0 0;display:flex;flex-direction:column}
+    .showcase-intro .eyebrow{margin-bottom:22px}
+    .offer-showcase .showcase-intro h2{font-size:clamp(2.65rem,4vw,4.65rem);letter-spacing:-.065em;line-height:1.03;font-weight:540;max-width:580px;color:#042337}
+    .showcase-actions{display:flex;gap:11px;flex-wrap:wrap;margin:38px 0 42px}
+    .showcase-actions .btn-dark{background:#042840;gap:24px}
+    .btn-outline{display:inline-flex;align-items:center;justify-content:center;border:1px solid #c3cbd0;border-radius:999px;color:#05304c;padding:15px 24px;font-size:14px;font-weight:600}
+    .showcase-intro p{max-width:490px;color:#7f837a;font-size:15px;line-height:1.58;margin-bottom:16px}
+    .showcase-intro p strong{color:#063757;font-weight:650}
+    .showcase-card{min-height:382px;border-radius:24px;padding:26px;display:flex;flex-direction:column;overflow:hidden;position:relative}
+    .feature-topline{font-size:11px;letter-spacing:.1em;font-weight:750;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+    .feature-topline span{font-size:23px;letter-spacing:0;font-weight:400}
+    .readiness-card{background:#e1f1f2;color:#063b5e}
+    .readiness-card h3{font-size:clamp(1.55rem,2vw,2.2rem);line-height:1.12;letter-spacing:-.055em;font-weight:550;margin:31px 0 19px;max-width:290px}
+    .readiness-graphic{background:#fff9;padding:16px 17px;border:1px solid #ffffff9c;border-radius:15px;margin-top:auto;margin-bottom:18px;box-shadow:0 12px 27px #031c2d0d}
+    .readiness-graphic-title{font-size:12px;font-weight:700;margin-bottom:9px}
+    .check-row{display:flex;align-items:center;gap:9px;margin:7px 0;font-size:12px;color:#28597a}
+    .check-dot{width:17px;height:17px;display:grid;place-items:center;border-radius:50%;background:#40a147;color:#053250;font-size:11px;flex-shrink:0}
+    .showcase-card-action{align-self:flex-start;gap:20px!important;padding:14px 18px!important;font-size:13px!important;background:#052d47}
+    .support-card{background:#021827;color:#40a147}
+    .support-visual{position:relative;min-height:205px;flex:1;margin:-5px -24px 10px;overflow:hidden}
+    .support-orbit{position:absolute;border:1px solid #849baa55;width:250px;height:250px;border-radius:50%;top:15px;left:50%;transform:translateX(-50%)}
+    .orbit-two{width:160px;height:160px;top:60px}
+    .support-center{position:absolute;left:50%;top:110px;transform:translate(-50%,-50%);font-size:24px;letter-spacing:-.08em;font-weight:700;color:#40a147;white-space:nowrap}
+    .support-center span{font-weight:400}
+    .support-pill{position:absolute;background:#40a147;color:#042338;border-radius:24px;padding:10px 14px;font-size:12px;font-weight:650;box-shadow:0 9px 28px #020f17b3}
+    .pill-top{top:18px;left:12px}.pill-mid{top:55px;right:1px;background:#eceff1}.pill-bottom{bottom:10px;left:20px;background:#9cafbb}
+    .support-card-bottom{position:relative;z-index:2}
+    .support-card-bottom h3{font-size:clamp(1.65rem,2vw,2.2rem);letter-spacing:-.055em;line-height:1.12;font-weight:550;margin:0 0 20px}
+    .support-link{font-size:13px;font-weight:650;display:inline-flex;align-items:center;gap:14px;color:#c5e8ca}
+    @media(max-width:1150px){.showcase-grid{grid-template-columns:1fr 1fr}.showcase-intro{grid-column:1/-1;padding-right:0;padding-bottom:30px}.trust-strip{padding-bottom:80px}}
+    @media(max-width:650px){.offer-showcase{padding:52px 0 74px}.trust-note{font-size:12px;padding:12px 17px;margin-bottom:32px}.trust-strip{justify-content:center;padding:0 0 72px;gap:16px 22px}.trust-strip span{font-size:14px}.showcase-grid{grid-template-columns:1fr;gap:14px}.showcase-intro{grid-column:auto}.offer-showcase .showcase-intro h2{font-size:clamp(2.55rem,11vw,4rem)}.showcase-actions{margin:28px 0}.showcase-card{min-height:375px;padding:24px}.showcase-intro p{font-size:15px}}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+    /* ---- Second section: extra motion + hover ---- */
+    .reveal { transition-delay:var(--d,0s); }
+    .trust-note { position:relative; overflow:hidden; transition:transform .3s, background .3s; }
+    .trust-note:hover { transform:scale(1.04); background:#d3eed7; }
+    .trust-note::after { content:""; position:absolute; top:0; bottom:0; width:35%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent); transform:translateX(-150%) skewX(-18deg); animation:sheen 4.5s ease-in-out 1s infinite; }
+    .trust-strip span { position:relative; cursor:default; opacity:0; transform:translateY(16px) scale(.9); transition:color .3s, transform .3s; }
+    .trust-strip.visible span { animation:chip-in .7s cubic-bezier(.34,1.56,.64,1) forwards; animation-delay:calc(.25s + var(--i) * 110ms); }
+    @keyframes chip-in { to { opacity:1; transform:none; } }
+    .trust-strip.visible span:hover { color:#053656!important; transform:translateY(-4px) scale(1.08); animation:none; opacity:1; }
+    .trust-strip span::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#40a147; transform:scaleX(0); transform-origin:left; transition:transform .35s; }
+    .trust-strip span:hover::after { transform:scaleX(1); }
+    .offer-showcase .showcase-intro h2 .line { display:block; overflow:hidden; padding-bottom:.14em; margin-bottom:-.14em; }
+    .offer-showcase .showcase-intro h2 .line > span { display:inline-block; transform:translateY(105%); transition:transform 1s cubic-bezier(.22,1,.36,1); transition-delay:calc(.2s + var(--l) * .14s); }
+    .showcase-intro.visible h2 .line > span { transform:none; }
+    .showcase-intro p, .showcase-actions { transition:opacity .8s, transform .8s; }
+    .btn-dark,.btn-outline { position:relative; overflow:hidden; }
+    .btn-dark span, .support-link span, .feature-topline span { display:inline-block; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .btn-dark:hover span[aria-hidden] { transform:translateX(6px); }
+    .btn-outline { transition:background .3s, color .3s, transform .25s, border-color .3s; }
+    .btn-outline:hover { background:#042840; color:#fff; border-color:#042840; transform:translateY(-3px); }
+    .btn-dark::after { content:""; position:absolute; top:0; bottom:0; width:40%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent); transform:translateX(-150%) skewX(-18deg); }
+    .btn-dark:hover::after { transition:transform .7s; transform:translateX(330%) skewX(-18deg); }
+    .showcase-intro p strong { background:linear-gradient(#40a147,#40a147) 0 100%/0 .4em no-repeat; transition:background-size .8s ease .9s; }
+    .showcase-intro.visible p strong { background-size:100% .4em; }
+    .showcase-card { transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s; transform-style:preserve-3d; will-change:transform; }
+    .showcase-card:hover { box-shadow:0 34px 70px rgba(2,24,39,.25); }
+    .showcase-card.visible { transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px)); }
+    .showcase-card:hover .feature-topline span { transform:translate(4px,-4px) scale(1.2); }
+    .readiness-card::before { content:""; position:absolute; width:260px; height:260px; border-radius:50%; background:radial-gradient(circle,#40a14799,transparent 65%); left:var(--mx,70%); top:var(--my,10%); transform:translate(-50%,-50%); opacity:0; transition:opacity .4s; pointer-events:none; }
+    .readiness-card:hover::before { opacity:1; }
+    .check-row { opacity:0; transform:translateX(-14px); transition:opacity .5s, transform .5s; }
+    .readiness-card.visible .check-row { opacity:1; transform:none; transition-delay:calc(.7s + var(--i) * .18s); }
+    .check-dot { transform:scale(0); transition:transform .5s cubic-bezier(.34,1.56,.64,1); }
+    .readiness-card.visible .check-dot { transform:scale(1); transition-delay:calc(.85s + var(--i) * .18s); }
+    .readiness-graphic { transition:transform .35s, box-shadow .35s; }
+    .readiness-card:hover .readiness-graphic { transform:translateY(-5px); box-shadow:0 20px 38px #031c2d18; }
+    .readiness-card:hover .check-dot { animation:dot-bounce .6s ease calc(var(--i) * .1s); }
+    @keyframes dot-bounce { 40% { transform:scale(1.35); } }
+    .support-orbit { animation:orbit-pulse 5s ease-in-out infinite; }
+    .orbit-two { animation-delay:-2.5s; }
+    @keyframes orbit-pulse { 0%,100% { transform:translateX(-50%) scale(1); opacity:.7; } 50% { transform:translateX(-50%) scale(1.07); opacity:1; } }
+    .support-pill { animation:pill-float 4.5s ease-in-out infinite; transition:transform .3s; }
+    .pill-mid { animation-delay:-1.5s; } .pill-bottom { animation-delay:-3s; }
+    @keyframes pill-float { 0%,100% { translate:0 0; } 50% { translate:0 -8px; } }
+    .support-card:hover .support-pill { transform:scale(1.1); }
+    .support-card:hover .support-orbit { border-color:#40a147aa; }
+    .support-center { animation:glow 3s ease-in-out infinite; }
+    @keyframes glow { 0%,100% { text-shadow:0 0 0 #40a14700; } 50% { text-shadow:0 0 22px #40a147aa; } }
+    .support-link { position:relative; }
+    .support-link:hover span { transform:translate(5px,-5px); }
+    @media (hover:none) { .showcase-card.visible { transform:none; } }
+    @media (prefers-reduced-motion:reduce) { .trust-note::after,.support-orbit,.support-pill,.support-center { animation:none!important; } .trust-strip span,.check-row,.check-dot,.showcase-intro h2 .line > span { opacity:1!important; transform:none!important; transition:none; animation:none!important; } .showcase-card.visible { transform:none; } }
+    .growth-options{background:#fff;color:#031f32;padding:118px 0 125px;}
+    .growth-options .growth-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:36px;margin-bottom:75px;}
+    .growth-options h2{font-size:clamp(2.7rem,4.7vw,5rem);letter-spacing:-.065em;line-height:1.06;max-width:930px;}
+    .growth-more{flex:none;display:inline-flex;align-items:center;gap:24px;padding:15px 20px;border:1px solid #c7ccd0;border-radius:999px;color:#05314f;font-size:14px;white-space:nowrap;transition:background .25s,transform .25s;}
+    .growth-more:hover{background:#ebeff1;transform:translateY(-2px);}
+    .growth-cards{display:grid;grid-template-columns:.94fr .94fr 1.37fr;gap:20px;}
+    .growth-tile{height:490px;border-radius:26px;position:relative;overflow:hidden;isolation:isolate;}
+    .growth-tile-one{background:radial-gradient(ellipse at 15% 72%,#40a147 0%,transparent 46%),radial-gradient(ellipse at 80% 7%,#bfe6c4 0%,transparent 46%),linear-gradient(145deg,#bbe4c1,#bbc8d0 50%,#e2e7eb);padding:34px;display:flex;justify-content:space-between;flex-direction:column;}
+    .float-finance{margin:28px auto 0;width:100%;max-width:300px;background:#fff;border-radius:27px;padding:28px 21px;box-shadow:0 22px 65px #2b5e801a;transform:rotate(-2deg);}
+    .finance-mini-head{font-size:24px;font-weight:550;letter-spacing:-.06em;line-height:1.1;margin-bottom:34px;}
+    .finance-tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:33px;}
+    .finance-tags span{font-size:11px;white-space:nowrap;border-radius:999px;background:#ddf1df;padding:9px 11px;}
+    .finance-tags span:nth-child(2){background:#042a44;color:white;}.finance-tags span:nth-child(3){background:#40a147;}
+    .finance-mini-note{color:#697064;font-size:12px;line-height:1.5;}
+    .growth-index{font-size:11px;letter-spacing:.12em;font-weight:650;opacity:.72;}
+    .growth-tile-foot h3{font-size:clamp(1.5rem,2.2vw,2.3rem);line-height:1.08;letter-spacing:-.05em;margin-top:10px;font-weight:550;}
+    .growth-tile-two{background:#dfe5fa;padding:33px;display:flex;flex-direction:column;justify-content:space-between;}
+    .growth-tile-head h3{font-size:clamp(2.15rem,3vw,3.4rem);line-height:1;letter-spacing:-.06em;margin-top:15px;font-weight:550;max-width:320px;}
+    .opportunity-visual{background:#fff;padding:25px 24px;border-radius:25px;box-shadow:0 16px 50px #64738b12;}
+    .opportunity-bar{display:flex;justify-content:space-between;font-size:14px;font-weight:650;gap:8px;}
+    .opportunity-bar span:last-child{font-size:23px;color:#316d94;}
+    .opportunity-graph{height:120px;display:flex;align-items:end;gap:12px;padding:25px 0 15px;border-bottom:1px solid #d6dee3;}
+    .opportunity-graph span{flex:1;background:#a2b3bf;border-radius:6px 6px 0 0;height:30%;}
+    .opportunity-graph span:nth-child(2){height:42%;}.opportunity-graph span:nth-child(3){height:58%;background:#839aa9;}.opportunity-graph span:nth-child(4){height:73%;background:#668193;}.opportunity-graph span:nth-child(5){height:90%;background:#224b67;}
+    .opportunity-label{font-size:12px;color:#34729b;padding-top:13px;}
+    .growth-tile-three{background:#2a5e80;color:white;}
+    .growth-photo{position:absolute;inset:0;background:url("https://pehrklnvmjwsuyjyjtjq.supabase.co/storage/v1/object/public/Client%20Media/Flexie%20Growth/Creative%20Sewing%20Workshop%20with%20Bold%20Fabrics.png") center center/cover no-repeat;transform:scale(1.04);transition:transform .8s ease;}
+    .growth-tile-three:hover .growth-photo{transform:scale(1.1);}
+    .growth-photo-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,14,23,.22) 0%,rgba(1,14,23,.06) 30%,rgba(1,14,23,.5) 62%,rgba(1,14,23,.72) 100%);}
+    .growth-tile-photo-copy{position:absolute;z-index:1;bottom:24px;left:24px;right:24px;padding:22px 24px;border-radius:24px;background:none;border:0;box-shadow:none;text-shadow:0 1px 14px rgba(0,0,0,.45);}
+    .growth-tile-photo-copy h3{font-size:clamp(2rem,3vw,3.5rem);font-weight:520;line-height:1.04;letter-spacing:-.058em;margin:12px 0 12px;max-width:460px;}
+    .growth-tile-photo-copy p{font-size:15px;color:#fffffff0;line-height:1.45;max-width:330px;}
+    .growth-tile-photo-copy a{display:inline-flex;align-items:center;gap:15px;font-size:14px;font-weight:650;margin-top:22px;color:white;border-bottom:1px solid #ffffffa0;padding-bottom:6px;}
+    @media(max-width:980px){.growth-cards{grid-template-columns:1fr 1fr;}.growth-tile-three{grid-column:1/-1;}.growth-options .growth-heading{margin-bottom:46px;}}
+    @media(max-width:630px){.growth-options{padding:72px 0;}.growth-options .growth-heading{flex-direction:column;gap:22px;margin-bottom:36px;}.growth-options h2{font-size:clamp(2.5rem,10vw,3.7rem);}.growth-cards{grid-template-columns:1fr;gap:15px;}.growth-tile,.growth-tile-three{grid-column:auto;height:440px;}.growth-tile-photo-copy{left:16px;right:16px;bottom:16px;padding:18px 18px 20px;border-radius:20px;}}
+
+    /* ---- Third section: motion + life ---- */
+    .growth-options { position:relative; overflow:hidden; }
+    .growth-options .container { position:relative; z-index:1; }
+    .growth-options h2 .w { display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.14em; margin-bottom:-.14em; }
+    .growth-options h2 .w > span { display:inline-block; transform:translateY(110%) rotate(4deg); transition:transform 1s cubic-bezier(.22,1,.36,1); transition-delay:calc(.1s + var(--w) * 70ms); }
+    .growth-heading.visible h2 .w > span { transform:none; }
+    .growth-more { position:relative; overflow:hidden; animation:nudge 3.2s ease-in-out 2.5s infinite; }
+    .growth-more span { display:inline-block; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .growth-more:hover span { transform:translateX(7px); }
+    .growth-more:hover { animation:none; background:#031f32; color:#fff; border-color:#031f32; }
+    @keyframes nudge { 0%,88%,100% { transform:none; } 94% { transform:translateX(5px); } }
+    .growth-tile { transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s, opacity .8s ease; transition-delay:0s,0s,var(--d,0s); will-change:transform; }
+    .growth-tile.visible { transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px)); }
+    .growth-tile:hover { box-shadow:0 38px 80px rgba(3,31,50,.22); }
+    .growth-tile::after { content:""; position:absolute; inset:0; z-index:3; pointer-events:none; background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),transparent 60%); opacity:0; transition:opacity .4s; }
+    .growth-tile:hover::after { opacity:1; }
+    .growth-tile::after { display:none; }
+    /* tile 1 */
+    .growth-tile-one { animation:gradient-shift 9s ease-in-out infinite alternate; background-size:140% 140%,140% 140%,100% 100%; }
+    @keyframes gradient-shift { from { background-position:0% 0%,100% 0%,0 0; } to { background-position:25% 30%,70% 25%,0 0; } }
+    .float-finance { animation:float-card 6s ease-in-out infinite; transition:box-shadow .4s; }
+    .growth-tile-one:hover .float-finance { box-shadow:0 34px 80px #2b5e8040; }
+    @keyframes float-card { 0%,100% { transform:rotate(-2deg) translateY(0); } 50% { transform:rotate(1.5deg) translateY(-14px); } }
+    .finance-tags span { opacity:0; transform:scale(.6) translateY(10px); transition:transform .6s cubic-bezier(.34,1.56,.64,1), opacity .5s, background .3s, color .3s; transition-delay:calc(.6s + var(--t) * .12s); }
+    .growth-tile.visible .finance-tags span { opacity:1; transform:none; }
+    .growth-tile.visible .finance-tags span.pulse { animation:tag-pulse 1.1s ease; }
+    @keyframes tag-pulse { 40% { transform:scale(1.18) rotate(-3deg); background:#40a147; color:#031f32; } }
+    .finance-tags span:hover { transform:translateY(-3px) scale(1.08)!important; transition-delay:0s; }
+    .finance-mini-note::after { content:"|"; margin-left:2px; animation:blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity:0; } }
+    .growth-tile-one::before { content:""; position:absolute; width:90px; height:90px; border-radius:50%; background:#40a147; opacity:.55; filter:blur(2px); right:-20px; bottom:70px; z-index:-1; animation:orb 7s ease-in-out infinite; }
+    @keyframes orb { 0%,100% { transform:translate(0,0) scale(1); } 50% { transform:translate(-40px,-60px) scale(1.5); } }
+    /* tile 2 */
+    .growth-tile-two { background:linear-gradient(145deg,#dfe5fa,#e9ecfb 50%,#d3dcf8); background-size:200% 200%; animation:gradient-shift2 10s ease-in-out infinite alternate; }
+    @keyframes gradient-shift2 { to { background-position:100% 100%; } }
+    .growth-tile-two::before { content:""; position:absolute; inset:-30%; z-index:-1; background:conic-gradient(from 0deg,transparent,rgba(63,157,75,.35),transparent 30%); animation:spin 12s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .opportunity-visual { transition:transform .4s; }
+    .growth-tile-two:hover .opportunity-visual { transform:translateY(-6px) scale(1.02); }
+    .opportunity-graph span { transform-origin:bottom; transform:scaleY(0); transition:transform .9s cubic-bezier(.22,1,.36,1); transition-delay:calc(.6s + var(--b) * .12s); }
+    .growth-tile.visible .opportunity-graph span { transform:scaleY(1); animation:bar-breathe 3.4s ease-in-out infinite; animation-delay:calc(2s + var(--b) * .3s); }
+    @keyframes bar-breathe { 0%,100% { transform:scaleY(1); } 50% { transform:scaleY(.82); } }
+    .opportunity-graph span:hover { filter:brightness(1.15); }
+    .opportunity-bar span:last-child { display:inline-block; animation:arrow-bob 2s ease-in-out infinite; }
+    @keyframes arrow-bob { 0%,100% { transform:translate(0,0); } 50% { transform:translate(4px,-5px); } }
+    .opportunity-label::before { content:""; display:inline-block; width:7px; height:7px; margin-right:8px; border-radius:50%; background:#668193; animation:live 1.6s ease-out infinite; }
+    @keyframes live { 0% { box-shadow:0 0 0 0 rgba(102,129,147,.7); } 100% { box-shadow:0 0 0 10px rgba(102,129,147,0); } }
+    /* tile 3 */
+    .growth-photo { animation:kenburns 18s ease-in-out infinite alternate; }
+    @keyframes kenburns { from { transform:scale(1.04) translate(0,0); } to { transform:scale(1.14) translate(-2%,-2%); } }
+    .growth-tile-three:hover .growth-photo { animation-play-state:paused; transform:scale(1.12); }
+    .growth-tile-photo-copy { transition:transform .5s cubic-bezier(.22,1,.36,1), background .4s; animation:glass-float 6s ease-in-out infinite; }
+    @keyframes glass-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+        .growth-tile-photo-copy a { position:relative; background:linear-gradient(#40a147,#40a147) 0 100%/0 2px no-repeat; transition:background-size .5s, color .3s; }
+    .growth-tile-photo-copy a:hover { background-size:100% 2px; color:#40a147; }
+    .growth-tile-photo-copy a span { display:inline-block; transition:transform .3s cubic-bezier(.34,1.56,.64,1); }
+    .growth-tile-photo-copy a:hover span { transform:translate(5px,-5px); }
+    .growth-index { display:inline-flex; align-items:center; gap:8px; }
+    .growth-index::before { content:""; width:7px; height:7px; border-radius:50%; background:currentColor; animation:live2 2s ease-in-out infinite; }
+    @keyframes live2 { 0%,100% { opacity:.3; transform:scale(.8); } 50% { opacity:1; transform:scale(1.2); } }
+    .growth-tile h3 { transition:transform .4s cubic-bezier(.22,1,.36,1); }
+    .growth-tile:hover h3 { transform:translateX(6px); }
+    @media (hover:none) { .growth-tile.visible { transform:none; } }
+    @media (prefers-reduced-motion:reduce) { .growth-tile *,.growth-tile::before,.growth-photo,.growth-more,.growth-tile-one,.growth-tile-two,.float-finance,.growth-index::before,.finance-mini-note::after { animation:none!important; } .growth-options h2 .w > span,.finance-tags span,.opportunity-graph span { transform:none!important; opacity:1!important; transition:none; } .growth-tile.visible { transform:none; } }
+
+    /* How it works — soft editorial four-step layout */
+    .process{background:#fafbfc;color:#031c2c;overflow:hidden;padding:112px 0 130px;}
+    .process-intro{text-align:center;margin-bottom:50px;}
+    .process .process-pill{display:inline-flex;align-items:center;gap:11px;border:1px solid #dbdfe2;border-radius:999px;padding:8px 18px 8px 9px;background:#f5f7f8;color:#224b66;font-size:12px;letter-spacing:.09em;font-weight:650;text-transform:uppercase;margin-bottom:28px;}
+    .process-pill-icon{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#e4e9ec;font-size:16px;}
+    .process h2{max-width:940px;font-size:clamp(2.5rem,4.65vw,5.4rem);font-weight:510;letter-spacing:-.065em;line-height:1.07;margin:0 auto;color:#042439;}
+    .process-subtitle{max-width:570px;margin:20px auto 0;font-size:16px;line-height:1.65;color:#72796e;}
+    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;border:0;}
+    .step,.step:not(:first-child){padding:27px 24px 23px;border:0;min-height:385px;border-radius:25px;background:#f2f4f5;position:relative;display:flex;flex-direction:column;overflow:visible;}
+    .step-num{display:block;margin:0 0 9px;color:#7c8577;font-size:12px;letter-spacing:.065em;font-weight:650;}
+    .step h3{font-size:clamp(1.25rem,1.65vw,1.72rem);font-weight:540;line-height:1.17;letter-spacing:-.046em;margin:0;color:#042439;}
+    .step-visual{position:relative;flex:1;min-height:178px;display:grid;place-items:center;margin:6px -12px 3px;}
+    .step p{font-size:13px;line-height:1.5;color:#6e796c;max-width:240px;margin-top:5px;}
+    .step-tag{display:inline-flex;align-self:flex-start;background:white;color:#1d4057;border-radius:999px;padding:9px 14px;font-size:12px;font-weight:550;box-shadow:0 4px 12px #0322360a;margin-top:15px;}
+    .step-arrow{position:absolute;z-index:4;top:51%;right:-20px;transform:translateY(-50%);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ebeff1;border:6px solid #fafbfc;color:#6a7f8d;font-size:20px;}
+    .step-form{width:76%;height:120px;border-radius:17px;background:white;box-shadow:0 12px 32px #1c3d5312;transform:rotate(-4deg);padding:18px;display:flex;flex-direction:column;gap:12px;}
+    .step-form span{display:block;background:#ebeef0;border-radius:6px;height:10px;}.step-form span:first-child{width:43%;height:22px;border-radius:50%;background:#dee4e8;}.step-form span:nth-child(2){width:88%;}.step-form span:nth-child(3){width:69%;}
+    .step-options{width:88%;padding:17px;background:#fff;border-radius:17px;box-shadow:0 14px 28px #05304c0c;display:flex;flex-direction:column;gap:11px;}
+    .step-options span{height:22px;border-radius:8px;background:#eaeef0;position:relative;}.step-options span:first-child{background:#dae1e5;}.step-options span:last-child{width:75%;}.step-options:after{content:'';position:absolute;right:9%;top:22%;width:30px;height:30px;background:#dbe2e6 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23607550' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/55% no-repeat;border-radius:50%;}
+    .step-document{width:124px;height:135px;background:#fff;border-radius:14px;box-shadow:0 15px 30px #05304c13;transform:rotate(-8deg);padding:30px 16px;display:flex;flex-direction:column;gap:11px;}.step-document:before{content:'';align-self:center;background:#e2e7eb url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2371865c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/55% no-repeat;border-radius:50%;width:36px;height:36px;}.step-document span{height:8px;border-radius:5px;background:#e6eaed;}.step-document span:last-child{width:63%;margin:auto;}
+    .step-next{display:grid;gap:9px;place-items:center;transform:rotate(-5deg);}.step-next span{padding:11px 17px;border-radius:11px;background:white;color:#2b5f81;box-shadow:0 10px 24px #04273f0d;font-size:13px;white-space:nowrap;}.step-next span:nth-child(2){background:#05304c;color:white;font-weight:600;transform:rotate(5deg);}
+    @media(max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.step,.step:not(:first-child){min-height:370px}.step:nth-child(2) .step-arrow{display:none}}
+    @media(max-width:650px){.process{padding:78px 0 85px}.process-intro{margin-bottom:38px}.process h2{font-size:clamp(2.5rem,10vw,3.7rem)}.process-subtitle{font-size:14px}.steps{grid-template-columns:1fr;gap:14px}.step,.step:not(:first-child){min-height:330px;padding:26px}.step-arrow{display:none}}
+    /* Refined process palette: one neutral card family, restrained olive accent */
+    .process{background:#f9fafa;color:#04273f;}
+    .process .process-pill{background:#eff2f4;border-color:#dee2e5;color:#4d5348;}
+    .process .process-pill-icon{background:#dfe5e9;color:#214a65;}
+    .process h2{color:#042941;}
+    .process h2 mark,.process h2 .highlight{background:transparent;color:inherit;box-shadow:none;}
+    .process .steps{gap:12px;}
+    .process .step,.process .step:not(:first-child){background:#eff1f3;border:1px solid #e1e5e8;box-shadow:none;color:#042941;}
+    .process .step:nth-child(1),.process .step:nth-child(2),.process .step:nth-child(3),.process .step:nth-child(4){background:#eff1f3;border-color:#e1e5e8;}
+    .process .step-num{color:#72786a;}
+    .process .step h3{color:#042941;}
+    .process .step p{color:#73796f;}
+    .process .step-tag{background:#dde3e7;color:#19384d;box-shadow:none;}
+    .process .step-arrow{background:#d9e0e5;color:#204761;border-color:#f9fafa;}
+    .process .step-form,.process .step-options,.process .step-document{box-shadow:0 15px 35px #04263d10;}
+    .process .step-form span:first-child{background:#d0d8de;}
+    .process .step-options span:first-child{background:#d7dfe4;}
+    .process .step-next span:nth-child(2){background:#1b3b50;color:#fff;}
+    /* How it works — richer visuals, one focal point, restrained palette */
+    .process{background:radial-gradient(ellipse at 50% 92%,#e7ecef 0%,#f9fafa 55%,#f9fafa 100%);}
+    .process-intro{margin-bottom:62px;}
+    .process .process-pill{background:#fff;box-shadow:0 5px 24px rgba(4,38,60,.035);}
+    .process .process-pill-icon{background:#40a147;color:#06385a;}
+    .process h2{font-weight:560;}
+    .process .steps{gap:15px;}
+    .process .step,.process .step:not(:first-child){background:#f0f3f5;border:1px solid #e1e6ea;border-radius:25px;min-height:425px;padding:27px 22px 24px;box-shadow:0 20px 50px rgba(4,39,62,.035);transition:transform .35s ease,box-shadow .35s ease;}
+    .process .step:nth-child(1){background:linear-gradient(155deg,#eaeef1 0%,#f4f6f8 75%);border-color:#dfe4e8;}
+    .process .step:nth-child(2){background:linear-gradient(160deg,#eff2f4 0%,#f6f8f9 80%);}
+    .process .step:nth-child(3){background:#053351;color:#fff;border-color:#053351;box-shadow:0 26px 60px rgba(4,35,56,.16);}
+    .process .step:nth-child(4){background:linear-gradient(155deg,#e9edf0 0%,#f7f8f9 80%);}
+    .process .step:hover{transform:translateY(-7px);box-shadow:0 28px 65px rgba(3,34,55,.1);}
+    .process .step:nth-child(3):hover{box-shadow:0 35px 70px rgba(4,35,56,.24);}
+    .process .step-num{color:#33719b;font-size:11px;letter-spacing:.1em;}
+    .process .step:nth-child(3) .step-num{color:#becad2;}
+    .process .step h3{font-size:clamp(1.3rem,1.67vw,1.8rem);letter-spacing:-.05em;}
+    .process .step:nth-child(3) h3{color:white;}
+    .process .step p{color:#697366;font-size:13px;}
+    .process .step:nth-child(3) p{color:#cad3d9;}
+    .process .step-tag{background:#fff;border:1px solid #dee4e8;font-weight:650;color:#1a3a4f;padding:10px 14px;}
+    .process .step:nth-child(3) .step-tag{background:#40a147;color:#05304c;border-color:#40a147;}
+    .process .step-arrow{background:#40a147;color:#053351;border:5px solid #f9fafa;right:-29px;width:44px;height:44px;box-shadow:0 5px 16px #04243919;}
+    .process .step-visual{min-height:208px;margin:5px -9px;}
+    .process .step-visual::before{content:"";position:absolute;width:205px;height:205px;border-radius:50%;background:radial-gradient(circle,#d5dde27a 0%,transparent 72%);pointer-events:none;}
+    .process .step:nth-child(3) .step-visual::before{background:radial-gradient(circle,#73899844 0%,transparent 70%);}
+    .process .step-form{transform:rotate(-5deg);height:146px;padding:22px;background:#fff;box-shadow:0 19px 35px #042c4616;}
+    .process .step-form::after{content:"BUSINESS PROFILE";position:absolute;top:11px;right:12px;font-size:8px;letter-spacing:.08em;color:#74818a;}
+    .process .step-form span:first-child{border-radius:999px;width:40%;height:15px;background:#40a147;}
+    .process .step-options{min-height:142px;transform:rotate(3deg);box-shadow:0 20px 40px #05304c15;gap:12px;justify-content:center;}
+    .process .step-options::before{content:"Readiness check";font-size:10px;color:#2a5c7d;font-weight:700;letter-spacing:.02em;}
+    .process .step-options span{height:13px;}
+    .process .step-options:after{top:34%;background-color:#40a147;box-shadow:0 6px 15px #042c461c;}
+    .process .step-document{width:156px;height:164px;transform:rotate(-7deg);border:1px solid #edf1f3;background:#f7f9fa;box-shadow:14px 15px 0 -3px #a9b9c46b,0 18px 35px #02131e45;}
+    .process .step-document::before{background-color:#40a147;width:44px;height:44px;}
+    .process .step-next{gap:12px;}
+    .process .step-next span{box-shadow:0 15px 32px #052e491a;padding:14px 18px;}
+    .process .step-next span:nth-child(2){background:#053351;color:white;}
+    @media(max-width:1000px){.process .step:nth-child(2) .step-arrow{display:none;}}
+    @media(max-width:650px){.process .step,.process .step:not(:first-child){min-height:385px;}.process .step-arrow{display:none;}.process-intro{margin-bottom:39px;}}
+
+    /* ---- Fourth section: motion layer (on top of the supplied design) ---- */
+    .process::before{display:none}
+    .process-pill-icon{animation:icon-spin 12s linear infinite;}
+    @keyframes icon-spin{to{transform:rotate(360deg);}}
+    .process h2 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;}
+    .process h2 .line>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);transition-delay:calc(.15s + var(--l) * .14s);}
+    .process-intro.visible h2 .line>span{transform:none;}
+    .process .step,.process .step:not(:first-child){opacity:0;}
+    .process .step.visible{opacity:1;animation:step-in .9s cubic-bezier(.22,1,.36,1) var(--d,0s) backwards;}
+    @keyframes step-in{from{opacity:0;transform:translateY(40px);}}
+    .process .step-num::before{content:"";display:inline-block;width:7px;height:7px;margin-right:9px;border-radius:50%;background:currentColor;vertical-align:1px;animation:live2 2.4s ease-in-out infinite;}
+    .process .step-tag{transition:transform .3s,background .3s,color .3s;}
+    .process .step:hover .step-tag{transform:translateX(4px);}
+    .process .step-arrow{animation:arrow-go 2.8s ease-in-out infinite;}
+    .process .step:nth-child(2) .step-arrow{animation-delay:.3s}.process .step:nth-child(3) .step-arrow{animation-delay:.6s}
+    @keyframes arrow-go{0%,100%{transform:translate(0,-50%);}50%{transform:translate(4px,-50%);}}
+    @keyframes drift{0%,100%{translate:0 0;}50%{translate:0 -7px;}}
+    .process .step-form{animation:drift 6s ease-in-out infinite;}
+    .process .step-form span{transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.22,1,.36,1);}
+    .process .step-form span:first-child{transform:scale(0);}
+    .process .step.visible .step-form span{transform:none;transition-delay:calc(.5s + var(--n,0) * .2s);}
+    .process .step-form span:nth-child(2){--n:1}.process .step-form span:nth-child(3){--n:2}
+    .process .step-options{animation:drift 6.5s ease-in-out -2s infinite;}
+    .process .step.visible .step-options span{animation:row-pick 6s ease-in-out infinite;animation-delay:calc(1.7s + var(--n) * 2s - .72s);}
+    .process .step-options span:nth-child(1){--n:0}.process .step-options span:nth-child(2){--n:1}.process .step-options span:nth-child(3){--n:2}
+    @keyframes row-pick{0%,6%{background:#eaeef0;}12%,30%{background:#40a147;}38%,100%{background:#eaeef0;}}
+    .process .step-options:after{transform:scale(0);transition:transform .7s cubic-bezier(.34,1.56,.64,1) 1s;}
+    .process .step.visible .step-options:after{transform:scale(1);}
+    .process .step.visible .step-options:after{animation:check-hop 6s ease-in-out 1.7s infinite;}
+    @keyframes check-hop{0%,26%{top:29%;}38%,62%{top:46%;}74%,94%{top:66%;}100%{top:29%;}}
+    .process .step-document{animation:drift 6s ease-in-out -1s infinite;}
+    .process .step-document::before{transform:scale(0);transition:transform .7s cubic-bezier(.34,1.56,.64,1) .7s;}
+    .process .step.visible .step-document::before{transform:scale(1);}
+    .process .step-document span{transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.22,1,.36,1) 1.1s;}
+    .process .step.visible .step-document span{transform:none;}
+    .process .step-next span{animation:drift 5s ease-in-out infinite;}
+    .process .step-next span:nth-child(2){animation-delay:-1.6s;}.process .step-next span:nth-child(3){animation-delay:-3.2s;}
+    @media(hover:none){.process .step:hover{transform:none}}
+    @media(prefers-reduced-motion:reduce){.process-pill-icon,.process .step-arrow,.process .step-form,.process .step-options,.process .step-document,.process .step-next span,.process .step-options span,.process .step-num::before{animation:none!important}.process .step{opacity:1;animation:none!important}.process h2 .line>span,.process .step-form span,.process .step-options:after,.process .step-document::before,.process .step-document span{transform:none!important;transition:none}}
+
+    /* ---- Fifth section: Not quite ready? (supplied design, blur removed) ---- */
+    .ready{background:linear-gradient(180deg,#f9fafb 0%,#f5f7f8 100%);}
+    .ready-layout{display:grid;grid-template-columns:1.02fr .98fr;gap:88px;align-items:center;}
+    .ready-copy{max-width:700px;}
+    .ready .eyebrow{display:inline-flex;align-items:center;gap:13px;color:#387caa;letter-spacing:.13em;}
+    .ready .eyebrow::before{content:'';display:block;width:28px;height:1px;background:#40a147;}
+    .ready h2{max-width:700px;margin-bottom:28px;letter-spacing:-.07em;}
+    .ready p{margin-bottom:32px;}
+    .ready .btn-dark{box-shadow:0 16px 35px rgba(4,41,65,.10);}
+    .ready-panel{min-height:540px;border-radius:28px;background:#05304c;padding:28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;box-shadow:0 28px 70px rgba(3,30,48,.12);isolation:isolate;}
+    .ready-panel::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,20,32,.08) 0%,rgba(2,20,32,.20) 38%,rgba(2,20,32,.82) 100%);z-index:0;}
+    .ready-panel::after{content:'';position:absolute;border:1px solid rgba(63,157,75,.42);border-radius:50%;height:370px;width:370px;right:-96px;top:-105px;box-shadow:0 0 0 32px rgba(255,255,255,.06),0 0 0 33px rgba(63,157,75,.24),0 0 0 76px rgba(255,255,255,.05),0 0 0 77px rgba(63,157,75,.16);opacity:.92;z-index:1;}
+    .panel-icon{position:relative;z-index:2;background:rgba(255,255,255,.96);border:2px solid #40a147;color:#052e49;border-radius:50%;width:68px;height:68px;display:grid;place-items:center;font-size:31px;box-shadow:0 14px 35px rgba(0,0,0,.18);}
+    .panel-tag{position:relative;z-index:2;align-self:flex-start;margin-top:12px;background:rgba(63,157,75,.16);border:1px solid rgba(63,157,75,.42);color:#d1ecd4;border-radius:999px;padding:10px 14px;font-size:12px;font-weight:650;letter-spacing:.1em;text-transform:uppercase;}
+    .panel-bottom{position:relative;z-index:2;max-width:360px;padding:22px 24px 24px;border-radius:24px;background:rgba(2,16,25,.52);border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 45px rgba(0,0,0,.18);}
+    .panel-small{font-size:12px;color:#40a147;text-transform:uppercase;letter-spacing:.15em;margin-bottom:14px;}
+    .panel-bottom strong{font-size:clamp(2.25rem,4vw,4.15rem);font-weight:520;letter-spacing:-.075em;line-height:1.02;display:block;max-width:320px;color:#fff;margin-bottom:12px;}
+    .panel-note{display:block;font-size:14px;line-height:1.55;color:rgba(255,255,255,.78);max-width:300px;}
+    @media(max-width:950px){.ready-layout{grid-template-columns:1fr;gap:35px;}.ready-panel{min-height:460px;}}
+    @media(max-width:600px){.ready-layout{gap:26px}.ready-panel{min-height:380px;padding:18px;border-radius:22px}.panel-icon{width:58px;height:58px;font-size:26px}.panel-tag{font-size:11px;padding:8px 12px}.panel-bottom{padding:18px 18px 19px;border-radius:18px}.panel-bottom strong{font-size:clamp(2rem,11vw,3rem)}.panel-note{font-size:13px}}
+
+    /* ---- Fifth section: motion + interaction ---- */
+    .section-intro {font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.65;color:var(--muted);max-width:610px;}
+    .ready h2 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;}
+    .ready h2 .line>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);transition-delay:calc(.2s + var(--l) * .14s);}
+    .ready-copy.visible h2 .line>span{transform:none;}
+    .ready .eyebrow::before{transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.22,1,.36,1) .1s;}
+    .ready-copy.visible .eyebrow::before{transform:none;}
+    .ready-copy .section-intro,.ready-copy .btn-dark{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1);}
+    .ready-copy.visible .section-intro{opacity:1;transform:none;transition-delay:.55s;}
+    .ready-copy.visible .btn-dark{opacity:1;transform:none;transition-delay:.7s;}
+    .ready-copy.visible .btn-dark:hover{transform:translateY(-3px);transition-delay:0s;}
+    .ready .btn-dark span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+    .ready .btn-dark:hover span{transform:translate(4px,-4px);}
+    .ready-panel{transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s,opacity .8s ease;will-change:transform;}
+    .ready-panel.visible{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0px));}
+    .ready-panel:hover{box-shadow:0 40px 85px rgba(3,30,48,.24);}
+    .ready-panel .panel-photo{position:absolute;inset:-4%;z-index:-1;background:url("https://pehrklnvmjwsuyjyjtjq.supabase.co/storage/v1/object/public/Client%20Media/Flexie%20Growth/Confident%20Cafe%20Owner%20in%20Warm%20Bistro.png") center center/cover no-repeat;animation:panel-kenburns 22s ease-in-out infinite alternate;transition:translate .4s ease-out;translate:var(--px,0) var(--py,0);}
+    @keyframes panel-kenburns{from{transform:scale(1.02);}to{transform:scale(1.1) translate(-1.5%,-1%);}}
+    .ready-panel::after{animation:ring-breathe 7s ease-in-out infinite;}
+    @keyframes ring-breathe{0%,100%{transform:scale(1);opacity:.92;}50%{transform:scale(1.07);opacity:.6;}}
+    .panel-icon{animation:icon-ping 3s ease-out infinite,icon-bob 5s ease-in-out infinite;}
+    @keyframes icon-ping{0%{box-shadow:0 14px 35px rgba(0,0,0,.18),0 0 0 0 rgba(63,157,75,.7);}70%,100%{box-shadow:0 14px 35px rgba(0,0,0,.18),0 0 0 18px rgba(63,157,75,0);}}
+    @keyframes icon-bob{0%,100%{translate:0 0;}50%{translate:0 -6px;}}
+    .panel-tag{opacity:0;transform:translateX(-14px);transition:opacity .7s ease .5s,transform .7s cubic-bezier(.22,1,.36,1) .5s;}
+    .ready-panel.visible .panel-tag{opacity:1;transform:none;}
+    .panel-bottom{opacity:0;transform:translateY(24px);transition:opacity .8s ease .7s,transform .8s cubic-bezier(.22,1,.36,1) .7s,background .4s;}
+    .ready-panel.visible .panel-bottom{opacity:1;transform:none;}
+    .ready-panel:hover .panel-bottom{background:rgba(2,16,25,.64);}
+    .panel-small::before{content:"";display:inline-block;width:7px;height:7px;margin-right:9px;border-radius:50%;background:#40a147;animation:live2 2s ease-in-out infinite;}
+    @media(hover:none){.ready-panel.visible{transform:none;}}
+    @media(prefers-reduced-motion:reduce){.ready-panel .panel-photo,.ready-panel::after,.panel-icon,.panel-small::before{animation:none!important}.ready h2 .line>span,.ready-copy .section-intro,.ready-copy .btn-dark,.panel-tag,.panel-bottom,.ready .eyebrow::before{transform:none!important;opacity:1!important;transition:none}.ready-panel.visible{transform:none}}
+
+    /* ---- Closing sections: statement, final CTA with parallax, footer with legal disclosure ---- */
+    .text-link{display:inline-flex;align-items:center;gap:18px;font-size:14px;font-weight:700;padding-bottom:9px;position:relative;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .4s,color .3s;}
+    .text-link:hover{background-size:0 1px;}
+    .text-link span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+    .text-link:hover span{transform:translate(5px,-5px);}
+    /* statement */
+    .statement{background:#f2f4f6;color:#032b45;padding:120px 0;overflow:hidden;}
+    .statement-inner{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;}
+    .statement h2{margin:0 0 28px;max-width:640px;font-size:clamp(2.6rem,4.6vw,4.9rem);}
+    .statement p{color:#306a90;font-size:18px;line-height:1.7;margin-bottom:28px;max-width:520px;}
+    .statement-points{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 36px;padding:0;list-style:none;}
+    .statement-points li{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:999px;background:#fff;border:1px solid #dde3e7;color:#1a394d;font-size:14px;font-weight:600;box-shadow:0 6px 18px rgba(4,39,62,.05);transition:transform .3s,box-shadow .3s,background .3s;opacity:0;transform:translateY(12px) scale(.96);}
+    .statement-points li::before{content:"";width:20px;height:20px;border-radius:50%;background:#40a147 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23273104' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/60% no-repeat;flex:none;}
+    .statement-copy.visible .statement-points li{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,background .3s;transition-delay:calc(.5s + var(--i) * .12s);}
+    .statement-copy.visible .statement-points li:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(4,39,62,.1);transition-delay:0s;}
+    .statement-media{position:relative;min-height:560px;}
+    .statement-img{position:absolute;overflow:hidden;border-radius:26px;box-shadow:0 28px 60px rgba(3,30,48,.16);}
+    .statement-img img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 1.4s cubic-bezier(.22,1,.36,1);}
+    .statement-media.visible .statement-img img{transform:scale(1);}
+    .statement-media:hover .statement-img img{transform:scale(1.05);}
+    .statement-media{order:-1;}
+    .statement-img.one{inset:0 70px 70px 0;clip-path:inset(0 0 100% 0 round 26px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1);}
+    .statement-img.two{right:0;bottom:0;width:230px;height:260px;border:8px solid #f2f4f6;border-radius:30px;clip-path:inset(100% 0 0 0 round 24px);transition:clip-path 1.1s cubic-bezier(.22,1,.36,1) .35s;}
+    .statement-media.visible .statement-img.one,.statement-media.visible .statement-img.two{clip-path:inset(0 0 0 0 round 26px);}
+    .statement-badge{position:absolute;left:-12px;top:44px;z-index:3;display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:18px;background:#fff;box-shadow:0 18px 40px rgba(3,30,48,.16);opacity:0;transform:translateY(16px);transition:opacity .7s ease .9s,transform .8s cubic-bezier(.34,1.56,.64,1) .9s;}
+    .statement-media.visible .statement-badge{opacity:1;transform:none;animation:badge-float 6s ease-in-out 2s infinite;}
+    @keyframes badge-float{0%,100%{translate:0 0;}50%{translate:0 -8px;}}
+    .statement-badge i{font-style:normal;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#05304c;color:#40a147;font-size:18px;}
+    .statement-badge b{display:block;font-size:14px;color:#032b45;}
+    .statement-badge small{display:block;font-size:12px;color:#6b7a70;margin-top:2px;}
+    /* final CTA with parallax photo */
+    .last-cta{position:relative;overflow:hidden;color:#fff;background:#031c2d;padding:150px 0 130px;min-height:640px;display:flex;align-items:center;isolation:isolate;}
+    .cta-bg{position:absolute;left:0;right:0;top:-18%;bottom:-18%;z-index:-2;will-change:transform;}
+    .cta-bg img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+    .last-cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(2,22,36,.9) 0%,rgba(2,22,36,.72) 48%,rgba(2,22,36,.38) 100%),linear-gradient(180deg,rgba(2,22,36,.2),rgba(2,22,36,.55));}
+    .last-cta .container{position:relative;width:min(1260px,calc(100% - 92px));}
+    .last-cta .eyebrow{color:#40a147;}
+    .last-cta h2{font-size:clamp(3.2rem,6.9vw,7rem);max-width:900px;margin-bottom:34px;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25);}
+    .last-cta h2 em{font-style:normal;color:#40a147;}
+    .cta-bottom-row{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;}
+    .cta-bottom-row p{max-width:420px;font-size:18px;line-height:1.6;color:rgba(255,255,255,.86);margin:0;}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:22px;align-items:center;}
+    .last-cta .btn-lime{display:inline-flex;align-items:center;gap:36px;padding:18px 26px;border-radius:999px;background:#40a147;color:#032b45;font-size:14px;font-weight:700;box-shadow:0 18px 40px rgba(0,0,0,.28);transition:transform .25s,background .25s,box-shadow .25s;}
+    .last-cta .btn-lime:hover{transform:translateY(-3px);background:#40a147;box-shadow:0 24px 50px rgba(0,0,0,.34);}
+    .last-cta .btn-lime span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+    .last-cta .btn-lime:hover span{transform:translate(4px,-4px);}
+    .last-cta .text-link{color:#fff;}
+    /* footer */
+    .footer{background:#031f32;color:#d5dde2;padding:56px 0 30px;}
+    .footer-inner{display:flex;gap:25px;align-items:center;justify-content:space-between;}
+    .footer p{font-size:12px;color:#b4bec4;}
+    .footer nav{display:flex;gap:26px;flex-wrap:wrap;font-size:13px;}
+    .footer nav a{position:relative;transition:color .3s;}
+    .footer nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#40a147;transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+    .footer nav a:hover{color:#fff;}.footer nav a:hover::after{transform:scaleX(1);}
+    .footer-logo{display:inline-flex;align-items:center;}
+    .footer-logo img{display:block;height:34px;width:auto;max-width:190px;object-fit:contain;filter:brightness(0) invert(1);transition:transform .3s,opacity .3s;}
+    .footer-logo:hover img{transform:translateY(-2px);opacity:.85;}
+    .footer-legal{margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:1fr auto;gap:12px 48px;align-items:start;}
+    .footer-disclosure{max-width:860px;font-size:12px;line-height:1.7;color:#9daab2;}
+    .footer-disclosure strong{color:#d5dde2;font-weight:650;}
+    .footer-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid rgba(63,157,75,.4);border-radius:999px;color:#40a147;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+    .footer-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:#40a147;}
+    .footer-copy{grid-column:1/-1;font-size:12px;color:#7f8e98;display:flex;gap:22px;flex-wrap:wrap;}
+    .footer-copy a{color:#9daab2;transition:color .3s;}.footer-copy a:hover{color:#40a147;}
+    /* shared reveal for headings */
+    .statement h2 .line,.last-cta h2 .line{display:block;overflow:hidden;padding-bottom:.14em;margin-bottom:-.14em;}
+    .statement h2 .line>span,.last-cta h2 .line>span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);transition-delay:calc(.15s + var(--l) * .14s);}
+    .statement-copy.visible h2 .line>span,.last-cta .visible h2 .line>span{transform:none;}
+    .statement .eyebrow::before,.last-cta .eyebrow::before{transform-origin:left;transform:scaleX(0);transition:transform .9s cubic-bezier(.22,1,.36,1) .1s;}
+    .statement-copy.visible .eyebrow::before,.last-cta .visible .eyebrow::before{transform:none;}
+    @media(max-width:950px){.statement{padding:85px 0}.statement-inner{grid-template-columns:1fr;gap:56px;}.statement-media{min-height:480px;}.last-cta{padding:110px 0 90px;min-height:560px}.cta-bottom-row{align-items:flex-start;flex-direction:column}.footer-inner{flex-wrap:wrap;}.footer-legal{grid-template-columns:1fr;}}
+    @media(max-width:600px){.statement{padding:72px 0}.statement-media{min-height:400px}.statement-img.one{inset:0 40px 56px 0}.statement-img.two{width:150px;height:175px;border-width:6px}.statement-badge{left:0;top:20px;padding:10px 14px 10px 10px}.last-cta{padding:90px 0 80px;min-height:0}.last-cta .container{width:calc(100% - 36px)}.last-cta h2{font-size:clamp(3rem,13vw,4.6rem)}.footer{padding:44px 0 26px}.footer-inner{display:grid}.footer nav{gap:15px}.cta-buttons{align-items:stretch;flex-direction:column;width:100%}.cta-buttons a{justify-content:center}.text-link{align-self:flex-start}}
+    @media(prefers-reduced-motion:reduce){.statement-badge{animation:none!important}.statement h2 .line>span,.last-cta h2 .line>span,.statement .eyebrow::before,.last-cta .eyebrow::before,.statement-points li,.statement-badge{transform:none!important;opacity:1!important;transition:none}.statement-img,.statement-img img{clip-path:none!important;transform:none!important;transition:none}.cta-bg{transform:none!important}}
+
+    /* ---- Sticky header: normal at the top, blurred bar once scrolled ---- */
+    .topbar{position:fixed;top:0;left:0;right:0;z-index:50;padding:28px 40px 0;transition:padding .4s cubic-bezier(.22,1,.36,1),background .4s ease,box-shadow .4s ease,-webkit-backdrop-filter .4s,backdrop-filter .4s;}
+    .topbar-spacer{height:66px;flex:none;}
+    .topbar.scrolled{padding:12px 40px;}
+    /* Header has no bar background: only the menu-items card is blurred; logo and buttons adapt to what is underneath. */
+    .topbar .logo-wrap img,.topbar .nav-pill,.topbar .nav-pill a,.topbar .login-btn,.topbar .signup-btn,.topbar .menu-btn,.topbar .menu-btn span{transition:filter .35s,background .35s,color .35s,border-color .35s,height .4s;}
+    .topbar.scrolled .logo-wrap img{height:34px;}
+    @media(min-width:651px){
+      .topbar.scrolled .nav-pill{-webkit-backdrop-filter:blur(26px) saturate(1.8);backdrop-filter:blur(26px) saturate(1.8);background:linear-gradient(135deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.07) 100%),rgba(3,25,39,.62);border:1px solid rgba(255,255,255,.22);box-shadow:0 10px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.35),inset 0 -1px 0 rgba(255,255,255,.06);}
+      .topbar.scrolled.on-light .nav-pill{background:linear-gradient(135deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.62) 100%),rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.85);box-shadow:0 10px 34px rgba(3,30,48,.14),0 1px 0 rgba(3,30,48,.04),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 0 rgba(3,30,48,.05);}
+      .topbar.scrolled.on-light .nav-pill a{color:#032b45;}
+      .topbar.scrolled.on-light .nav-pill a:hover{background:rgba(3,30,48,.08);}
+    }
+    .topbar.on-light .logo-wrap img{filter:brightness(0);}
+    .topbar.on-light .login-btn{background:rgba(3,30,48,.07);color:#032b45;}
+    .topbar.on-light .signup-btn{background:#032b45;color:#fff;}
+    .topbar.on-light .menu-btn{background:rgba(3,30,48,.08);color:#032b45;}
+    .topbar.on-light .menu-btn span{background:#032b45;}
+    body.menu-open .topbar .logo-wrap img{filter:brightness(0) invert(1);}
+    body.menu-open .topbar .menu-btn{background:rgba(255,255,255,.12);color:#fff;}
+    body.menu-open .topbar .menu-btn span{background:#fff;}
+    /* Logo: centred on the hero, moves into the left of the menu card once scrolled */
+    .nav-pill .nav-logo{display:none;}
+    @media(min-width:651px){
+      .nav-pill .nav-logo{display:inline-flex;align-items:center;max-width:0;opacity:0;overflow:hidden;padding:0;margin:0;white-space:nowrap;transition:max-width .32s cubic-bezier(.22,1,.36,1),opacity .2s ease,padding .32s cubic-bezier(.22,1,.36,1);}
+      .nav-pill .nav-logo:hover{background:none;}
+      .nav-pill .nav-logo img{display:block;height:24px;width:auto;filter:brightness(0) invert(1);transition:filter .35s;}
+      .topbar.scrolled .nav-logo{max-width:150px;opacity:1;padding:0 14px 0 10px;}
+      .topbar.scrolled.on-light .nav-logo img{filter:brightness(0);}
+      .topbar .logo-wrap{transition:opacity .3s ease .2s;}
+      .topbar.scrolled .logo-wrap{opacity:0;pointer-events:none;transition:none;}
+      .topbar.scrolled{grid-template-columns:auto 1fr auto;}
+      .topbar.scrolled .nav-pill{grid-column:1;grid-row:1;}
+      .topbar.scrolled .logo-wrap{grid-column:2;grid-row:1;width:0;min-width:0;overflow:hidden;}
+      .topbar.scrolled .nav-pill{min-width:0;}
+      .topbar.scrolled .actions{min-width:0;flex-shrink:0;}
+      .topbar .actions a{white-space:nowrap;}
+      .topbar.scrolled .actions{grid-column:3;grid-row:1;}
+    }
+    @media(min-width:651px) and (max-width:900px){.topbar.scrolled{padding-left:20px;padding-right:20px;}.topbar.scrolled .nav-pill a{padding:10px 9px;font-size:14px;}.topbar.scrolled .login-btn{display:none;}}
+    @media(max-width:650px){
+      .topbar.scrolled{-webkit-backdrop-filter:blur(24px) saturate(1.8);backdrop-filter:blur(24px) saturate(1.8);background:linear-gradient(135deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 100%),rgba(3,25,39,.62);border-bottom:1px solid rgba(255,255,255,.2);box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.25);}
+      .topbar.scrolled.on-light{background:linear-gradient(135deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.66) 100%),rgba(255,255,255,.55);border-bottom:1px solid rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(3,30,48,.12),inset 0 1px 0 rgba(255,255,255,.95);}
+    }
+    @media(max-width:650px){.topbar{padding:20px 18px 0;}.topbar.scrolled{padding:10px 18px;}.topbar-spacer{height:46px;}}
+    body.menu-open .topbar,body.menu-open .topbar.scrolled{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;}
+
+    /* Vector icons (replace text glyphs that can render as emoji on some devices) */
+    svg.i{display:inline-block;vertical-align:-.14em;width:1em;height:1em;flex:none;}
+    .check-dot svg.i,.panel-icon svg.i,.step-arrow svg.i,.statement-badge i svg.i,.process-pill-icon svg.i,.feature-topline span svg.i{display:block;vertical-align:baseline;}
+    .check-dot svg.i{width:11px;height:11px;}
+    .panel-icon svg.i,.step-arrow svg.i{width:1em;height:1em;}
+    .statement-badge i svg.i{width:1em;height:1em;}
+  
+    /* ---- Funding readiness page: components built on the index design language ---- */
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+    .copy .hero-actions .cta-btn{margin:0;}
+    .cta-ghost{display:inline-flex;align-items:center;gap:14px;padding:17px 26px;border-radius:999px;border:1px solid rgba(255,255,255,.55);color:#fff;text-decoration:none;font-weight:600;background:rgba(3,25,39,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .3s,color .3s,transform .25s;animation:fade-up .9s cubic-bezier(.22,1,.36,1) 1.4s both;}
+    .cta-ghost:hover{background:#fff;color:#032b45;transform:translateY(-2px);}
+    .score-row{display:flex;align-items:flex-end;gap:12px;margin-bottom:6px;}
+    .score-num{font-size:4.2rem;font-weight:600;letter-spacing:-.06em;line-height:.9;color:#032b45;}
+    .score-of{font-size:.85rem;color:#777;padding-bottom:6px;}
+    .score-meter{height:8px;border-radius:99px;background:#e6ebee;overflow:hidden;margin:14px 0 18px;}
+    .score-meter span{display:block;height:100%;width:68%;border-radius:99px;background:#40a147;transform-origin:left;animation:bar-grow-x 1.2s cubic-bezier(.22,1,.36,1) 2s both;}
+    .mini-lines{display:grid;gap:8px;margin-bottom:16px;}
+    .mini-lines div{display:flex;justify-content:space-between;font-size:.8rem;color:#2c4a5e;}
+    .mini-lines b{color:#032b45;}
+
+    .offer-showcase .showcase-grid{align-items:stretch;}
+    .offer-showcase .showcase-intro h2{max-width:640px;}
+    .sample-score{display:flex;align-items:baseline;gap:10px;margin:26px 0 6px;}
+    .sample-score b{font-size:clamp(4rem,5.4vw,5.6rem);font-weight:560;letter-spacing:-.07em;line-height:.9;color:#05304c;}
+    .sample-score span{font-size:14px;color:#28597a;}
+    .sample-chip{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;background:#fff;color:#05304c;font-size:12px;font-weight:700;margin-bottom:18px;box-shadow:0 6px 18px #031c2d0d;}
+    .sample-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:#40a147;}
+    .readiness-card .readiness-graphic{margin-top:auto;}
+    .readiness-graphic-title{letter-spacing:.02em;}
+    .weak-note{font-size:12px;color:#28597a;margin:12px 0 6px;font-weight:650;}
+    .weak-note + .check-row{margin:5px 0;}
+    .gets-list{list-style:none;margin:30px 0 24px;padding:0;display:grid;gap:14px;position:relative;z-index:2;}
+    .gets-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45;color:#d7e5ea;}
+    .gets-list li::before{content:"";flex:none;width:20px;height:20px;margin-top:1px;border-radius:50%;background:#40a147 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23032b45' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/60% no-repeat;}
+    .gets-card h3{font-size:clamp(1.65rem,2vw,2.2rem);letter-spacing:-.055em;line-height:1.12;font-weight:550;margin:30px 0 0;color:#fff;max-width:300px;}
+    .gets-card .support-link{margin-top:auto;}
+    .gets-card::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid #849baa44;right:-120px;top:-110px;box-shadow:0 0 0 38px #ffffff08,0 0 0 39px #40a14733;}
+    .support-card.gets-card{color:#fff;}
+
+    .step.weight-step{min-height:0!important;}
+    .process .step.weight-step,.process .step.weight-step:not(:first-child){min-height:400px;}
+    .weight-big{display:block;font-size:clamp(3.4rem,4.6vw,4.8rem);font-weight:540;letter-spacing:-.07em;line-height:1;margin:22px 0 4px;color:#05304c;}
+    .weight-big small{display:block;margin:8px 0 0;font-size:.3em;letter-spacing:-.02em;font-weight:600;color:#33719b;}
+    .process .step:nth-child(3) .weight-big{color:#fff;}
+    .process .step:nth-child(3) .weight-big small{color:#8fd199;}
+    .weight-bar{height:6px;border-radius:99px;background:#dfe5e9;overflow:hidden;margin:6px 0 22px;}
+    .weight-bar i{display:block;height:100%;width:var(--w);border-radius:99px;background:#40a147;transform-origin:left;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.22,1,.36,1) .5s;}
+    .process .step:nth-child(3) .weight-bar{background:#ffffff26;}
+    .step.visible .weight-bar i{transform:none;}
+    .step-list{list-style:none;margin:0;padding:0;display:grid;gap:11px;}
+    .step-list li{position:relative;padding-left:20px;font-size:14px;line-height:1.5;color:#4f5f69;}
+    .step-list li::before{content:"";position:absolute;left:0;top:.58em;width:8px;height:8px;border-radius:50%;background:#40a147;}
+    .process .step:nth-child(3) .step-list li{color:#d5e0e6;}
+    .process .step .step-list li{color:#4f5f69;}
+    .process .step:nth-child(3) .step-list li{color:#d5e0e6;}
+    .process .step h3{margin-top:2px;}
+    .process-note{display:inline-block;margin-top:32px;font-size:14px;color:#68736d;}
+
+    .routes-wrap{background:#fff;color:#031f32;padding:118px 0 125px;}
+    .routes-wrap .growth-heading{display:block;margin-bottom:64px;max-width:980px;}
+    .routes-wrap h2{font-size:clamp(2.7rem,4.7vw,5rem);letter-spacing:-.065em;line-height:1.06;max-width:930px;}
+    .routes-wrap .routes-sub{margin-top:22px;font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.6;color:#68736d;max-width:560px;}
+    .routes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+    .route-card{min-height:440px;justify-content:space-between;}
+    .route-card .route-body h3{font-size:clamp(1.55rem,1.9vw,2.1rem);line-height:1.1;letter-spacing:-.055em;font-weight:550;margin:26px 0 16px;}
+    .route-card .route-body p{font-size:14px;line-height:1.6;max-width:300px;}
+    .route-band{font-size:clamp(2.6rem,3.4vw,3.6rem);font-weight:540;letter-spacing:-.07em;line-height:1;margin-top:26px;display:block;}
+    .route-band small{display:block;font-size:11px;letter-spacing:.12em;font-weight:750;text-transform:uppercase;margin-top:10px;}
+    .route-link{display:inline-flex;align-items:center;gap:14px;font-size:13px;font-weight:650;margin-top:26px;width:fit-content;}
+    .route-link span{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1);}
+    .route-link:hover span{transform:translate(5px,-5px);}
+    .route-a{background:#ddf1df;color:#05304c;}
+    .route-a p{color:#2e5f4a;}
+    .route-b{background:#e1f1f2;color:#063b5e;}
+    .route-b p{color:#28597a;}
+    .route-c{background:#053351;color:#fff;}
+    .route-c p{color:#cad8df;}
+    .route-c .route-link{color:#c5e8ca;}
+    .route-d{background:#021827;color:#fff;}
+    .route-d p{color:#b9c8d0;}
+    .route-d .route-link{color:#c5e8ca;}
+    .route-c .route-band small,.route-d .route-band small{color:#40a147;}
+    .route-a .route-band small,.route-b .route-band small{color:#2d7a35;}
+    @media(max-width:1150px){.routes{grid-template-columns:1fr 1fr;}}
+    @media(max-width:650px){.routes-wrap{padding:72px 0;}.routes-wrap .growth-heading{margin-bottom:38px;}.routes-wrap h2{font-size:clamp(2.5rem,10vw,3.7rem);}.routes{grid-template-columns:1fr;gap:14px;}.route-card{min-height:380px;}}
+    .route-card.reveal{transition-delay:var(--d,0s);}
+
+    .loop-panel{min-height:0;background:#05304c;padding:30px;display:grid;gap:12px;align-content:center;}
+    .loop-panel::before{background:linear-gradient(180deg,rgba(2,20,32,.0),rgba(2,20,32,.35));}
+    .loop-step{position:relative;z-index:2;display:grid;grid-template-columns:48px 1fr;gap:18px;align-items:center;padding:20px 22px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .8s cubic-bezier(.22,1,.36,1),background .3s;transition-delay:calc(.3s + var(--i) * .13s);}
+    .ready-panel.visible .loop-step{opacity:1;transform:none;}
+    .loop-step:hover{background:rgba(255,255,255,.1);}
+    .loop-num{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#40a147;color:#032b45;font-weight:700;font-size:16px;}
+    .loop-step b{display:block;font-size:18px;font-weight:600;letter-spacing:-.03em;color:#fff;margin-bottom:3px;}
+    .loop-step span.t{display:block;font-size:14px;line-height:1.5;color:#c3d2da;}
+    .loop-panel::after{right:-140px;top:-150px;}
+    .ready .ready-layout{align-items:center;}
+    .ready p.section-intro + p.section-intro{margin-top:-8px;}
+
+    .faq{background:#fff;color:#031f32;}
+    .faq-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:88px;align-items:start;}
+    .faq h2{font-size:clamp(2.65rem,4.4vw,4.8rem);letter-spacing:-.065em;line-height:1.04;}
+    .faq .faq-sub{margin-top:22px;font-size:16px;line-height:1.65;color:#68736d;max-width:360px;}
+    .faq-list{border-top:1px solid #dce1e4;}
+    .faq-item{border-bottom:1px solid #dce1e4;}
+    .faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 0;font-size:clamp(1.15rem,1.55vw,1.5rem);font-weight:540;letter-spacing:-.04em;color:#042337;transition:color .3s;}
+    .faq-item summary::-webkit-details-marker{display:none;}
+    .faq-item summary:hover{color:#2d7a35;}
+    .faq-plus{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid #c7ccd0;display:grid;place-items:center;transition:background .3s,transform .4s cubic-bezier(.34,1.56,.64,1),border-color .3s;}
+    .faq-plus::before{content:"";width:12px;height:1.5px;background:#05304c;border-radius:2px;position:absolute;}
+    .faq-plus::after{content:"";width:1.5px;height:12px;background:#05304c;border-radius:2px;position:absolute;transition:transform .3s,opacity .3s;}
+    .faq-plus{position:relative;}
+    .faq-item[open] .faq-plus{background:#40a147;border-color:#40a147;transform:rotate(180deg);}
+    .faq-item[open] .faq-plus::after{transform:scaleY(0);opacity:0;}
+    .faq-item p{padding:0 60px 30px 0;font-size:16px;line-height:1.7;color:#5f6e77;max-width:680px;}
+    .faq-item p a{color:#05304c;font-weight:650;border-bottom:1px solid #40a147;}
+    @media(max-width:950px){.faq-layout{grid-template-columns:1fr;gap:36px;}.faq-item p{padding-right:0;}}
+    .faq .eyebrow{color:#326f98;}
+    @media(max-width:950px){.ready-layout .loop-panel{min-height:0;}}
+
+    /* product shelf */
+    .shelf{background:#f9fafa;color:#031f32;padding:118px 0 125px;}
+    .shelf-head{max-width:980px;margin-bottom:56px;}
+    .shelf-head h2{font-size:clamp(2.7rem,4.7vw,5rem);letter-spacing:-.065em;line-height:1.06;max-width:930px;}
+    .shelf-head p{margin-top:22px;font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.6;color:#68736d;max-width:620px;}
+    .shelf-group{margin-top:44px;}
+    .shelf-group:first-of-type{margin-top:0;}
+    .shelf-group-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;padding-bottom:20px;}
+    .shelf-group-head h3{font-size:clamp(1.6rem,2.3vw,2.4rem);letter-spacing:-.055em;font-weight:550;color:#042337;}
+    .shelf-group-head p{max-width:470px;font-size:14px;line-height:1.6;color:#68736d;}
+    .shelf-cols,.product summary{display:grid;grid-template-columns:46px minmax(0,1.5fr) minmax(0,.7fr) minmax(0,.6fr) 38px;gap:22px;align-items:center;}
+    .shelf-cols{padding:0 24px 12px;font-size:11px;letter-spacing:.12em;font-weight:750;text-transform:uppercase;color:#7c8a94;}
+    .shelf-list{display:grid;gap:10px;}
+    .product{background:#fff;border:1px solid #e1e6ea;border-radius:20px;transition:box-shadow .35s,border-color .35s,transform .35s;}
+    .product:hover{box-shadow:0 18px 44px rgba(4,39,62,.08);transform:translateY(-2px);}
+    .product[open]{border-color:#bfe0c3;box-shadow:0 22px 52px rgba(4,39,62,.09);}
+    .product summary{list-style:none;cursor:pointer;padding:22px 24px;}
+    .product summary::-webkit-details-marker{display:none;}
+    .p-num{font-size:12px;letter-spacing:.08em;font-weight:700;color:#33719b;}
+    .p-name b{display:block;font-size:clamp(1.1rem,1.4vw,1.35rem);font-weight:580;letter-spacing:-.04em;color:#042337;}
+    .p-name span{display:block;font-size:13px;line-height:1.5;color:#68736d;margin-top:4px;max-width:520px;}
+    .p-amt,.p-rep{font-size:14px;font-weight:600;color:#05304c;}
+    .p-rep{color:#4f5f69;font-weight:500;}
+    .p-plus{position:relative;width:34px;height:34px;border-radius:50%;border:1px solid #c7ccd0;transition:background .3s,transform .4s cubic-bezier(.34,1.56,.64,1),border-color .3s;}
+    .p-plus::before,.p-plus::after{content:"";position:absolute;left:50%;top:50%;background:#05304c;border-radius:2px;transform:translate(-50%,-50%);}
+    .p-plus::before{width:11px;height:1.5px;}.p-plus::after{width:1.5px;height:11px;transition:transform .3s,opacity .3s;}
+    .product[open] .p-plus{background:#40a147;border-color:#40a147;transform:rotate(180deg);}
+    .product[open] .p-plus::after{opacity:0;transform:translate(-50%,-50%) scaleY(0);}
+    .p-body{display:grid;grid-template-columns:46px minmax(0,1.5fr) minmax(0,1.3fr);gap:22px;padding:2px 24px 26px;}
+    .p-body h4{font-size:11px;letter-spacing:.12em;font-weight:750;text-transform:uppercase;color:#33719b;margin-bottom:12px;}
+    .p-docs{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+    .p-docs li{position:relative;padding-left:20px;font-size:14px;line-height:1.5;color:#4f5f69;}
+    .p-docs li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:#40a147;}
+    .p-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;grid-column:3;}
+    .p-body .btn-dark{padding:14px 20px;gap:22px;font-size:13px;}
+    .p-body .btn-outline{padding:13px 20px;font-size:13px;}
+    .p-body .p-docs-wrap{grid-column:2;}
+    .p-body .p-actions-wrap{grid-column:3;}
+    .p-meta{font-size:13px;color:#68736d;line-height:1.6;margin-bottom:18px;}
+    .p-meta b{color:#05304c;font-weight:650;}
+    .shelf-note{margin-top:46px;display:grid;grid-template-columns:1.1fr 1fr;gap:20px;}
+    .note-card{border-radius:24px;padding:30px 32px;}
+    .note-card.dark{background:#021827;color:#fff;}
+    .note-card.light{background:#e1f1f2;color:#063b5e;}
+    .note-card h3{font-size:clamp(1.4rem,1.8vw,1.9rem);letter-spacing:-.05em;font-weight:550;margin-bottom:12px;}
+    .note-card p{font-size:14px;line-height:1.65;max-width:520px;}
+    .note-card.dark p{color:#b9c8d0;}
+    .note-card.light p{color:#28597a;}
+    .note-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+    .note-tags span{font-size:12px;padding:8px 13px;border-radius:99px;background:#ffffff14;border:1px solid #ffffff1f;color:#d5e0e6;}
+    .decision{margin-top:64px;}
+    .decision h3{font-size:clamp(1.6rem,2.3vw,2.4rem);letter-spacing:-.055em;font-weight:550;color:#042337;margin-bottom:24px;}
+    .decision-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+    .d-step{background:#fff;border:1px solid #e1e6ea;border-radius:20px;padding:22px 20px;transition:transform .35s,box-shadow .35s;}
+    .d-step:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(4,39,62,.08);}
+    .d-step .loop-num{width:36px;height:36px;font-size:14px;margin-bottom:16px;}
+    .d-step b{display:block;font-size:17px;font-weight:600;letter-spacing:-.03em;color:#042337;margin-bottom:6px;}
+    .d-step span.t{display:block;font-size:13px;line-height:1.55;color:#68736d;}
+    @media(max-width:1000px){.shelf-cols{display:none;}.product summary{grid-template-columns:38px minmax(0,1fr) 34px;gap:6px 16px;}.p-name{grid-column:2;}.p-amt{grid-column:2;grid-row:2;}.p-rep{grid-column:2;grid-row:3;}.p-plus{grid-column:3;grid-row:1;}.p-body{grid-template-columns:1fr;}.p-body .p-docs-wrap,.p-body .p-actions-wrap{grid-column:1;}.shelf-note{grid-template-columns:1fr;}.decision-row{grid-template-columns:1fr 1fr;}}
+    @media(max-width:650px){.shelf{padding:72px 0;}.shelf-head{margin-bottom:36px;}.decision-row{grid-template-columns:1fr;}.note-card{padding:26px 24px;}.product summary{padding:20px 18px;}.p-body{padding:2px 18px 24px;}}
+    @media(prefers-reduced-motion:reduce){.product,.d-step{transition:none;}}
+    @media(prefers-reduced-motion:reduce){.loop-step,.weight-bar i{opacity:1!important;transform:none!important;transition:none;}.score-meter span,.cta-ghost{animation:none!important;}}
+
+  </style>
 </head>
 <body>
-
-<header class="site-header">
-  <div class="shell bar">
-    <a class="brand" href="index.html">
-      <svg viewBox="0 0 690 715" aria-hidden="true"><g fill="#22D669"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
-      <span>flexigrowth<span class="dot">.</span></span>
-    </a>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
-    <nav class="nav" id="primary-nav" aria-label="Main">
-      <a href="funding-readiness.html">Funding Ready</a>
-      <a href="funding.html">Funding</a>
-      <a href="enterprise-development.html">Enterprise Dev</a>
-      <a href="advisory.html">Accounting &amp; Tax</a>
-      <a href="aptivo.html">Training</a>
-      <a href="partners.html">Partners</a>
-      <a href="about.html">About</a>
-      <span class="nav-actions">
-        <a class="btn btn-outline btn-sm" href="portal.html">Client portal</a>
-        <a class="btn btn-primary btn-sm" href="funding-readiness.html">Check readiness</a>
-      </span>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="page-hero on-ink">
-    <div class="shell">
-      <span class="kicker kicker-onink">Funding solutions</span>
-      <h1>The full product shelf, online.</h1>
-      <p class="lede">Ten productive business finance products plus deliberately limited personal lending. Every product shows what it is for, what it costs you in documents, and how to apply.</p>
-      <div class="btn-row mt-32"><a class="btn btn-primary" href="assessment.html">Check my readiness first</a><a class="btn btn-outline btn-outline-onink" href="apply.html">Start an application</a></div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="shell">
-      <div class="alert alert-info">
-        <strong>Not sure which product fits?</strong> The Funding Readiness Assessment matches
-        products to what you actually need the money for &mdash; and tells you whether you
-        qualify before you apply. <a href="assessment.html">Take it first &rarr;</a>
-      </div>
-
-      <div class="section-head mt-32">
-        <span class="kicker">Business funding</span>
-        <h2>Productive finance</h2>
-        <p>Finance that puts capacity into the business &mdash; stock, contracts, equipment and expansion. This is where the majority of our book sits, by design.</p>
-      </div>
-
-      <div class="grid grid-2">
-      <article class="card card-pad-lg" id="working-capital">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">01</span>
-          <span class="spacer"></span>
-          <span class="chip">R20 000 &ndash; R500 000+</span>
-        </div>
-        <h3 class="mt-16">Working Capital</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Stock, wages, supplier payments and the gap between delivering and being paid.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">3 &ndash; 12 months</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">R20 000 &ndash; R500 000+</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>6&ndash;12 months of business bank statements</li><li>CIPC registration documents</li><li>SARS tax compliance PIN</li><li>Management accounts or AFS</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=working-capital">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="purchase-order">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">02</span>
-          <span class="spacer"></span>
-          <span class="chip">Up to R300 000+</span>
-        </div>
-        <h3 class="mt-16">Purchase Order Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> A confirmed purchase order from a creditworthy buyer that you cannot fund out of cash flow.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">Per order cycle</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">Up to R300 000+</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Signed purchase order</li><li>Supplier quotation</li><li>Buyer confirmation</li><li>Business bank statements</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=purchase-order">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="contract-finance">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">03</span>
-          <span class="spacer"></span>
-          <span class="chip">By contract value</span>
-        </div>
-        <h3 class="mt-16">Contract Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Executing an awarded tender or contract &mdash; mobilisation, materials and labour.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">Contract term</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">By contract value</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Signed contract or award letter</li><li>Project cost breakdown</li><li>Bank statements</li><li>Company profile and track record</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=contract-finance">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="asset-finance">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">04</span>
-          <span class="spacer"></span>
-          <span class="chip">By asset value</span>
-        </div>
-        <h3 class="mt-16">Business Asset Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Equipment, machinery, tools and commercial vehicles that expand what the business can deliver.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">12 &ndash; 60 months</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">By asset value</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Supplier quotation for the asset</li><li>Business bank statements</li><li>AFS or management accounts</li><li>Proof of insurance</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=asset-finance">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="micro-enterprise">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">05</span>
-          <span class="spacer"></span>
-          <span class="chip">R5 000 &ndash; R50 000</span>
-        </div>
-        <h3 class="mt-16">Micro Enterprise Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Spaza shops, street traders, salons and micro operators &mdash; including clients with a limited formal record.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">3 &ndash; 12 months</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">R5 000 &ndash; R50 000</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>ID document</li><li>Proof of trading (photos, invoices, stock records)</li><li>3 months of bank or mobile-money records</li><li>Agent verification where available</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=micro-enterprise">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="inventory-finance">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">06</span>
-          <span class="spacer"></span>
-          <span class="chip">R20 000 &ndash; R500 000</span>
-        </div>
-        <h3 class="mt-16">Inventory Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Bulk or seasonal stock purchases where the stock itself turns fast enough to repay the facility.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">Per stock cycle</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">R20 000 &ndash; R500 000</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Supplier quotation</li><li>Stock turn history</li><li>Bank statements</li><li>Management accounts</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=inventory-finance">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="expansion-finance">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">07</span>
-          <span class="spacer"></span>
-          <span class="chip">R50 000 &ndash; R500 000+</span>
-        </div>
-        <h3 class="mt-16">Expansion Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Opening a second site, adding a production line or entering a new market.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">12 &ndash; 36 months</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">R50 000 &ndash; R500 000+</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Written expansion plan</li><li>12-month cashflow forecast</li><li>AFS</li><li>Bank statements</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=expansion-finance">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-paper" id="property">
-    <div class="shell">
-      <div class="section-head">
-        <span class="kicker">Property &amp; development</span>
-        <h2>Property and construction finance</h2>
-        <p>Project-based facilities for commercial property, construction and residential development, drawn against verified progress.</p>
-      </div>
-      <div class="grid grid-2">
-      <article class="card card-pad-lg" id="property">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">08</span>
-          <span class="spacer"></span>
-          <span class="chip">By project</span>
-        </div>
-        <h3 class="mt-16">Property Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Commercial property acquisition and improvement for owner-occupied or income-producing use.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">Project term</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">By project</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Offer to purchase or title deed</li><li>Valuation</li><li>Rental schedule where applicable</li><li>AFS and bank statements</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=property">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="construction-finance">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">09</span>
-          <span class="spacer"></span>
-          <span class="chip">By project</span>
-        </div>
-        <h3 class="mt-16">Construction Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Draw-down funding against certified progress on a construction project.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">Project term</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">By project</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Signed building contract</li><li>Approved plans</li><li>Bill of quantities</li><li>Professional team appointment</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=construction-finance">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="residential-development">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">10</span>
-          <span class="spacer"></span>
-          <span class="chip">By project</span>
-        </div>
-        <h3 class="mt-16">Residential Development Shortfall</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Topping up a residential development where senior funding falls short of the build cost.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">Project term</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">By project</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Senior lender term sheet</li><li>Development budget</li><li>Approved plans</li><li>Pre-sales schedule</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=residential-development">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      <article class="card card-pad-lg" id="housing-bridging">
-        <div class="wrap-between">
-          <span class="num" style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--green-700)">11</span>
-          <span class="spacer"></span>
-          <span class="chip">By transaction</span>
-        </div>
-        <h3 class="mt-16">Housing Bridging Finance</h3>
-        <p class="muted mt-8"><strong style="color:var(--text)">Ideal for:</strong> Bridging the gap while a property transfer registers &mdash; for sellers, agents and developers.</p>
-        <div class="grid grid-2 mt-24" style="gap:18px">
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Repayment</h4>
-            <p class="mt-8">Until transfer</p>
-          </div>
-          <div>
-            <h4 class="small" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Typical amount</h4>
-            <p class="mt-8">By transaction</p>
-          </div>
-        </div>
-        <h4 class="small mt-24" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem">Documents required</h4>
-        <ul class="dots mt-8 small"><li>Signed sale agreement</li><li>Conveyancer&rsquo;s undertaking</li><li>Proof of lodgement</li><li>ID document</li></ul>
-        <div class="btn-row mt-24">
-          <a class="btn btn-primary btn-sm" href="apply.html?product=housing-bridging">Apply now</a>
-          <a class="btn btn-outline btn-sm" href="assessment.html">Check my readiness</a>
-        </div>
-      </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="shell">
-      <div class="section-head">
-        <span class="kicker">Personal lending</span>
-        <h2>Deliberately limited.</h2>
-        <p>Productive lending leads. Consumption lending is held to a controlled minimum as a matter of policy and of our responsible-lending obligations as a registered credit provider.</p>
-      </div>
-      <div class="grid grid-2">
-      <article class="card" id="personal-finance">
-        <div class="wrap-between">
-          <span style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--text-muted)">12</span>
-          <span class="spacer"></span>
-          <span class="chip chip-amber">Limited &middot; risk-managed</span>
-        </div>
-        <h3 class="mt-16">Personal Finance</h3>
-        <p class="muted small mt-8">Available only after a full affordability assessment in terms of the National Credit Act.</p>
-      </article>
-      <article class="card" id="micro-personal">
-        <div class="wrap-between">
-          <span style="font-family:var(--display);font-size:.85rem;font-weight:700;letter-spacing:.18em;color:var(--text-muted)">13</span>
-          <span class="spacer"></span>
-          <span class="chip chip-amber">Limited &middot; risk-managed</span>
-        </div>
-        <h3 class="mt-16">Micro Personal Loans</h3>
-        <p class="muted small mt-8">Small-value personal lending, deliberately capped as a share of the book.</p>
-      </article>
-      </div>
-
-      <div class="card card-pad-lg mt-32">
-        <h3>Responsible lending</h3>
-        <p class="muted mt-16">
-          FlexiGrowth Capital is a registered credit provider (NCRCP23507). Every application
-          is subject to affordability assessment, identity and AML verification, and a credit
-          bureau check in terms of the National Credit Act. Approval, amount and pricing depend
-          on the outcome of that assessment. Terms and conditions apply.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-ink">
-    <div class="shell">
-      <div class="section-head">
-        <span class="kicker kicker-onink">How a decision gets made</span>
-        <h2>From application to payout.</h2>
-      </div>
-      <div class="steps-flow">
-        <div class="step-item"><span class="n">1</span><h3>Apply</h3><p>A short mobile application, self-serve or captured by an agent on a tablet.</p></div>
-        <div class="step-item"><span class="n">2</span><h3>Verify</h3><p>Automated AML and identity verification, plus a J-Cred credit bureau check.</p></div>
-        <div class="step-item"><span class="n">3</span><h3>Assess</h3><p>FlexiScore&trade; blends bureau data with cashflow, savings behaviour, stokvel participation and contract verification.</p></div>
-        <div class="step-item"><span class="n">4</span><h3>Decide</h3><p>Credit committee decision, then contracting and payout through our loan management system.</p></div>
-        <div class="step-item"><span class="n">5</span><h3>Support</h3><p>Advisory and enterprise development support for the life of the facility.</p></div>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="shell">
-      <div class="cta-band">
-        <span class="kicker" style="color:var(--green)">Ready when you are</span>
-        <h2>Apply for funding.</h2>
-        <p>If you already know what you need, start the application. If you are not sure you will qualify, check your readiness first &mdash; it takes five minutes.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="apply.html">Start an application &rarr;</a>
-          <a class="btn btn-outline btn-outline-onink" href="assessment.html">Check my readiness</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="shell">
-    <div class="footer-grid">
-      <div>
-        <a class="brand" href="index.html">
-          <svg viewBox="0 0 690 715" aria-hidden="true"><g fill="#22D669"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
-          <span>flexigrowth<span class="dot">.</span></span>
+  <section class="hero" aria-label="Funding readiness introduction">
+    <div class="bottom-blur" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="topbar-spacer" aria-hidden="true"></div>
+      <header class="topbar">
+        <nav class="nav-pill" id="main-nav" aria-label="Main navigation">
+          <a class="nav-logo" href="index.html" aria-label="FlexiGrowth home"><img src="https://flexi-gray.vercel.app/assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" /></a>
+          <a href="#why-first">Readiness</a>
+          <a href="#products">Products</a>
+          <a href="advisory.html">Business Support</a>
+          <a class="nav-login" href="portal.html">Login</a>
+        </nav>
+        <a class="logo-wrap" href="index.html" aria-label="FlexiGrowth home">
+          <img src="https://flexi-gray.vercel.app/assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" />
         </a>
-        <p class="mt-16 small" style="color:var(--text-onink-muted);max-width:38ch">
-          An enterprise finance institution combining capital with capability for
-          South Africa&rsquo;s underserved MSMEs.
-        </p>
-        <p class="tagline mt-24">Fast &middot; Flexible &middot; Financial Growth</p>
-      </div>
-
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li><a href="funding-readiness.html">Funding Readiness</a></li>
-          <li><a href="funding.html">Business Funding</a></li>
-          <li><a href="enterprise-development.html">Enterprise Development</a></li>
-          <li><a href="advisory.html">Accounting &amp; Tax</a></li>
-          <li><a href="aptivo.html">Aptivo Training</a></li>
-          <li><a href="clinics.html">Business Clinics</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About us</a></li>
-          <li><a href="partners.html">Partners &amp; agents</a></li>
-          <li><a href="resources.html">Resources</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Client</h4>
-        <ul>
-          <li><a href="portal.html">Client portal</a></li>
-          <li><a href="apply.html">Apply for funding</a></li>
-          <li><a href="agent-portal.html">Agent portal</a></li>
-        </ul>
-        <h4 class="mt-32">Contact</h4>
-        <ul>
-          <li><a href="mailto:info@flexigrowth.com">info@flexigrowth.com</a></li>
-          <li><a href="tel:+27659456807">+27 65 945 6807</a></li>
-        </ul>
-      </div>
+        <div class="actions">
+          <a class="login-btn" href="portal.html">Login</a>
+          <a class="signup-btn" href="apply.html">Sign up</a>
+          <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+        </div>
+      </header>
+      <main class="hero-content">
+        <div class="copy">
+          <h1 class="animated-title" data-animate-title data-highlight="Funding Ready.">Find out if your business is Funding Ready.</h1>
+          <p>Eight short sections, about five minutes. An advisor comes back to you with a score out of 100 and a clear plan for anything that is missing &mdash; and if you are ready, your application goes straight to funder matching. Then choose from our full range of business finance.</p>
+          <div class="hero-actions">
+            <a class="cta-btn" href="apply.html">Start the questionnaire <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+            <a class="cta-ghost" href="#products">Explore funding</a>
+          </div>
+        </div>
+        <div class="hero-card-wrap">
+          <div class="hero-card" aria-label="Sample funding readiness result">
+            <div class="card-top"><h3>Sample result</h3><span class="growth-badge">Nearly Ready</span></div>
+            <div class="score-row"><span class="score-num">68</span><span class="score-of">out of 100</span></div>
+            <div class="score-meter" aria-hidden="true"><span></span></div>
+            <div class="mini-lines"><div><span>Weakest section</span><b>Financial Readiness</b></div><div><span>Section score</span><b>58%</b></div></div>
+            <p class="card-note">Illustrative example &mdash; not an actual result.</p>
+          </div>
+        </div>
+      </main>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <span>&copy; <span data-year>2026</span> FlexiGrowth Capital. All rights reserved.</span>
-      <span>Registered credit provider NCRCP23507</span>
-      <span class="spacer"></span>
-      <span>509 Cliff Avenue, Waterkloof Ridge, Pretoria</span>
-    </div>
+  <div class="page-content">
+    <section class="section offer-showcase" id="why-first" aria-labelledby="why-title">
+      <div class="container">
+        <div class="showcase-grid">
+          <div class="showcase-intro reveal">
+            <span class="eyebrow">Why this comes first</span>
+            <h2 id="why-title"><span class="line" style="--l:0"><span>The gateway to</span></span><span class="line" style="--l:1"><span>everything we do.</span></span></h2>
+            <div class="showcase-actions"><a class="btn-dark" href="apply.html">Check My Readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="#what-you-need">What you&rsquo;ll need</a></div>
+            <p><strong>Most declined businesses were never far off.</strong> They were missing a tax clearance, six months of bank statements or a set of financial statements &mdash; and a decline never tells you that.</p>
+            <p><strong>The questionnaire shows you where you stand.</strong> What is missing, and who fixes it. It is free and takes five minutes. Answering it does not touch your credit record &mdash; a bureau check only runs once our team takes your application forward, with the consent you give at the end.</p>
+          </div>
+          <div class="showcase-card readiness-card reveal" style="--d:.15s">
+            <div class="feature-topline">SAMPLE RESULT</div>
+            <div class="sample-score"><b>68</b><span>out of 100</span></div>
+            <span class="sample-chip">Nearly Ready</span>
+            <div class="readiness-graphic">
+              <div class="readiness-graphic-title">What happens next</div>
+              <div class="check-row" style="--i:0"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Application goes forward for funder matching</div>
+              <div class="check-row" style="--i:1"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Your advisor collects the documents</div>
+              <div class="weak-note">Weakest section: Financial Readiness &middot; 58%</div>
+              <div class="check-row" style="--i:2"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Management accounts brought up to date</div>
+              <div class="check-row" style="--i:3"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Six months of business bank statements</div>
+              <div class="check-row" style="--i:4"><span class="check-dot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>A cash flow forecast for the funding period</div>
+            </div>
+          </div>
+          <div class="showcase-card support-card gets-card reveal" style="--d:.3s">
+            <div class="feature-topline" style="color:#40a147">WHAT YOU GET</div>
+            <h3>You leave with answers, not guesses.</h3>
+            <ul class="gets-list">
+              <li>A Funding Readiness Score out of 100, talked through with an advisor</li>
+              <li>A score for each of the eight sections, weighted the way a funder would weigh them</li>
+              <li>Your weakest section named, and who fixes it</li>
+              <li>Funder matching straight away if you score 65 or more</li>
+            </ul>
+            <a href="apply.html" class="support-link">Check my readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="what-you-need" aria-labelledby="need-title">
+      <div class="container">
+        <div class="process-intro reveal">
+          <span class="process-pill"><span class="process-pill-icon" aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.4" fill="currentColor" stroke="none"/></svg></span> Before you start</span>
+          <h2 id="need-title"><span class="line" style="--l:0"><span>What the questionnaire</span></span><span class="line" style="--l:1"><span>asks about.</span></span></h2>
+          <p class="process-subtitle">Nothing needs to be uploaded yet. Every question can be answered from memory, and each section counts towards your score by the weight shown.</p>
+        </div>
+        <div class="steps">
+          <article class="step step-reveal weight-step" style="--d:0s"><span class="step-num">SECTIONS ONE &amp; TWO</span><h3>About the business</h3><span class="weight-big">15<small>% of your score</small></span><div class="weight-bar" style="--w:15%"><i></i></div><ul class="step-list"><li>Registration, entity type and sector</li><li>Years trading, employees and turnover</li><li>Who owns and runs the business, and what happens if they are away</li></ul></article>
+          <article class="step step-reveal weight-step" style="--d:.12s"><span class="step-num">SECTION THREE</span><h3>What you need</h3><span class="weight-big">15<small>% of your score</small></span><div class="weight-bar" style="--w:15%"><i></i></div><ul class="step-list"><li>The funding product and amount</li><li>The term you would like</li><li>What the money is for, and how soon</li></ul></article>
+          <article class="step step-reveal weight-step" style="--d:.24s"><span class="step-num">SECTIONS FOUR TO SIX</span><h3>Market, money &amp; compliance</h3><span class="weight-big">50<small>% of your score</small></span><div class="weight-bar" style="--w:50%"><i></i></div><ul class="step-list"><li>Your market, and how concentrated your revenue is</li><li>Financial records, bank statements and a forecast</li><li>CIPC, SARS and any licences you need</li></ul></article>
+          <article class="step step-reveal weight-step" style="--d:.36s"><span class="step-num">SECTIONS SEVEN &amp; EIGHT</span><h3>Operations &amp; repayment</h3><span class="weight-big">20<small>% of your score</small></span><div class="weight-bar" style="--w:20%"><i></i></div><ul class="step-list"><li>How the business runs day to day</li><li>Existing debt, and where repayment will come from</li><li>Your details, documents and consent</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section routes-wrap" id="what-next" aria-labelledby="next-title">
+      <div class="container">
+        <div class="growth-heading reveal">
+          <span class="eyebrow">What happens next</span>
+          <h2 id="next-title">Four ways forward. Always a way back.</h2>
+          <p class="routes-sub">Your score decides which door opens first. None of them is a dead end.</p>
+        </div>
+        <div class="routes">
+          <article class="showcase-card route-card route-a reveal" style="--d:0s">
+            <div><div class="feature-topline">FUNDING READY</div><span class="route-band">80+<small>Score band</small></span></div>
+            <div class="route-body"><h3>Funding Solutions</h3><p>Ready to borrow. Your application is matched to a suitable funder in our network, with verification and FlexiScore&trade; running behind it.</p><a class="route-link" href="#products">See products <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+          </article>
+          <article class="showcase-card route-card route-b reveal" style="--d:.1s">
+            <div><div class="feature-topline">NEARLY READY</div><span class="route-band">65&ndash;79<small>Score band</small></span></div>
+            <div class="route-body"><h3>Advisory &amp; Compliance</h3><p>A few gaps to close. Your application still goes forward for funder matching while our advisory team clears them &mdash; usually within 2&ndash;4 weeks.</p><a class="route-link" href="advisory.html">Get compliant <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+          </article>
+          <article class="showcase-card route-card route-c reveal" style="--d:.2s">
+            <div><div class="feature-topline">DEVELOPMENT REQUIRED</div><span class="route-band">45&ndash;64<small>Score band</small></span></div>
+            <div class="route-body"><h3>Clinics &amp; ESD</h3><p>Meaningful groundwork is needed before a lender will engage. We build a structured 90-day plan through clinics and enterprise development.</p><a class="route-link" href="enterprise-development.html">Build capability <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+          </article>
+          <article class="showcase-card route-card route-d reveal" style="--d:.3s">
+            <div><div class="feature-topline">EARLY-STAGE</div><span class="route-band">Under 45<small>Score band</small></span></div>
+            <div class="route-body"><h3>Aptivo Training</h3><p>Let&rsquo;s build the foundations together: accredited training and a clinic now, then retake the questionnaire once you have trading history.</p><a class="route-link" href="aptivo.html">Browse courses <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section shelf" id="products" aria-labelledby="products-title">
+      <div class="container">
+        <div class="shelf-head reveal">
+          <span class="eyebrow">Business funding</span>
+          <h2 id="products-title">The full product shelf, online.</h2>
+          <p>Productive business finance, plus deliberately limited personal lending. Open any product to see what it is for, the documents you will need and how to apply.</p>
+        </div>
+        <div class="shelf-group">
+          <div class="shelf-group-head reveal"><h3>Productive finance</h3><p>Finance that puts capacity into the business: stock, contracts, equipment and expansion. This is where the majority of our book sits, by design.</p></div>
+          <div class="shelf-cols" aria-hidden="true"><span></span><span>Product</span><span>Typical amount</span><span>Repayment</span><span></span></div>
+          <div class="shelf-list"><details class="product reveal"><summary><span class="p-num">01</span><span class="p-name"><b>Working Capital</b><span>Stock, wages, supplier payments and the gap between delivering and being paid.</span></span><span class="p-amt">R20 000 – R500 000+</span><span class="p-rep">3 – 12 months</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>6–12 months of business bank statements</li><li>CIPC registration documents</li><li>SARS tax compliance PIN</li><li>Management accounts or AFS</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> 3 – 12 months<br><b>Typical amount:</b> R20 000 – R500 000+</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=working-capital">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">02</span><span class="p-name"><b>Purchase Order Finance</b><span>A confirmed purchase order from a creditworthy buyer that you cannot fund from cash flow.</span></span><span class="p-amt">Up to R300 000+</span><span class="p-rep">Per order cycle</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Signed purchase order</li><li>Supplier quotation</li><li>Buyer confirmation</li><li>Business bank statements</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> Per order cycle<br><b>Typical amount:</b> Up to R300 000+</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=purchase-order">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">03</span><span class="p-name"><b>Contract Finance</b><span>Executing an awarded tender or contract: mobilisation, materials and labour.</span></span><span class="p-amt">By contract value</span><span class="p-rep">Contract term</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Signed contract or award letter</li><li>Project cost breakdown</li><li>Bank statements</li><li>Company profile and track record</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> Contract term<br><b>Typical amount:</b> By contract value</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=contract-finance">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">04</span><span class="p-name"><b>Business Asset Finance</b><span>Equipment, machinery, tools and commercial vehicles that expand what you can deliver.</span></span><span class="p-amt">By asset value</span><span class="p-rep">12 – 60 months</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Supplier quotation for the asset</li><li>Business bank statements</li><li>AFS or management accounts</li><li>Proof of insurance</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> 12 – 60 months<br><b>Typical amount:</b> By asset value</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=asset-finance">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">05</span><span class="p-name"><b>Micro Enterprise Finance</b><span>Spaza shops, street traders, salons and micro operators, including those with a limited formal record.</span></span><span class="p-amt">R5 000 – R50 000</span><span class="p-rep">3 – 12 months</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>ID document</li><li>Proof of trading (photos, invoices, stock records)</li><li>3 months of bank or mobile-money records</li><li>Agent verification where available</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> 3 – 12 months<br><b>Typical amount:</b> R5 000 – R50 000</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=micro-enterprise">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">06</span><span class="p-name"><b>Inventory Finance</b><span>Bulk or seasonal stock where the stock itself turns fast enough to repay the facility.</span></span><span class="p-amt">R20 000 – R500 000</span><span class="p-rep">Per stock cycle</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Supplier quotation</li><li>Stock turn history</li><li>Bank statements</li><li>Management accounts</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> Per stock cycle<br><b>Typical amount:</b> R20 000 – R500 000</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=inventory-finance">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">07</span><span class="p-name"><b>Expansion Finance</b><span>Opening a second site, adding a production line or entering a new market.</span></span><span class="p-amt">R50 000 – R500 000+</span><span class="p-rep">12 – 36 months</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Written expansion plan</li><li>12-month cashflow forecast</li><li>AFS</li><li>Bank statements</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> 12 – 36 months<br><b>Typical amount:</b> R50 000 – R500 000+</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=expansion-finance">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details></div>
+        </div>
+        <div class="shelf-group">
+          <div class="shelf-group-head reveal"><h3>Property &amp; development</h3><p>Project-based facilities for commercial property, construction and residential development, drawn against verified progress.</p></div>
+          <div class="shelf-list"><details class="product reveal"><summary><span class="p-num">08</span><span class="p-name"><b>Property Finance</b><span>Commercial property acquisition and improvement, owner-occupied or income-producing.</span></span><span class="p-amt">By project</span><span class="p-rep">Project term</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Offer to purchase or title deed</li><li>Valuation</li><li>Rental schedule where applicable</li><li>AFS and bank statements</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> Project term<br><b>Typical amount:</b> By project</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=property">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">09</span><span class="p-name"><b>Construction Finance</b><span>Draw-down funding against certified progress on a construction project.</span></span><span class="p-amt">By project</span><span class="p-rep">Project term</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Signed building contract</li><li>Approved plans</li><li>Bill of quantities</li><li>Professional team appointment</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> Project term<br><b>Typical amount:</b> By project</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=construction-finance">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">10</span><span class="p-name"><b>Residential Development Shortfall</b><span>Topping up a residential development where senior funding falls short of build cost.</span></span><span class="p-amt">By project</span><span class="p-rep">Project term</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Senior lender term sheet</li><li>Development budget</li><li>Approved plans</li><li>Pre-sales schedule</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> Project term<br><b>Typical amount:</b> By project</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=residential-development">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details><details class="product reveal"><summary><span class="p-num">11</span><span class="p-name"><b>Housing Bridging Finance</b><span>Bridging the gap while a property transfer registers, for sellers, agents and developers.</span></span><span class="p-amt">By transaction</span><span class="p-rep">Until transfer</span><span class="p-plus" aria-hidden="true"></span></summary><div class="p-body"><div class="p-docs-wrap"><h4>Documents required</h4><ul class="p-docs"><li>Signed sale agreement</li><li>Conveyancer&rsquo;s undertaking</li><li>Proof of lodgement</li><li>ID document</li></ul></div><div class="p-actions-wrap"><p class="p-meta"><b>Repayment:</b> Until transfer<br><b>Typical amount:</b> By transaction</p><div class="p-actions"><a class="btn-dark" href="apply.html?product=housing-bridging">Apply now <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a class="btn-outline" href="assessment.html">Free diagnostic</a></div></div></div></details></div>
+        </div>
+        <div class="shelf-note">
+          <div class="note-card dark reveal"><h3>Personal lending, deliberately limited.</h3><p>Productive lending leads. Consumption lending is held to a controlled minimum, as a matter of policy and of our responsible-lending obligations.</p><div class="note-tags"><span>Personal Finance</span><span>Micro Personal Loans</span><span>Limited &middot; risk-managed</span></div></div>
+          <div class="note-card light reveal" style="--d:.12s"><h3>Responsible lending.</h3><p>FlexiGrowth Capital is a registered credit provider (NCRCP23507). Every application is subject to an affordability assessment, identity and AML verification, and a credit bureau check in terms of the National Credit Act. Approval, amount and pricing depend on the outcome. Terms and conditions apply.</p></div>
+        </div>
+        <div class="decision">
+          <h3 class="reveal">How a decision gets made.</h3>
+          <div class="decision-row">
+            <div class="d-step reveal"><span class="loop-num">1</span><b>Apply</b><span class="t">A short mobile application, self-serve or captured by an agent on a tablet.</span></div>
+            <div class="d-step reveal" style="--d:.08s"><span class="loop-num">2</span><b>Verify</b><span class="t">Automated AML and identity checks, plus a J-Cred credit bureau check.</span></div>
+            <div class="d-step reveal" style="--d:.16s"><span class="loop-num">3</span><b>Assess</b><span class="t">FlexiScore&trade; blends bureau data with cashflow, savings behaviour, stokvel participation and contract verification.</span></div>
+            <div class="d-step reveal" style="--d:.24s"><span class="loop-num">4</span><b>Decide</b><span class="t">Credit committee decision, then contracting and payout through our loan management system.</span></div>
+            <div class="d-step reveal" style="--d:.32s"><span class="loop-num">5</span><b>Support</b><span class="t">Advisory and enterprise development support for the life of the facility.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ready" id="our-promise" aria-labelledby="promise-title"><div class="container ready-layout">
+      <div class="reveal ready-copy"><span class="eyebrow">Our promise</span><h2 id="promise-title"><span class="line" style="--l:0"><span>We never simply</span></span><span class="line" style="--l:1"><span>decline you.</span></span></h2><p class="section-intro">A bank runs Apply &rarr; Credit check &rarr; Approved or declined, and the conversation ends there. Every FlexiGrowth route ends with a plan and a way back into the funding pipeline &mdash; because a client who becomes fundable in nine months is worth more to both of us than a decline today.</p><a class="btn-dark" href="apply.html">Check My Readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+      <div class="ready-panel loop-panel reveal" aria-label="The four-step readiness loop">
+        <div class="loop-step" style="--i:0"><span class="loop-num">1</span><div><b>Assess</b><span class="t">Score your readiness in five minutes.</span></div></div>
+        <div class="loop-step" style="--i:1"><span class="loop-num">2</span><div><b>Improve</b><span class="t">Close the gaps with advisory, clinics or training.</span></div></div>
+        <div class="loop-step" style="--i:2"><span class="loop-num">3</span><div><b>Reassess</b><span class="t">Take the questionnaire again &mdash; your score moves.</span></div></div>
+        <div class="loop-step" style="--i:3"><span class="loop-num">4</span><div><b>Fund</b><span class="t">Apply with a file that is ready to be said yes to.</span></div></div>
+      </div>
+    </div></section>
+
+    <section class="section faq" id="questions" aria-labelledby="faq-title"><div class="container faq-layout">
+      <div class="reveal"><span class="eyebrow">Questions</span><h2 id="faq-title">Common questions</h2><p class="faq-sub">Straight answers before you begin.</p></div>
+      <div class="faq-list reveal" style="--d:.15s">
+        <details class="faq-item"><summary>Does this affect my credit record?<span class="faq-plus" aria-hidden="true"></span></summary><p>No. Answering the questionnaire does not touch your credit record. A J-Cred bureau check only runs once our team takes your application forward, and only with the consent you give at the end.</p></details>
+        <details class="faq-item"><summary>What does it cost?<span class="faq-plus" aria-hidden="true"></span></summary><p>The questionnaire is free. Any services it recommends &mdash; advisory work, business clinics or accredited courses &mdash; are priced individually and always quoted before you commit.</p></details>
+        <details class="faq-item"><summary>Can I retake it?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes, as often as you like. Most clients retake it after advisory work or a clinic, to see their score move. Our team sees every result, and your advisor takes you through the latest one.</p></details>
+        <details class="faq-item"><summary>Can an agent complete it with me?<span class="faq-plus" aria-hidden="true"></span></summary><p>Yes. Community Business Development Agents run the same questionnaire with you on a tablet, on-site. Find one through <a href="partners.html">Partners &amp; agents</a>.</p></details>
+      </div>
+    </div></section>
+
+    <section class="section last-cta" id="get-started" aria-labelledby="last-cta-title">
+      <div class="cta-bg" data-cta-parallax aria-hidden="true"><img src="assets/femaf/sec4.webp" alt="" loading="lazy" /></div>
+      <div class="container"><div class="reveal"><span class="eyebrow">Free &middot; five minutes &middot; no obligation</span><h2 id="last-cta-title"><span class="line" style="--l:0"><span>Ready to</span></span><span class="line" style="--l:1"><span><em>apply for funding?</em></span></span></h2></div><div class="cta-bottom-row reveal"><p>The application checks your readiness as you go and takes about five minutes. You will leave with a score, a section-by-section breakdown and a plan, whatever the number says.</p><div class="cta-buttons"><a href="apply.html" class="btn-lime">Start an application <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a><a href="assessment.html" class="text-link">Take the free diagnostic <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div></div></div>
+    </section>
+    <footer class="footer"><div class="container">
+      <div class="footer-inner"><a href="index.html" class="footer-logo" aria-label="FlexiGrowth home"><img src="assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" /></a><p>Business finance &amp; support for South African businesses.</p><nav aria-label="Footer navigation"><a href="#why-first">Readiness</a><a href="advisory.html">Business Support</a><a href="#products">Products</a><a href="#what-you-need">What you&rsquo;ll need</a><a href="contact.html">Contact</a></nav></div>
+      <div class="footer-legal"><p class="footer-disclosure"><strong>Legal disclosure.</strong> FlexiGrowth Capital is a registered credit provider with the National Credit Regulator (NCR) in terms of the National Credit Act 34 of 2005, registration number <strong>NCRCP23507</strong>. All credit is subject to application, an affordability assessment and approval, and to our credit criteria and terms and conditions. Please borrow responsibly and only apply for credit you can afford to repay. Graphics on this site are illustrative and are not actual performance data.</p><span class="footer-badge">NCR registered credit provider &middot; NCRCP23507</span>
+      <p class="footer-copy"><span>&copy; <span id="footer-year">2026</span> FlexiGrowth Capital. All rights reserved.</span><a href="contact.html">Privacy Policy</a><a href="contact.html">Terms &amp; Conditions</a></p></div>
+    </div></footer>
   </div>
-</footer>
+  <script src="assets/js/lenis.min.js"></script>
+  <script>
+    // Keep the actual heading accessible and let the visual spans be decorative.
+    document.querySelectorAll('[data-animate-title]').forEach((heading) => {
+      const title = heading.textContent.trim();
+      heading.setAttribute('aria-label', title);
+      heading.textContent = '';
+      let letterIndex = 0;
+      const phrase = heading.dataset.highlight || '';
+      const hlStart = phrase && title.endsWith(phrase) ? title.slice(0, -phrase.length).trim().split(' ').length : Infinity;
+      title.split(' ').forEach((word, wordIndex) => {
+        if (wordIndex === hlStart) heading.append(document.createElement('br'));
+        else if (wordIndex) heading.append(document.createTextNode(' '));
+        const wordSpan = document.createElement('span');
+        wordSpan.className = wordIndex >= hlStart ? 'word hl' : 'word';
+        wordSpan.setAttribute('aria-hidden', 'true');
+        for (const char of word) {
+          const span = document.createElement('span');
+          span.className = 'letter';
+          span.style.setProperty('--i', letterIndex++);
+          span.textContent = char;
+          wordSpan.append(span);
+        }
+        heading.append(wordSpan);
+      });
+    });
 
-<script src="assets/js/site.js"></script>
+    // Mobile menu toggle.
+    (() => {
+      const btn = document.querySelector('.menu-btn');
+      const nav = document.querySelector('.nav-pill');
+      const set = (open) => {
+        document.body.classList.toggle('menu-open', open);
+        btn.setAttribute('aria-expanded', open);
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      btn.addEventListener('click', () => set(!document.body.classList.contains('menu-open')));
+      nav.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+    })();
+
+    // Scroll reveal for the sections below the hero.
+    const revealEls = document.querySelectorAll('.reveal, .step-reveal');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      }, {threshold:.12, rootMargin:'0px 0px -35px 0px'});
+      revealEls.forEach(el => observer.observe(el));
+    } else revealEls.forEach(el => el.classList.add('visible'));
+
+    // Showcase cards: 3D tilt + cursor glow on hover.
+    document.querySelectorAll('.showcase-card').forEach((card) => {
+      if (!window.matchMedia('(hover:hover)').matches) return;
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.transition = 'transform .1s, box-shadow .45s';
+        card.style.setProperty('--ry', ((x - .5) * 9) + 'deg');
+        card.style.setProperty('--rx', ((.5 - y) * 9) + 'deg');
+        card.style.setProperty('--ty', '-8px');
+        card.style.setProperty('--mx', (x * 100) + '%');
+        card.style.setProperty('--my', (y * 100) + '%');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = '';
+        ['--rx', '--ry', '--ty'].forEach((k) => card.style.removeProperty(k));
+      });
+    });
+
+    // Smooth, eased scrolling (Lenis) with anchor links and the mobile menu wired in.
+    window.lenis = null;
+    if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const lenis = window.lenis = new Lenis({ duration: 1.25, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, wheelMultiplier: 1 });
+      const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+      requestAnimationFrame(raf);
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          const target = id.length > 1 && document.querySelector(id);
+          if (id === '#' || target) { e.preventDefault(); lenis.scrollTo(target || 0, { offset: 0, duration: 1.6 }); }
+        });
+      });
+      new MutationObserver(() => document.body.classList.contains('menu-open') ? lenis.stop() : lenis.start())
+        .observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    // Third section: tilt + spotlight, mouse parallax on the floating card, rotating tag pulse.
+    document.querySelectorAll('.growth-tile').forEach((tile) => {
+      if (!window.matchMedia('(hover:hover)').matches) return;
+      const float = tile.querySelector('.float-finance');
+      tile.addEventListener('mousemove', (e) => {
+        const r = tile.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        tile.style.transition = 'transform .1s, box-shadow .5s, opacity .8s ease';
+        tile.style.setProperty('--ry', ((x - .5) * 7) + 'deg');
+        tile.style.setProperty('--rx', ((.5 - y) * 7) + 'deg');
+        tile.style.setProperty('--ty', '-8px');
+        tile.style.setProperty('--mx', (x * 100) + '%');
+        tile.style.setProperty('--my', (y * 100) + '%');
+        if (float) float.style.translate = ((x - .5) * 18) + 'px ' + ((y - .5) * 14) + 'px';
+      });
+      tile.addEventListener('mouseleave', () => {
+        tile.style.transition = '';
+        ['--rx', '--ry', '--ty'].forEach((k) => tile.style.removeProperty(k));
+        if (float) float.style.translate = '';
+      });
+    });
+    (() => {
+      const tags = [...document.querySelectorAll('.finance-tags span')];
+      let i = 0;
+      setInterval(() => {
+        if (!tags.length || document.hidden) return;
+        const el = tags[i++ % tags.length];
+        el.classList.remove('pulse'); void el.offsetWidth; el.classList.add('pulse');
+      }, 1800);
+    })();
+
+    // Fifth section: gentle tilt and photo parallax on the right card.
+    (() => {
+      const card = document.querySelector('.ready-panel');
+      if (!card || !window.matchMedia('(hover:hover)').matches) return;
+      const photo = card.querySelector('.panel-photo');
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.transition = 'transform .1s, box-shadow .5s, opacity .8s ease';
+        card.style.setProperty('--ry', ((x - .5) * 6) + 'deg');
+        card.style.setProperty('--rx', ((.5 - y) * 6) + 'deg');
+        card.style.setProperty('--ty', '-6px');
+        photo.style.setProperty('--px', ((.5 - x) * 18) + 'px');
+        photo.style.setProperty('--py', ((.5 - y) * 14) + 'px');
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = '';
+        ['--rx', '--ry', '--ty'].forEach((k) => card.style.removeProperty(k));
+        ['--px', '--py'].forEach((k) => photo.style.removeProperty(k));
+      });
+    })();
+
+    // Sticky header: keep hero layout steady and add the blurred bar once the page scrolls.
+    (() => {
+      const bar = document.querySelector('.topbar');
+      const spacer = document.querySelector('.topbar-spacer');
+      if (!bar || !spacer) return;
+      const measure = () => { spacer.style.height = (bar.offsetHeight - parseFloat(getComputedStyle(bar).paddingTop) - parseFloat(getComputedStyle(bar).paddingBottom)) + 'px'; };
+      const hero = document.querySelector('.hero');
+      const footer = document.querySelector('.footer');
+      const update = () => {
+        bar.classList.toggle('scrolled', window.scrollY > 24);
+        const probe = 40; // header centre line
+        const inDark = (el) => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top < probe && r.bottom > probe; };
+        const onDark = hero.getBoundingClientRect().bottom > probe || inDark(document.querySelector('.last-cta')) || (footer && footer.getBoundingClientRect().top < probe);
+        bar.classList.toggle('on-light', !onDark);
+      };
+      measure(); update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', () => { if (!bar.classList.contains('scrolled')) measure(); });
+      window.addEventListener('load', () => { if (!bar.classList.contains('scrolled')) measure(); });
+    })();
+
+    // Parallax: photo behind the final CTA plus depth on the statement images.
+    (() => {
+      document.getElementById('footer-year').textContent = new Date().getFullYear();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const cta = document.querySelector('[data-cta-parallax]');
+      const items = [...document.querySelectorAll('[data-parallax]')];
+      let ticking = false;
+      const run = () => {
+        ticking = false;
+        const vh = window.innerHeight;
+        if (cta) {
+          const r = cta.parentElement.getBoundingClientRect();
+          if (r.bottom > 0 && r.top < vh) cta.style.transform = 'translate3d(0,' + (((r.top + r.height / 2) - vh / 2) * -0.22).toFixed(1) + 'px,0)';
+        }
+        items.forEach((el) => {
+          const r = el.parentElement.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > vh + 100) return;
+          el.style.translate = '0 ' + (((r.top + r.height / 2) - vh / 2) * parseFloat(el.dataset.parallax)).toFixed(1) + 'px';
+        });
+      };
+      const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(run); } };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      run();
+    })();
+  </script>
 </body>
 </html>
