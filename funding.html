@@ -794,6 +794,16 @@
     @media(max-width:1000px){.shelf-cols{display:none;}.product summary{grid-template-columns:38px minmax(0,1fr) 34px;gap:6px 16px;}.p-name{grid-column:2;}.p-amt{grid-column:2;grid-row:2;}.p-rep{grid-column:2;grid-row:3;}.p-plus{grid-column:3;grid-row:1;}.p-body{grid-template-columns:1fr;}.p-body .p-docs-wrap,.p-body .p-actions-wrap{grid-column:1;}.shelf-note{grid-template-columns:1fr;}.decision-row{grid-template-columns:1fr 1fr;}}
     @media(max-width:650px){.shelf{padding:72px 0;}.shelf-head{margin-bottom:36px;}.decision-row{grid-template-columns:1fr;}.note-card{padding:26px 24px;}.product summary{padding:20px 18px;}.p-body{padding:2px 18px 24px;}}
     @media(prefers-reduced-motion:reduce){.product,.d-step{transition:none;}}
+
+    .shelf-top{display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:end;margin-bottom:56px;}
+    .shelf-top .shelf-head{margin-bottom:0;}
+    .shelf-img{margin:0;border-radius:26px;overflow:hidden;aspect-ratio:4/3.3;box-shadow:0 28px 60px rgba(3,30,48,.16);}
+    .shelf-img img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.4s cubic-bezier(.22,1,.36,1);}
+    .shelf-img.visible img{transform:scale(1);}
+    .shelf-img:hover img{transform:scale(1.05);}
+    .loop-panel .panel-photo{background-image:url("assets/hero.webp");background-position:center 30%;}
+    .loop-panel::before{background:linear-gradient(180deg,rgba(3,43,69,.62),rgba(3,43,69,.9));}
+    @media(max-width:950px){.shelf-top{grid-template-columns:1fr;gap:32px;margin-bottom:36px;}.shelf-img{aspect-ratio:16/10;}}
     @media(prefers-reduced-motion:reduce){.loop-step,.weight-bar i{opacity:1!important;transform:none!important;transition:none;}.score-meter span,.cta-ghost{animation:none!important;}}
 
   </style>
@@ -929,10 +939,13 @@
 
     <section class="section shelf" id="products" aria-labelledby="products-title">
       <div class="container">
-        <div class="shelf-head reveal">
-          <span class="eyebrow">Business funding</span>
-          <h2 id="products-title">The full product shelf, online.</h2>
-          <p>Productive business finance, plus deliberately limited personal lending. Open any product to see what it is for, the documents you will need and how to apply.</p>
+        <div class="shelf-top">
+          <div class="shelf-head reveal">
+            <span class="eyebrow">Business funding</span>
+            <h2 id="products-title">The full product shelf, online.</h2>
+            <p>Productive business finance, plus deliberately limited personal lending. Open any product to see what it is for, the documents you will need and how to apply.</p>
+          </div>
+          <figure class="shelf-img reveal" style="--d:.15s"><img src="assets/femaf/sec5.webp" alt="A South African entrepreneur hand-finishing a beaded garment in her workshop" loading="lazy" /></figure>
         </div>
         <div class="shelf-group">
           <div class="shelf-group-head reveal"><h3>Productive finance</h3><p>Finance that puts capacity into the business: stock, contracts, equipment and expansion. This is where the majority of our book sits, by design.</p></div>
@@ -962,7 +975,7 @@
 
     <section class="section ready" id="our-promise" aria-labelledby="promise-title"><div class="container ready-layout">
       <div class="reveal ready-copy"><span class="eyebrow">Our promise</span><h2 id="promise-title"><span class="line" style="--l:0"><span>We never simply</span></span><span class="line" style="--l:1"><span>decline you.</span></span></h2><p class="section-intro">A bank runs Apply &rarr; Credit check &rarr; Approved or declined, and the conversation ends there. Every FlexiGrowth route ends with a plan and a way back into the funding pipeline &mdash; because a client who becomes fundable in nine months is worth more to both of us than a decline today.</p><a class="btn-dark" href="apply.html">Check My Readiness <span aria-hidden="true"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
-      <div class="ready-panel loop-panel reveal" aria-label="The four-step readiness loop">
+      <div class="ready-panel loop-panel reveal" aria-label="The four-step readiness loop"><div class="panel-photo" aria-hidden="true"></div>
         <div class="loop-step" style="--i:0"><span class="loop-num">1</span><div><b>Assess</b><span class="t">Score your readiness in five minutes.</span></div></div>
         <div class="loop-step" style="--i:1"><span class="loop-num">2</span><div><b>Improve</b><span class="t">Close the gaps with advisory, clinics or training.</span></div></div>
         <div class="loop-step" style="--i:2"><span class="loop-num">3</span><div><b>Reassess</b><span class="t">Take the questionnaire again &mdash; your score moves.</span></div></div>
