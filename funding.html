@@ -806,6 +806,29 @@
     @media(max-width:950px){.shelf-top{grid-template-columns:1fr;gap:32px;margin-bottom:36px;}.shelf-img{aspect-ratio:16/10;}}
     @media(prefers-reduced-motion:reduce){.loop-step,.weight-bar i{opacity:1!important;transform:none!important;transition:none;}.score-meter span,.cta-ghost{animation:none!important;}}
 
+  
+    /* ---- Shared header: dropdown groups (light, CSS-only) ---- */
+    .nav-pill .has-dd{position:relative;display:inline-flex;}
+    .nav-pill .dd-trigger{display:inline-flex;align-items:center;gap:6px;}
+    .dd-chev{width:12px;height:12px;opacity:.7;transition:transform .3s;}
+    .has-dd:hover .dd-chev,.has-dd:focus-within .dd-chev{transform:rotate(180deg);}
+    .dd{position:absolute;top:100%;left:0;padding-top:14px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .22s ease,transform .22s ease,visibility .22s;z-index:30;}
+    .has-dd:hover .dd,.has-dd:focus-within .dd{opacity:1;visibility:visible;transform:none;}
+    .dd-in{display:flex;flex-direction:column;min-width:220px;padding:8px;border-radius:20px;background:rgba(3,25,39,.94);border:1px solid rgba(255,255,255,.12);box-shadow:0 22px 50px rgba(0,0,0,.28);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);}
+    .nav-pill .dd-in a{display:block;padding:11px 14px;font-size:14px;border-radius:13px;color:#fff;white-space:nowrap;}
+    .nav-pill .dd-in a:hover{background:rgba(255,255,255,.1);color:#40a147;}
+    .topbar.on-light .dd-in{background:rgba(255,255,255,.97);border-color:rgba(3,30,48,.08);box-shadow:0 22px 50px rgba(3,30,48,.16);}
+    .topbar.on-light .nav-pill .dd-in a{color:#032b45;}
+    .topbar.on-light .nav-pill .dd-in a:hover{background:rgba(3,30,48,.06);color:#2d7a35;}
+    @media(max-width:650px){
+      .nav-pill .has-dd{display:block;}
+      .nav-pill .has-dd .dd-trigger{width:100%;}
+      .dd-chev{display:none;}
+      .dd{position:static;padding:0 0 6px 14px;opacity:1;visibility:visible;transform:none;}
+      .dd-in{min-width:0;padding:0;background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;}
+      .nav-pill .dd-in a{font-size:1.05rem;font-weight:500;padding:8px 6px;color:rgba(255,255,255,.72);border-radius:10px;}
+      .nav-pill .dd-in a:hover{background:rgba(255,255,255,.08);}
+    }
   </style>
 </head>
 <body>
@@ -816,9 +839,9 @@
       <header class="topbar">
         <nav class="nav-pill" id="main-nav" aria-label="Main navigation">
           <a class="nav-logo" href="index.html" aria-label="FlexiGrowth home"><img src="https://flexi-gray.vercel.app/assets/femaf/logo-flexiegrowth.png" alt="FlexiGrowth" /></a>
-          <a href="#why-first">Readiness</a>
-          <a href="#products">Products</a>
-          <a href="advisory.html">Business Support</a>
+          <span class="has-dd"><a class="dd-trigger" href="funding.html">Funding <svg class="dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><span class="dd"><span class="dd-in"><a href="funding.html#why-first">Funding readiness</a><a href="funding.html#products">Business funding</a><a href="funding.html#our-promise">Our promise</a></span></span></span>
+          <span class="has-dd"><a class="dd-trigger" href="advisory.html">Business Support <svg class="dd-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><span class="dd"><span class="dd-in"><a href="advisory.html">Accounting &amp; Tax</a><a href="advisory.html#book">Advisory sessions</a><a href="advisory.html">Enterprise development</a><a href="advisory.html">Training</a><a href="advisory.html">Business clinics</a></span></span></span>
+          <a href="funding.html#products">Products</a>
           <a class="nav-login" href="advisory.html">Login</a>
         </nav>
         <a class="logo-wrap" href="index.html" aria-label="FlexiGrowth home">
@@ -826,7 +849,7 @@
         </a>
         <div class="actions">
           <a class="login-btn" href="advisory.html">Login</a>
-          <a class="signup-btn" href="advisory.html">Sign up</a>
+          <a class="signup-btn" href="advisory.html#book">Sign up</a>
           <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
         </div>
       </header>
