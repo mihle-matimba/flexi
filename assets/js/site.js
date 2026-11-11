@@ -62,7 +62,8 @@
     applications: [],         // [{ ref, product, amount, term, purpose, flexiScore, stage, created }]
     bookings: [],             // [{ type, title, date, price, ref }]
     documents: [],            // [{ id, label, uploaded }]
-    courses: []               // [{ code, title, status }]
+    courses: [],              // [{ code, title, status }]
+    enquiries: []             // [{ ref, name, phone, email, business, topic, preference, message, created }]
   };
 
   var Store = {

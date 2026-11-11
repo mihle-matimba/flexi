@@ -55,7 +55,9 @@
           <h2 style="font-size:1.6rem">Send us a message</h2>
           <p class="muted small mt-8">We reply within one business day.</p>
 
-          <form class="mt-32" method="post" action="#" novalidate>
+          <div class="alert alert-bad mt-24" id="ct-error" role="alert" hidden></div>
+
+          <form class="mt-32" id="contact-form" novalidate>
             <div class="field-row">
               <div class="field"><label for="ct-name">Your name</label><input type="text" id="ct-name" name="name" autocomplete="name" required></div>
               <div class="field"><label for="ct-phone">Mobile number</label><input type="tel" id="ct-phone" name="phone" autocomplete="tel" required></div>
@@ -64,7 +66,7 @@
             <div class="field"><label for="ct-business">Business name</label><input type="text" id="ct-business" name="business" autocomplete="organization"></div>
             <div class="field">
               <label for="ct-topic">What is this about?</label>
-              <select id="ct-topic" name="topic">
+              <select id="ct-topic" name="topic" required>
                 <option value="funding">Business funding</option>
                 <option value="readiness">Funding readiness</option>
                 <option value="diagnostic">Business diagnostic</option>
@@ -78,10 +80,31 @@
                 <option value="other">Something else</option>
               </select>
             </div>
-            <div class="field"><label for="ct-message">Message</label><textarea id="ct-message" name="message" rows="5"></textarea></div>
+            <div class="field"><label for="ct-message">Message</label><textarea id="ct-message" name="message" rows="5" required></textarea></div>
+            <div class="field">
+              <label for="ct-contact-pref">Best way to reach you</label>
+              <select id="ct-contact-pref" name="preference">
+                <option value="phone">Phone call</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="email">Email</option>
+              </select>
+            </div>
+            <div class="field">
+              <label style="display:flex;gap:10px;align-items:flex-start;font-weight:400;font-family:var(--body)">
+                <input type="checkbox" id="ct-consent" name="consent" required style="margin-top:4px">
+                <span>I consent to FlexiGrowth Capital contacting me about this enquiry and storing my details in line with POPIA.</span>
+              </label>
+            </div>
             <button class="btn btn-primary btn-block" type="submit">Send message</button>
-            <p class="fine-print mt-16">By sending this message you consent to us contacting you about your enquiry. We handle your information in line with POPIA.</p>
           </form>
+
+          <div id="ct-success" hidden>
+            <div class="alert alert-good mt-24" role="status">
+              <strong>Thank you &mdash; your message has been received.</strong>
+              <p class="mt-8" style="margin-bottom:0">Your reference is <strong id="ct-ref"></strong>. We will reply within one business day.</p>
+            </div>
+            <button class="btn btn-outline btn-sm mt-16" type="button" id="ct-again">Send another message</button>
+          </div>
         </div>
 
         <div>
@@ -174,5 +197,62 @@
 </footer>
 
 <script src="assets/js/site.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('contact-form');
+  var err = document.getElementById('ct-error');
+  var ok = document.getElementById('ct-success');
+  var heading = form.parentNode.querySelector('p.muted');
+
+  // Prefill from the shared client record if the visitor has already given details.
+  var profile = (window.FG && FG.Store.read().profile) || {};
+  [['ct-name', 'name'], ['ct-email', 'email'], ['ct-phone', 'phone'], ['ct-business', 'business']].forEach(function (m) {
+    if (profile[m[1]]) document.getElementById(m[0]).value = profile[m[1]];
+  });
+
+  // ?topic=agent etc. preselects the subject.
+  var wanted = new URLSearchParams(location.search).get('topic');
+  var sel = document.getElementById('ct-topic');
+  if (wanted && sel.querySelector('option[value="' + wanted + '"]')) sel.value = wanted;
+
+  function fail(msg, field) {
+    err.textContent = msg; err.hidden = false;
+    if (field) field.focus();
+    err.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.hidden = true;
+    var f = form.elements;
+    var name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim(), msg = f.message.value.trim();
+
+    if (!name) return fail('Please enter your name.', f.name);
+    if (!/^\+?[0-9 ()-]{9,16}$/.test(phone)) return fail('Please enter a valid mobile number.', f.phone);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('Please enter a valid email address.', f.email);
+    if (!msg) return fail('Please tell us how we can help.', f.message);
+    if (!f.consent.checked) return fail('Please tick the consent box so we can contact you.', f.consent);
+
+    var ref = FG.Fmt.ref('ENQ');
+    FG.Store.push('enquiries', {
+      ref: ref, name: name, phone: phone, email: email,
+      business: f.business.value.trim(), topic: f.topic.value,
+      preference: f.preference.value, message: msg,
+      consent: true, created: Date.now()
+    });
+    // Remember contact details so other forms can prefill.
+    var p = FG.Store.read().profile || {};
+    FG.Store.patch({ profile: Object.assign(p, { name: name, email: email, phone: phone, business: f.business.value.trim() || p.business }) });
+
+    document.getElementById('ct-ref').textContent = ref;
+    form.hidden = true; if (heading) heading.hidden = true; ok.hidden = false;
+    ok.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+
+  document.getElementById('ct-again').addEventListener('click', function () {
+    form.reset(); form.hidden = false; if (heading) heading.hidden = false; ok.hidden = true;
+  });
+})();
+</script>
 </body>
 </html>
