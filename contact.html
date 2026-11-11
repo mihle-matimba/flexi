@@ -199,6 +199,11 @@
 <script src="assets/js/site.js"></script>
 <script>
 (function () {
+  /* HOOK-UP POINT: paste your endpoint here (Formspree, Supabase edge function,
+     Zapier/Make webhook, etc.). Enquiries are POSTed to it as JSON. While this is
+     empty, enquiries are only kept in the visitor's browser. */
+  var ENDPOINT = '';
+
   var form = document.getElementById('contact-form');
   var err = document.getElementById('ct-error');
   var ok = document.getElementById('ct-success');
@@ -234,19 +239,39 @@
     if (!f.consent.checked) return fail('Please tick the consent box so we can contact you.', f.consent);
 
     var ref = FG.Fmt.ref('ENQ');
-    FG.Store.push('enquiries', {
+    var enquiry = {
       ref: ref, name: name, phone: phone, email: email,
       business: f.business.value.trim(), topic: f.topic.value,
       preference: f.preference.value, message: msg,
       consent: true, created: Date.now()
-    });
-    // Remember contact details so other forms can prefill.
-    var p = FG.Store.read().profile || {};
-    FG.Store.patch({ profile: Object.assign(p, { name: name, email: email, phone: phone, business: f.business.value.trim() || p.business }) });
+    };
+    var btn = form.querySelector('button[type=submit]');
 
-    document.getElementById('ct-ref').textContent = ref;
-    form.hidden = true; if (heading) heading.hidden = true; ok.hidden = false;
-    ok.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    function done() {
+      FG.Store.push('enquiries', enquiry);
+      // Remember contact details so other forms can prefill.
+      var p = FG.Store.read().profile || {};
+      FG.Store.patch({ profile: Object.assign(p, { name: name, email: email, phone: phone, business: enquiry.business || p.business }) });
+      document.getElementById('ct-ref').textContent = ref;
+      form.hidden = true; if (heading) heading.hidden = true; ok.hidden = false;
+      ok.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+
+    if (!ENDPOINT) return done();
+
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(enquiry)
+    }).then(function (r) {
+      if (!r.ok) throw new Error('bad status');
+      done();
+    }).catch(function () {
+      fail('Sorry, we could not send your message. Please try again or email info@flexigrowth.com.');
+    }).then(function () {
+      btn.disabled = false; btn.textContent = 'Send message';
+    });
   });
 
   document.getElementById('ct-again').addEventListener('click', function () {
