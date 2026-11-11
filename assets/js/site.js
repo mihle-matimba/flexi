@@ -29,9 +29,9 @@
 
   /* ---------- Mark the current page in the nav ---------- */
   function initActiveLink() {
-    var here = location.pathname.split('/').pop() || 'index.html';
+    var here = location.pathname.split('/').pop().replace(/\.html$/, '') || '/';
     document.querySelectorAll('#primary-nav a[href]').forEach(function (a) {
-      var target = a.getAttribute('href').split('#')[0].split('/').pop();
+      var target = a.getAttribute('href').split('#')[0].split('?')[0].split('/').pop().replace(/\.html$/, '') || '/';
       if (target && target === here) a.setAttribute('aria-current', 'page');
     });
   }

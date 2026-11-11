@@ -264,8 +264,8 @@
         key: 'funding', label: 'Funding Solutions',
         headline: 'You are Funding Ready.',
         body: 'Your business clears our readiness threshold. Choose a product and start an application — we will run verification and FlexiScore™ from there.',
-        cta: { href: 'apply.html', text: 'Start a funding application →' },
-        alt: { href: 'funding.html', text: 'Compare funding products' }
+        cta: { href: 'apply', text: 'Start a funding application →' },
+        alt: { href: 'funding', text: 'Compare funding products' }
       };
     }
     var advisoryGaps = fixes.filter(function (f) { return f.route === 'advisory'; }).length;
@@ -277,8 +277,8 @@
           ? 'You are close. Let us fix the basics.'
           : 'Most of what is holding you back is paperwork.',
         body: 'The gaps below are records and compliance rather than the business itself. Our accounting and advisory team can close them, usually inside one cycle — then you come straight back into the funding pipeline.',
-        cta: { href: 'advisory.html#book', text: 'Book a compliance review →' },
-        alt: { href: 'enterprise-development.html', text: 'See business clinics' }
+        cta: { href: 'advisory#book', text: 'Book a compliance review →' },
+        alt: { href: 'enterprise-development', text: 'See business clinics' }
       };
     }
 
@@ -294,16 +294,16 @@
         key: 'esd', label: 'Business Clinics & ESD',
         headline: 'Let us build the foundation first.',
         body: 'There is a real business here, but it needs structure before it can carry debt. Our clinics and diagnostic programme are built for exactly this stage.',
-        cta: { href: 'enterprise-development.html#diagnostic', text: 'Book a business diagnostic →' },
-        alt: { href: 'advisory.html', text: 'Get accounting support' }
+        cta: { href: 'enterprise-development#diagnostic', text: 'Book a business diagnostic →' },
+        alt: { href: 'advisory', text: 'Get accounting support' }
       };
     }
     return {
       key: 'training', label: 'Aptivo Training',
       headline: 'You are not funding ready yet — and that is fine.',
       body: 'This is the beginning of the journey, not the end of it. Start with accredited training and a business clinic, and re-take this assessment when you have been trading and banking for a few months.',
-      cta: { href: 'aptivo.html', text: 'Browse accredited courses →' },
-      alt: { href: 'clinics.html', text: 'Find a business clinic' }
+      cta: { href: 'aptivo', text: 'Browse accredited courses →' },
+      alt: { href: 'clinics', text: 'Find a business clinic' }
     };
   }
 

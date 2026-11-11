@@ -69,13 +69,13 @@
 <header class="dash-head">
   <div class="shell">
     <div class="bar">
-      <a class="brand" href="index.html">
+      <a class="brand" href="/">
         <svg viewBox="0 0 690 715" aria-hidden="true"><g fill="#22D669"><path d="M0 0h690v355c0 150-75 255-210 305V150H0Z"/><path d="M0 310h310v342q-186 55-267-77Q0 505 0 445Z"/></g></svg>
         <span>flexigrowth<span class="dot">.</span></span>
       </a>
       <span class="spacer"></span>
-      <a class="link" href="index.html">Main site</a>
-      <a class="link" href="contact.html">Get help</a>
+      <a class="link" href="/">Main site</a>
+      <a class="link" href="contact">Get help</a>
       <button class="btn btn-outline btn-outline-onink btn-sm" id="reset">Clear this device</button>
     </div>
 
@@ -100,7 +100,7 @@
     <div class="wrap-between fine-print">
       <span>&copy; <span data-year>2026</span> FlexiGrowth Capital &middot; Registered credit provider NCRCP23507</span>
       <span class="spacer"></span>
-      <a href="index.html">flexigrowth.com</a>
+      <a href="/">flexigrowth.com</a>
     </div>
     <p class="fine-print mt-16" style="max-width:70ch">
       Front-end prototype. Data on this page is stored in this browser only and is not sent to
@@ -170,7 +170,7 @@
       '<h2 style="font-size:1.6rem">Your dashboard fills up after the assessment.</h2>' +
       '<p class="muted mt-16 mx-auto">The Funding Readiness Assessment takes five minutes and produces your score, ' +
       'your six diagnostic sub-scores and the recommended next steps that drive everything on this page.</p>' +
-      '<a class="btn btn-primary mt-32" href="assessment.html">Check my funding readiness &rarr;</a>' +
+      '<a class="btn btn-primary mt-32" href="assessment">Check my funding readiness &rarr;</a>' +
       '</div>';
   }
 
@@ -178,9 +178,9 @@
   var steps = [];
   if (r) {
     r.improvements.forEach(function (f) {
-      var link = f.route === 'advisory' ? ['advisory.html', 'Book advisory']
-               : f.route === 'esd' ? ['enterprise-development.html', 'See programmes']
-               : ['aptivo.html', 'Browse courses'];
+      var link = f.route === 'advisory' ? ['advisory', 'Book advisory']
+               : f.route === 'esd' ? ['enterprise-development', 'See programmes']
+               : ['aptivo', 'Browse courses'];
       steps.push({ title: f.title, body: f.body, href: link[0], cta: link[1] });
     });
   }
@@ -188,10 +188,10 @@
     steps.push({ title: 'Upload: ' + d.label, body: 'Verification cannot start until this document is on file.', href: '#documents', cta: 'Upload' });
   });
   if (r && r.score >= 70 && !data.applications.length) {
-    steps.unshift({ title: 'Start a funding application', body: 'You are funding ready — choose a product and apply.', href: 'apply.html', cta: 'Apply now' });
+    steps.unshift({ title: 'Start a funding application', body: 'You are funding ready — choose a product and apply.', href: 'apply', cta: 'Apply now' });
   }
   if (r && r.score < 70) {
-    steps.push({ title: 'Re-take the assessment', body: 'Once you have closed the items above, re-take the assessment to move your score.', href: 'assessment.html', cta: 'Re-assess' });
+    steps.push({ title: 'Re-take the assessment', body: 'Once you have closed the items above, re-take the assessment to move your score.', href: 'assessment', cta: 'Re-assess' });
   }
 
   if (steps.length) {
@@ -208,7 +208,7 @@
 
   /* --- Applications --- */
   out += '<div class="panel"><div class="wrap-between"><h2>Funding applications</h2><span class="spacer"></span>' +
-    '<a class="btn btn-primary btn-sm" href="apply.html">New application</a></div>' +
+    '<a class="btn btn-primary btn-sm" href="apply">New application</a></div>' +
     '<p class="sub mt-8">Every application, from submission through to payout.</p>';
 
   if (!data.applications.length) {
@@ -246,8 +246,8 @@
           '<div class="meter' + tone(v) + '"><span style="width:' + v + '%"></span></div></div>';
       }).join('') + '</div>' +
       '<div class="btn-row mt-32">' +
-      '<a class="btn btn-outline btn-sm" href="enterprise-development.html#diagnostic">Book a full diagnostic</a>' +
-      '<a class="btn btn-outline btn-sm" href="assessment.html">Re-take the assessment</a></div></div>';
+      '<a class="btn btn-outline btn-sm" href="enterprise-development#diagnostic">Book a full diagnostic</a>' +
+      '<a class="btn btn-outline btn-sm" href="assessment">Re-take the assessment</a></div></div>';
   }
 
   /* --- Documents --- */
@@ -271,18 +271,18 @@
       '<p class="sub" style="color:var(--text-onink-muted)">Repayment history feeds straight back into your score — a clean record raises your funding limit.</p>' +
       '<div class="grid grid-3" style="gap:18px">' +
         '<div class="card"><h3>Repayment progress</h3><div class="meter mt-16"><span style="width:18%"></span></div><p class="small mt-8" style="color:var(--text-onink-muted)">On schedule</p></div>' +
-        '<div class="card"><h3>Business coach</h3><p class="small mt-8" style="color:var(--text-onink-muted)">An advisor is assigned for the life of the facility.</p><a class="btn btn-primary btn-sm mt-16" href="advisory.html">Book a session</a></div>' +
-        '<div class="card"><h3>Next funding limit</h3><p class="small mt-8" style="color:var(--text-onink-muted)">Reviewed after six months of clean repayment.</p><a class="btn btn-outline btn-outline-onink btn-sm mt-16" href="funding.html">See products</a></div>' +
+        '<div class="card"><h3>Business coach</h3><p class="small mt-8" style="color:var(--text-onink-muted)">An advisor is assigned for the life of the facility.</p><a class="btn btn-primary btn-sm mt-16" href="advisory">Book a session</a></div>' +
+        '<div class="card"><h3>Next funding limit</h3><p class="small mt-8" style="color:var(--text-onink-muted)">Reviewed after six months of clean repayment.</p><a class="btn btn-outline btn-outline-onink btn-sm mt-16" href="funding">See products</a></div>' +
       '</div></div>';
   }
 
   /* --- Services --- */
   out += '<div class="panel"><h2>Your services</h2><p class="sub">Everything else FlexiGrowth can put behind the business.</p>' +
     '<div class="grid grid-4" style="gap:18px">' +
-      '<a class="num-card" href="advisory.html"><span class="num">01</span><h3>Accounting &amp; tax</h3><p>Bookkeeping, VAT, payroll and financial statements.</p></a>' +
-      '<a class="num-card" href="clinics.html"><span class="num">02</span><h3>Business clinics</h3><p>Monthly paid working sessions on one topic at a time.</p></a>' +
-      '<a class="num-card" href="aptivo.html"><span class="num">03</span><h3>Aptivo training</h3><p>Accredited programmes and short courses.</p></a>' +
-      '<a class="num-card" href="enterprise-development.html"><span class="num">04</span><h3>Enterprise development</h3><p>Diagnostics, coaching and improvement programmes.</p></a>' +
+      '<a class="num-card" href="advisory"><span class="num">01</span><h3>Accounting &amp; tax</h3><p>Bookkeeping, VAT, payroll and financial statements.</p></a>' +
+      '<a class="num-card" href="clinics"><span class="num">02</span><h3>Business clinics</h3><p>Monthly paid working sessions on one topic at a time.</p></a>' +
+      '<a class="num-card" href="aptivo"><span class="num">03</span><h3>Aptivo training</h3><p>Accredited programmes and short courses.</p></a>' +
+      '<a class="num-card" href="enterprise-development"><span class="num">04</span><h3>Enterprise development</h3><p>Diagnostics, coaching and improvement programmes.</p></a>' +
     '</div></div>';
 
   document.getElementById('dash').innerHTML = out;
